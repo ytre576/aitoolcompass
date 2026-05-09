@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">AI video storyboard workflow</title>
+  <desc id="desc">A three-panel storyboard for planning AI-generated video scenes.</desc>
+  <rect width="900" height="520" rx="28" fill="#eaf4ff"/>
+  <g stroke="#10251f" stroke-width="4" fill="#fffdf7">
+    <rect x="76" y="116" width="216" height="232" rx="20"/>
+    <rect x="342" y="116" width="216" height="232" rx="20"/>
+    <rect x="608" y="116" width="216" height="232" rx="20"/>
+  </g>
+  <g fill="#10251f" font-family="Georgia, serif" font-size="31">
+    <text x="104" y="394">Scene</text><text x="370" y="394">Motion</text><text x="636" y="394">Edit</text>
+  </g>
+  <g fill="#e75a3c" stroke="#10251f" stroke-width="4">
+    <path d="M146 242l78-45v90z"/><path d="M412 242l78-45v90z"/><path d="M678 242l78-45v90z"/>
+  </g>
+  <g stroke="#10251f" stroke-width="4" fill="none">
+    <path d="M292 230h50M558 230h50"/>
+  </g>
+</svg>

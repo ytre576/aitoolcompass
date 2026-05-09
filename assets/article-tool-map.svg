@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">AI tool category map</title>
+  <desc id="desc">A colorful map of AI tool categories for chat, research, image, video, design, and productivity.</desc>
+  <rect width="900" height="520" rx="28" fill="#f8f3e7"/>
+  <path d="M66 83h768v354H66z" fill="#fffdf7" stroke="#11231f" stroke-width="4"/>
+  <g font-family="Georgia, serif" font-size="30" fill="#11231f">
+    <text x="96" y="142">AI Tool Map</text>
+  </g>
+  <g font-family="Verdana, sans-serif" font-size="20" font-weight="700" fill="#11231f">
+    <rect x="100" y="190" width="180" height="84" rx="16" fill="#e75a3c"/><text x="130" y="240">Chatbots</text>
+    <rect x="358" y="172" width="184" height="84" rx="16" fill="#1f7a8c"/><text x="392" y="222">Research</text>
+    <rect x="620" y="190" width="180" height="84" rx="16" fill="#f2c14e"/><text x="666" y="240">Images</text>
+    <rect x="106" y="326" width="180" height="84" rx="16" fill="#6a4c93"/><text x="158" y="376">Video</text>
+    <rect x="358" y="318" width="184" height="84" rx="16" fill="#2d6a4f"/><text x="406" y="368">Design</text>
+    <rect x="614" y="326" width="194" height="84" rx="16" fill="#a7c957"/><text x="642" y="376">Productivity</text>
+  </g>
+  <g stroke="#11231f" stroke-width="4" fill="none" stroke-dasharray="9 12" stroke-linecap="round">
+    <path d="M280 232c38-29 64-27 78-18M542 214c36 3 54 9 78 18M196 274c6 37 5 45 0 52M450 256c0 26 0 38 0 62M710 274c-2 31-3 39 1 52M286 368c32-11 48-10 72-8M542 360c30-1 45 2 72 8"/>
+  </g>
+</svg>

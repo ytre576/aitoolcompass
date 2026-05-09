@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Midjourney prompt recipe canvas</title>
+  <desc id="desc">A visual prompt recipe showing subject, style, composition, light, and constraints.</desc>
+  <rect width="900" height="520" rx="28" fill="#f3ecff"/>
+  <rect x="82" y="74" width="736" height="372" rx="24" fill="#fffdf7" stroke="#10251f" stroke-width="4"/>
+  <g fill="#10251f" font-family="Georgia, serif" font-size="34">
+    <text x="116" y="136">Prompt Recipe</text>
+  </g>
+  <g font-family="Verdana, sans-serif" font-size="21" font-weight="700" fill="#10251f">
+    <rect x="116" y="180" width="196" height="64" rx="15" fill="#e75a3c"/><text x="142" y="220">Subject</text>
+    <rect x="352" y="180" width="196" height="64" rx="15" fill="#f2c14e"/><text x="386" y="220">Style</text>
+    <rect x="588" y="180" width="196" height="64" rx="15" fill="#1f7a8c"/><text x="626" y="220">Frame</text>
+    <rect x="116" y="286" width="196" height="64" rx="15" fill="#2d6a4f"/><text x="154" y="326">Light</text>
+    <rect x="352" y="286" width="196" height="64" rx="15" fill="#6a4c93"/><text x="386" y="326">Detail</text>
+    <rect x="588" y="286" width="196" height="64" rx="15" fill="#a7c957"/><text x="626" y="326">Avoid</text>
+  </g>
+  <path d="M172 390h552" stroke="#10251f" stroke-width="5" stroke-linecap="round"/>
+</svg>

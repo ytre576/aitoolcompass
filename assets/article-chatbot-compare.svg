@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">ChatGPT Claude Gemini comparison board</title>
+  <desc id="desc">Three comparison columns for leading AI chatbots.</desc>
+  <rect width="900" height="520" rx="30" fill="#eef7f1"/>
+  <rect x="58" y="70" width="784" height="380" rx="24" fill="#fffdf7" stroke="#10251f" stroke-width="4"/>
+  <g font-family="Georgia, serif" font-size="34" fill="#10251f">
+    <text x="96" y="134">Chatbot Decision Board</text>
+  </g>
+  <g stroke="#10251f" stroke-width="3">
+    <path d="M316 170v238M584 170v238"/>
+  </g>
+  <g font-family="Verdana, sans-serif" fill="#10251f">
+    <text x="106" y="202" font-size="25" font-weight="700">ChatGPT</text>
+    <text x="374" y="202" font-size="25" font-weight="700">Claude</text>
+    <text x="642" y="202" font-size="25" font-weight="700">Gemini</text>
+    <g font-size="18">
+      <text x="106" y="256">Everyday work</text><text x="106" y="296">Multimodal drafts</text><text x="106" y="336">Fast ideation</text>
+      <text x="374" y="256">Long writing</text><text x="374" y="296">Careful reasoning</text><text x="374" y="336">Instruction control</text>
+      <text x="642" y="256">Google context</text><text x="642" y="296">Research tasks</text><text x="642" y="336">Media analysis</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#e75a3c" stroke-width="8" stroke-linecap="round">
+    <path d="M104 382h126"/><path d="M374 382h126"/><path d="M642 382h126"/>
+  </g>
+</svg>

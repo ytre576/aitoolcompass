@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Canva AI design workflow</title>
+  <desc id="desc">A practical design workflow from brief to layout to final export.</desc>
+  <rect width="900" height="520" rx="28" fill="#eff7e6"/>
+  <rect x="80" y="80" width="740" height="360" rx="24" fill="#fffdf7" stroke="#10251f" stroke-width="4"/>
+  <g fill="#10251f" font-family="Georgia, serif" font-size="34">
+    <text x="118" y="142">Design Workflow</text>
+  </g>
+  <g font-family="Verdana, sans-serif" font-weight="700" font-size="22" fill="#10251f">
+    <circle cx="170" cy="250" r="58" fill="#e75a3c" stroke="#10251f" stroke-width="4"/><text x="137" y="258">Brief</text>
+    <circle cx="350" cy="250" r="58" fill="#f2c14e" stroke="#10251f" stroke-width="4"/><text x="318" y="258">Draft</text>
+    <circle cx="530" cy="250" r="58" fill="#1f7a8c" stroke="#10251f" stroke-width="4"/><text x="492" y="258">Brand</text>
+    <circle cx="710" cy="250" r="58" fill="#6a4c93" stroke="#10251f" stroke-width="4"/><text x="680" y="258">Ship</text>
+  </g>
+  <g stroke="#10251f" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M228 250h64M408 250h64M588 250h64"/>
+  </g>
+</svg>
