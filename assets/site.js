@@ -48,6 +48,54 @@ function formatCount(value) {
   return new Intl.NumberFormat("en-US").format(value);
 }
 
+function buildVisitNamespace(hostname) {
+  const normalized = String(hostname || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return normalized || "aitoolcompass-local";
+}
+
+function extractVisitCount(payload) {
+  if (payload && typeof payload.value === "number") return payload.value;
+  if (payload && typeof payload.count === "number") return payload.count;
+  throw new Error("Visit counter payload did not contain a numeric count");
+}
+
+function counterApiUrls(namespace) {
+  const base = `https://api.counterapi.dev/v1/${encodeURIComponent(namespace)}/site-visits`;
+  return {
+    up: `${base}/up`,
+    get: base,
+  };
+}
+
+async function fetchCounterJson(fetchImpl, url) {
+  const response = await fetchImpl(url, {
+    method: "GET",
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Visit counter request failed with ${response.status}`);
+  }
+
+  return response.json();
+}
+
+async function fetchVisitCount(fetchImpl, hostname) {
+  const namespace = buildVisitNamespace(hostname);
+  const urls = counterApiUrls(namespace);
+
+  try {
+    const payload = await fetchCounterJson(fetchImpl, urls.up);
+    return extractVisitCount(payload);
+  } catch (incrementError) {
+    const payload = await fetchCounterJson(fetchImpl, urls.get);
+    return extractVisitCount(payload);
+  }
+}
+
 function setButtonLabel(button, text) {
   button.textContent = text;
   button.setAttribute("aria-label", text);
@@ -259,10 +307,7 @@ function initVisitCounter() {
   const nodes = document.querySelectorAll("[data-site-visit-count]");
   if (!nodes.length) return;
 
-  const namespace = (window.location.hostname || "aitoolcompass-local")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+  const namespace = buildVisitNamespace(window.location.hostname);
   const cacheKey = `${STORAGE_KEYS.visitCache}:${namespace}`;
   const cached = readStoredJson(cacheKey, null);
 
@@ -272,24 +317,11 @@ function initVisitCounter() {
     });
   }
 
-  fetch(`https://api.countapi.xyz/hit/${encodeURIComponent(namespace)}/site-visits`, {
-    method: "GET",
-    cache: "no-store",
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Visit counter request failed with ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if (typeof data.value !== "number") {
-        throw new Error("Visit counter did not return a number");
-      }
-
-      writeStoredJson(cacheKey, { value: data.value });
+  fetchVisitCount(window.fetch.bind(window), window.location.hostname)
+    .then((value) => {
+      writeStoredJson(cacheKey, { value });
       nodes.forEach((node) => {
-        node.textContent = formatCount(data.value);
+        node.textContent = formatCount(value);
       });
     })
     .catch(() => {
@@ -300,53 +332,64 @@ function initVisitCounter() {
     });
 }
 
-const currentYear = new Date().getFullYear();
-document.querySelectorAll("[data-current-year]").forEach((node) => {
-  node.textContent = currentYear;
-});
-
-document.querySelectorAll(".ad-slot").forEach((slot) => {
-  slot.setAttribute("aria-label", "Reserved advertising placement");
-});
-
-const currentPath = window.location.pathname.split("/").pop() || "index.html";
-document.querySelectorAll(".site-nav a").forEach((link) => {
-  const linkPath = link.getAttribute("href").split("/").pop();
-  if (linkPath === currentPath) {
-    link.setAttribute("aria-current", "page");
-  }
-});
-
-rememberArticleVisit();
-initSiteSaveButtons();
-initArticleSaveButtons();
-initShareButtons();
-initFeedCopyButtons();
-refreshReaderLoops();
-initVisitCounter();
-
-const revealTargets = document.querySelectorAll(
-  ".section-header, .card, .article-card, .site-mini-card, .path-card, .tech-panel, .offer-row, .roadmap > div, .stat, .directory-strip, .return-panel, .reader-loop-item"
-);
-
-if ("IntersectionObserver" in window) {
-  revealTargets.forEach((node, index) => {
-    node.classList.add("reveal-ready");
-    node.style.setProperty("--reveal-delay", `${Math.min(index % 8, 7) * 45}ms`);
+if (typeof document !== "undefined" && typeof window !== "undefined") {
+  const currentYear = new Date().getFullYear();
+  document.querySelectorAll("[data-current-year]").forEach((node) => {
+    node.textContent = currentYear;
   });
 
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("reveal-in");
-        observer.unobserve(entry.target);
-      });
-    },
-    { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+  document.querySelectorAll(".ad-slot").forEach((slot) => {
+    slot.setAttribute("aria-label", "Reserved advertising placement");
+  });
+
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".site-nav a").forEach((link) => {
+    const linkPath = link.getAttribute("href").split("/").pop();
+    if (linkPath === currentPath) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+
+  rememberArticleVisit();
+  initSiteSaveButtons();
+  initArticleSaveButtons();
+  initShareButtons();
+  initFeedCopyButtons();
+  refreshReaderLoops();
+  initVisitCounter();
+
+  const revealTargets = document.querySelectorAll(
+    ".section-header, .card, .article-card, .site-mini-card, .path-card, .tech-panel, .offer-row, .roadmap > div, .stat, .directory-strip, .return-panel, .reader-loop-item"
   );
 
-  revealTargets.forEach((node) => revealObserver.observe(node));
-} else {
-  revealTargets.forEach((node) => node.classList.add("reveal-in"));
+  if ("IntersectionObserver" in window) {
+    revealTargets.forEach((node, index) => {
+      node.classList.add("reveal-ready");
+      node.style.setProperty("--reveal-delay", `${Math.min(index % 8, 7) * 45}ms`);
+    });
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("reveal-in");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+    );
+
+    revealTargets.forEach((node) => revealObserver.observe(node));
+  } else {
+    revealTargets.forEach((node) => node.classList.add("reveal-in"));
+  }
+}
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = {
+    buildVisitNamespace,
+    extractVisitCount,
+    counterApiUrls,
+    fetchVisitCount,
+  };
 }
