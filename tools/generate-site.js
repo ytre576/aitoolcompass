@@ -268,7 +268,8 @@ function escapeHtml(value) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function titleCase(slug) {
@@ -309,6 +310,57 @@ function metaDescription(value) {
 function readingMinutes(text) {
   const words = text.split(/\s+/).filter(Boolean).length;
   return Math.max(6, Math.round(words / 210));
+}
+
+function articleDate(article) {
+  return article.createdAt || site.date;
+}
+
+function articleCardCopy(article) {
+  if (article.cardSummary) {
+    return truncate(article.cardSummary, 138);
+  }
+  if (article.summary) {
+    return truncate(article.summary, 138);
+  }
+  return truncate(`Learn how to ${article.focus} with a clear workflow, examples, and beginner mistakes to avoid.`, 138);
+}
+
+function articleStandfirst(article) {
+  if (article.summary) {
+    return article.summary;
+  }
+  return `This beginner-friendly guide shows how to ${article.focus} with practical context, original examples, and clear review points before you rely on the output.`;
+}
+
+function articleReaderLens(article) {
+  if (article.readerLens) {
+    return article.readerLens;
+  }
+  return `Translate this development into operating questions: what changes for workflow design, cost control, review burden, and the timing of adoption for your own stack?`;
+}
+
+function articleWatchlist(article) {
+  if (Array.isArray(article.watchlist) && article.watchlist.length > 0) {
+    return article.watchlist.slice(0, 3);
+  }
+  const notes = Array.isArray(article.sourceNotes) ? article.sourceNotes : [];
+  return [
+    notes[0] || `Check whether ${article.tools[0]} turns this signal into a real workflow improvement instead of headline value alone.`,
+    notes[1] || `Track how this shifts cost, quality, or review risk for teams working on ${article.focus}.`,
+    `Verify the claim against practical usage before changing tools, budgets, or publishing recommendations.`,
+  ];
+}
+
+function articleQuestions(article) {
+  if (Array.isArray(article.readerQuestions) && article.readerQuestions.length > 0) {
+    return article.readerQuestions.slice(0, 3);
+  }
+  return [
+    `What actually changed here beyond the product headline or research framing?`,
+    `If this affects my workflow, is the main impact capability, pricing, or operational risk?`,
+    `What evidence would I want before turning this signal into a purchase, build, or content decision?`,
+  ];
 }
 
 function articleRecords() {
@@ -371,6 +423,14 @@ function articleRecords() {
       createdAt: article.createdAt || site.date,
       summary: article.summary || "",
       keywords: Array.isArray(article.keywords) ? article.keywords : [],
+      sourceUrl: article.sourceUrl || "",
+      sourceLabel: article.sourceLabel || "",
+      sourceTitle: article.sourceTitle || "",
+      sourceNotes: Array.isArray(article.sourceNotes) ? article.sourceNotes : [],
+      cardSummary: article.cardSummary || "",
+      readerLens: article.readerLens || "",
+      watchlist: Array.isArray(article.watchlist) ? article.watchlist : [],
+      readerQuestions: Array.isArray(article.readerQuestions) ? article.readerQuestions : [],
     });
   });
   return all;
@@ -1508,12 +1568,50 @@ function articleBody(article) {
   const rows = articleExampleRows(article, guidance);
   const steps = workflowSteps(article, guidance);
   const artPath = `../${articleArtPath(article)}`;
+  const published = articleDate(article);
+  const standfirst = articleStandfirst(article);
+  const sourceSnapshot =
+    standfirst || `This article tracks the development around ${article.focus} and translates it into an original English explainer for practical readers.`;
+  const sourceNotes = Array.isArray(article.sourceNotes) ? article.sourceNotes : [];
+  const watchItems = articleWatchlist(article);
+  const questionItems = articleQuestions(article);
+  const readerLens = articleReaderLens(article);
+  const snapshotCards = [
+    ["Signal", sourceSnapshot],
+    ["Why it matters", sourceNotes[0] || `The practical question is what this changes for ${article.focus} once the headline is translated into a real workflow or buying decision.`],
+    ["Reader lens", readerLens],
+  ];
+  const sourceNoteItems =
+    sourceNotes.length > 0
+      ? sourceNotes.map((note) => `<p>${escapeHtml(note)}</p>`).join("")
+      : `<p>The original source signal was reviewed, then rewritten into an original English article structure with clear context, human review, and practical next-step checks.</p>`;
+  const sourceLine =
+    article.sourceUrl
+      ? `<p class="article-meta-line"><strong>Published:</strong> ${escapeHtml(published)} | <a href="${article.sourceUrl}" rel="nofollow noopener" target="_blank">Source link</a>${article.sourceLabel ? ` | ${escapeHtml(article.sourceLabel)}` : ""}</p>`
+      : `<p class="article-meta-line"><strong>Published:</strong> ${escapeHtml(published)}</p>`;
+  const sourceTitleLine = article.sourceTitle ? `<p class="article-source-title">Based on topic: ${escapeHtml(article.sourceTitle)}</p>` : "";
+  const articleDek = escapeHtml(standfirst);
   return `
         <header class="article-hero">
-          <p class="eyebrow">${escapeHtml(article.type)}</p>
-          <h1>${escapeHtml(article.title)}</h1>
-          <p class="article-dek">This beginner-friendly guide shows how to ${escapeHtml(article.focus)} with a practical ${method}, original examples, community-inspired field notes, and clear review checkpoints before you rely on the output.</p>
-          <p class="disclosure-note">Disclosure: this page is independent editorial content. If affiliate links are added later, they should be clearly labeled beside the relevant recommendation.</p>
+          <div class="article-hero-copy">
+            <p class="eyebrow">${escapeHtml(article.type)}</p>
+            <p class="article-kicker">Signal from ${escapeHtml(published)}</p>
+            <h1>${escapeHtml(article.title)}</h1>
+            <p class="article-dek">${articleDek}</p>
+            <p class="disclosure-note">Disclosure: this page is independent editorial content. If affiliate links are added later, they should be clearly labeled beside the relevant recommendation.</p>
+            ${sourceLine}
+            ${sourceTitleLine}
+          </div>
+          <aside class="article-hero-rail" aria-label="Editorial summary">
+            <div class="hero-rail-block">
+              <span>Reader lens</span>
+              <p>${escapeHtml(readerLens)}</p>
+            </div>
+            <div class="hero-rail-block">
+              <span>Watch next</span>
+              <ul>${watchItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+          </aside>
         </header>
 
         <figure class="article-figure">
@@ -1523,11 +1621,33 @@ function articleBody(article) {
 
         <div class="ad-slot">Reserved responsive ad placement</div>
 
+        <section id="editorial-brief" class="compact-section">
+          <h2>At a glance</h2>
+          <div class="signal-grid">
+            ${snapshotCards.map(([label, text]) => `<article class="signal-card"><span>${escapeHtml(label)}</span><p>${escapeHtml(text)}</p></article>`).join("")}
+          </div>
+          <div class="question-strip">
+            <strong>Questions worth carrying through the rest of the page</strong>
+            <ul>${questionItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          </div>
+        </section>
+
+        <section id="source-snapshot">
+          <h2>Source snapshot</h2>
+          <p>${escapeHtml(sourceSnapshot)}</p>
+          <p>This page starts from a source-backed signal and then expands it into an original English explainer. The goal is not to mirror the original wording, but to help a reader understand why the development matters, what to verify next, and where the practical opportunity or risk sits.</p>
+          ${sourceNoteItems}
+          <div class="focus-box">
+            <strong>Quick takeaway:</strong> use the original source as the signal, then apply context engineering, verification, and human review before turning the idea into a business decision or published recommendation.
+          </div>
+        </section>
+
         <section id="beginner-summary">
           <h2>Beginner summary</h2>
           <p>If you are new to ${escapeHtml(article.category.toLowerCase())}, start by naming the job in plain language. Do you need a draft, comparison, summary, image, video, transcript, code change, or repeatable business process? The tool only becomes useful after the task is clear.</p>
           <p>For this topic, the core goal is to ${escapeHtml(article.focus)}. A beginner should not start with every advanced feature. Start with one real example, compare the output against a requirement, and keep a small note of what worked so the workflow becomes repeatable.</p>
           <p>${escapeHtml(advice.frame)} ${escapeHtml(advice.output)} The best first win is not a perfect result; it is a repeatable process you can check.</p>
+          <p>If you discovered this topic through a fast-moving AI digest, slow down before drawing conclusions. Read the signal, identify what changed, and decide whether the change affects product choice, workflow design, pricing risk, or content strategy for your own work.</p>
           <div class="focus-box">
             <strong>Important point:</strong> the biggest difference between a useful AI workflow and a frustrating one is specificity. Tell the tool the audience, format, constraints, source material, and quality bar before asking for output.
           </div>
@@ -1663,10 +1783,12 @@ function articlePage(article) {
   const mins = readingMinutes(plain);
   const title = metaTitle(article.title);
   const desc = metaDescription(
-    `Beginner-friendly ${article.type.toLowerCase()} explaining how to ${article.focus}, with steps, examples, mistakes, comparison table, FAQ, and practical checks.`
+    article.summary ||
+      `Beginner-friendly ${article.type.toLowerCase()} explaining how to ${article.focus}, with steps, examples, mistakes, comparison table, FAQ, and practical checks.`
   );
   const canonical = `${site.url}/articles/${article.slug}.html`;
   const imageUrl = `${site.url}/${articleArtPath(article)}`;
+  const published = articleDate(article);
   const faqSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -1677,8 +1799,8 @@ function articlePage(article) {
         image: imageUrl,
         author: { "@type": "Organization", name: site.name },
         publisher: { "@type": "Organization", name: site.name },
-        datePublished: site.date,
-        dateModified: site.date,
+        datePublished: published,
+        dateModified: published,
         mainEntityOfPage: canonical,
       },
       {
@@ -1735,6 +1857,8 @@ function articlePage(article) {
       <nav class="toc" aria-label="Table of contents">
         <strong>On this page</strong>
         <span>${mins} min read</span>
+        <a href="#editorial-brief">At a glance</a>
+        <a href="#source-snapshot">Source snapshot</a>
         <a href="#beginner-summary">Beginner summary</a>
         <a href="#community-field-note">Field note</a>
         <a href="#who-this-is-for">Who this is for</a>
@@ -1764,12 +1888,15 @@ function relatedLinks(article) {
 }
 
 function articleCard(article, prefix = "") {
+  const kicker = article.sourceTitle || article.category;
   return `<a class="article-card" href="${prefix}articles/${article.slug}.html">
     <img src="${prefix}${articleArtPath(article)}" alt="${escapeHtml(article.category)} visual guide for ${escapeHtml(article.focus)}" width="1200" height="680">
     <div class="article-card-body">
       <span class="tag ${article.color}">${escapeHtml(article.type)}</span>
+      <span class="article-card-kicker">${escapeHtml(kicker)}</span>
       <h3>${escapeHtml(article.title)}</h3>
-      <p>${escapeHtml(truncate(`Learn how to ${article.focus} with a clear workflow, examples, and beginner mistakes to avoid.`, 138))}</p>
+      <p class="article-card-meta">Published ${escapeHtml(articleDate(article))}</p>
+      <p>${escapeHtml(articleCardCopy(article))}</p>
     </div>
   </a>`;
 }
@@ -1811,7 +1938,7 @@ function categoryPage(cluster) {
       <p class="section-lead">Tutorials, comparisons, prompt examples, and beginner workflows for ${escapeHtml(cluster.intent)}.</p>
     </section>
     <section class="tool-row-list" aria-label="Category highlights">
-      <div class="tool-row"><span class="tag ${cluster.color}">Start here</span><div><h3>Best for</h3><p>${escapeHtml(cluster.intent)}.</p></div><div class="score">10 guides</div></div>
+      <div class="tool-row"><span class="tag ${cluster.color}">Start here</span><div><h3>Best for</h3><p>${escapeHtml(cluster.intent)}.</p></div><div class="score">${clusterArticles.length} guides</div></div>
       <div class="tool-row"><span class="tag ${cluster.color}">Tools</span><div><h3>${escapeHtml(cluster.tools.join(", "))}</h3><p>Use the comparison tables to decide which tool fits each job.</p></div><div class="score">4 tools</div></div>
     </section>
     <section class="section compact-section">
@@ -2250,10 +2377,10 @@ function homePage() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI Tool Compass: 100 Practical AI Guides</title>
-  <meta name="description" content="A practical AI tool tutorial site with 100 beginner-friendly guides, comparisons, workflows, prompt templates, SEO clusters, and AdSense-ready layouts.">
+  <title>AI Tool Compass: ${articles.length} Practical AI Guides</title>
+  <meta name="description" content="A practical AI tool tutorial site with ${articles.length} beginner-friendly guides, comparisons, workflows, prompt templates, SEO clusters, and AdSense-ready layouts.">
   <link rel="canonical" href="${site.url}/index.html">
-  <meta property="og:title" content="AI Tool Compass: 100 Practical AI Guides">
+  <meta property="og:title" content="AI Tool Compass: ${articles.length} Practical AI Guides">
   <meta property="og:description" content="Choose the right AI tools faster with practical tutorials, comparisons, workflows, and beginner-friendly examples.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="${site.url}/assets/hero-ai-tool-compass.svg">
@@ -2276,7 +2403,7 @@ function homePage() {
           <a class="button ghost" href="#learning-paths">Pick a learning path</a>
         </div>
       <div class="hero-proof">
-        <span>100 in-depth guides</span>
+        <span>${articles.length} in-depth guides</span>
         <span>12 AI sites tracked</span>
         <span>10 SEO clusters</span>
         <span>AI Skills library</span>
@@ -2288,7 +2415,7 @@ function homePage() {
     </section>
 
     <section class="stats-strip" aria-label="Site highlights">
-      <div class="stat"><strong>100</strong>long-form tutorials with examples, checks, FAQs, and comparison tables</div>
+      <div class="stat"><strong>${articles.length}</strong>long-form tutorials with examples, checks, FAQs, and comparison tables</div>
       <div class="stat"><strong>12</strong>mainstream AI websites with official links and pricing pages</div>
       <div class="stat"><strong>10</strong>topic clusters covering chat, research, image, video, coding, and marketing</div>
       <div class="stat"><strong>2026</strong>offer notes marked with a local verification date</div>
