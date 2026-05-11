@@ -922,24 +922,26 @@ function nav(prefix = "") {
   return `<header class="site-header">
     <div class="nav-wrap">
       <a class="brand" href="${prefix}index.html" aria-label="${site.name} home"><span class="brand-mark"></span>${site.name}</a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="${prefix}categories/chatbots.html">Chatbots</a>
-        <a href="${prefix}categories/research.html">Research</a>
-        <a href="${prefix}categories/image.html">Image</a>
-        <a href="${prefix}categories/video.html">Video</a>
-        <a href="${prefix}ai-sites.html">AI Sites</a>
-        <a href="${prefix}ai-skills.html">AI Skills</a>
-        <a href="${prefix}categories/coding.html">Coding</a>
-        <a href="${prefix}affiliate-disclosure.html">Disclosure</a>
-      </nav>
-      <div class="nav-actions" aria-label="Reader tools">
-        <div class="nav-visit-chip" aria-live="polite">
-          <span>Total visits</span>
-          <strong data-site-visit-count>Syncing</strong>
+      <div class="nav-right">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="${prefix}categories/chatbots.html">Chatbots</a>
+          <a href="${prefix}categories/research.html">Research</a>
+          <a href="${prefix}categories/image.html">Image</a>
+          <a href="${prefix}categories/video.html">Video</a>
+          <a href="${prefix}ai-sites.html">AI Sites</a>
+          <a href="${prefix}ai-skills.html">AI Skills</a>
+          <a href="${prefix}categories/coding.html">Coding</a>
+          <a href="${prefix}affiliate-disclosure.html">Disclosure</a>
+        </nav>
+        <div class="nav-actions" aria-label="Reader tools">
+          <div class="nav-visit-chip" aria-live="polite">
+            <span>Total visits</span>
+            <strong data-site-visit-count>Syncing</strong>
+          </div>
+          <a class="nav-action-link" href="${prefix}rss.xml">Subscribe</a>
+          <button class="nav-action-button" type="button" data-bookmark-site>Save site</button>
+          <button class="nav-action-button" type="button" data-share-page>Share</button>
         </div>
-        <a class="nav-action-link" href="${prefix}rss.xml">Subscribe</a>
-        <button class="nav-action-button" type="button" data-bookmark-site>Save site</button>
-        <button class="nav-action-button" type="button" data-share-page>Share</button>
       </div>
     </div>
   </header>`;
@@ -2442,12 +2444,29 @@ function homePage() {
           <a class="button secondary" href="articles/best-ai-tools-2026.html">Read the tool stack guide</a>
           <a class="button ghost" href="#learning-paths">Pick a learning path</a>
         </div>
-      <div class="hero-proof">
-        <span>${articles.length} in-depth guides</span>
-        <span>12 AI sites tracked</span>
-        <span>10 SEO clusters</span>
-        <span>AI Skills library</span>
-      </div>
+        <div class="hero-proof">
+          <span>${articles.length} in-depth guides</span>
+          <span>12 AI sites tracked</span>
+          <span>10 SEO clusters</span>
+          <span>AI Skills library</span>
+        </div>
+        <div class="hero-briefing" aria-label="Homepage briefing">
+          <article class="hero-briefing-card">
+            <span>Directory</span>
+            <strong>Start with official AI sites and pricing checkpoints.</strong>
+            <p>Use verified landing pages and pricing links before comparing plans or repeating temporary offers.</p>
+          </article>
+          <article class="hero-briefing-card">
+            <span>Workflows</span>
+            <strong>Move from browsing to repeatable execution.</strong>
+            <p>Pick a category, open a guide, and follow prompts, tables, and tool-fit checks instead of hype.</p>
+          </article>
+          <article class="hero-briefing-card">
+            <span>Retention</span>
+            <strong>Save the site, save articles, and resume later.</strong>
+            <p>The homepage doubles as a return surface with RSS, saved guides, and reading continuity.</p>
+          </article>
+        </div>
       </div>
       <div class="hero-visual">
         <img src="assets/hero-ai-tool-compass.svg" alt="Editorial AI tool compass dashboard with category cards and comparison paths" width="1200" height="760">
@@ -2461,7 +2480,7 @@ function homePage() {
       <div class="stat"><strong>2026</strong>offer notes marked with a local verification date</div>
     </section>
 
-    <section class="section" id="reader-tools">
+    <section class="section reader-tools-section" id="reader-tools">
       <div class="section-header">
         <div>
           <p class="eyebrow">Return faster</p>
@@ -2523,7 +2542,7 @@ function homePage() {
         </div>
         <p class="section-lead">The homepage now works like an AI navigation portal: quick summaries, official links, pricing notes, and a clean route into deeper tutorials.</p>
       </div>
-      <div class="site-mini-grid">
+      <div class="site-mini-grid featured-sites-grid">
         ${featuredSites
           .map(
             (tool) => `<a class="site-mini-card" href="ai-sites.html#ai-site-list">
@@ -2545,7 +2564,7 @@ function homePage() {
         </div>
         <p class="section-lead">Each path connects the directory, category hub, and long-form articles so beginners can move from tool discovery to practical execution.</p>
       </div>
-      <div class="learning-grid">
+      <div class="learning-grid path-grid">
         ${learningPaths
           .map(
             (path) => `<article class="path-card">
@@ -2622,7 +2641,7 @@ function homePage() {
         </div>
         <p class="section-lead">These pages target durable searches: best tools, alternatives, comparisons, tutorials, prompt examples, and beginner workflows.</p>
       </div>
-      <div class="grid articles">${featured.map((article) => articleCard(article)).join("")}</div>
+      <div class="grid articles home-library-grid">${featured.map((article) => articleCard(article)).join("")}</div>
     </section>
 
     <section class="section">
@@ -2633,7 +2652,7 @@ function homePage() {
         </div>
         <p class="section-lead">This block is fed by the modular article data file, so the homepage can surface newly added daily articles after one rebuild.</p>
       </div>
-      <div class="grid articles">${latestArticles.map((article) => articleCard(article)).join("")}</div>
+      <div class="grid articles home-library-grid">${latestArticles.map((article) => articleCard(article)).join("")}</div>
     </section>
 
     <section class="section">
