@@ -272,6 +272,15 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+function escapeXml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 function titleCase(slug) {
   return slug
     .split("-")
@@ -310,6 +319,18 @@ function metaDescription(value) {
 function readingMinutes(text) {
   const words = text.split(/\s+/).filter(Boolean).length;
   return Math.max(6, Math.round(words / 210));
+}
+
+function rssAlternateLink() {
+  return `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(site.name)} RSS Feed" href="${site.url}/rss.xml">`;
+}
+
+function formatRfc822(value) {
+  const date = new Date(`${value}T00:00:00Z`);
+  if (Number.isNaN(date.getTime())) {
+    return new Date().toUTCString();
+  }
+  return date.toUTCString();
 }
 
 function articleDate(article) {
@@ -911,6 +932,15 @@ function nav(prefix = "") {
         <a href="${prefix}categories/coding.html">Coding</a>
         <a href="${prefix}affiliate-disclosure.html">Disclosure</a>
       </nav>
+      <div class="nav-actions" aria-label="Reader tools">
+        <div class="nav-visit-chip" aria-live="polite">
+          <span>Total visits</span>
+          <strong data-site-visit-count>Syncing</strong>
+        </div>
+        <a class="nav-action-link" href="${prefix}rss.xml">Subscribe</a>
+        <button class="nav-action-button" type="button" data-bookmark-site>Save site</button>
+        <button class="nav-action-button" type="button" data-share-page>Share</button>
+      </div>
     </div>
   </header>`;
 }
@@ -930,6 +960,7 @@ function footer(prefix = "") {
         <a href="${prefix}review-methodology.html">Review Methodology</a>
         <a href="${prefix}editorial-policy.html">Editorial Policy</a>
         <a href="${prefix}contact.html">Contact</a>
+        <a href="${prefix}rss.xml">RSS</a>
         <a href="${prefix}sitemap.xml">Sitemap</a>
       </nav>
     </div>
@@ -1601,6 +1632,10 @@ function articleBody(article) {
             <p class="disclosure-note">Disclosure: this page is independent editorial content. If affiliate links are added later, they should be clearly labeled beside the relevant recommendation.</p>
             ${sourceLine}
             ${sourceTitleLine}
+            <div class="article-action-row">
+              <button class="button secondary utility-button" type="button" data-save-article>Save article</button>
+              <button class="button ghost utility-button" type="button" data-share-page>Share article</button>
+            </div>
           </div>
           <aside class="article-hero-rail" aria-label="Editorial summary">
             <div class="hero-rail-block">
@@ -1838,10 +1873,11 @@ function articlePage(article) {
   <meta property="og:description" content="${escapeHtml(desc)}">
   <meta property="og:type" content="article">
   <meta property="og:image" content="${imageUrl}">
+  ${rssAlternateLink()}
   <link rel="stylesheet" href="../assets/styles.css">
   <script type="application/ld+json">${JSON.stringify(faqSchema)}</script>
 </head>
-<body>
+<body data-page-type="article" data-article-slug="${escapeHtml(article.slug)}" data-article-title="${escapeHtml(article.title)}" data-article-url="${canonical}">
   <a class="skip-link" href="#main">Skip to content</a>
   ${nav("../")}
   <main id="main" class="article-shell">
@@ -1925,6 +1961,7 @@ function categoryPage(cluster) {
   <meta property="og:description" content="${escapeHtml(desc)}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="${site.url}/assets/generated-${cluster.slug}.svg">
+  ${rssAlternateLink()}
   <link rel="stylesheet" href="../assets/styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
@@ -1985,6 +2022,7 @@ function aiSitesPage() {
   <meta property="og:description" content="${escapeHtml(desc)}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="${site.url}/assets/hero-ai-sites.svg">
+  ${rssAlternateLink()}
   <link rel="stylesheet" href="assets/styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
@@ -2124,6 +2162,7 @@ function aiSkillsPage() {
   <meta property="og:description" content="${escapeHtml(desc)}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="${site.url}/assets/hero-ai-skills.svg">
+  ${rssAlternateLink()}
   <link rel="stylesheet" href="assets/styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
@@ -2384,6 +2423,7 @@ function homePage() {
   <meta property="og:description" content="Choose the right AI tools faster with practical tutorials, comparisons, workflows, and beginner-friendly examples.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="${site.url}/assets/hero-ai-tool-compass.svg">
+  ${rssAlternateLink()}
   <link rel="stylesheet" href="assets/styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
@@ -2419,6 +2459,44 @@ function homePage() {
       <div class="stat"><strong>12</strong>mainstream AI websites with official links and pricing pages</div>
       <div class="stat"><strong>10</strong>topic clusters covering chat, research, image, video, coding, and marketing</div>
       <div class="stat"><strong>2026</strong>offer notes marked with a local verification date</div>
+    </section>
+
+    <section class="section" id="reader-tools">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Return faster</p>
+          <h2>Give readers a reason to come back instead of bouncing once.</h2>
+        </div>
+        <p class="section-lead">This block combines follow, save, and resume actions that work on a static site: RSS for subscription, local save states for favorites, and recent-reading continuity across visits.</p>
+      </div>
+      <div class="reader-loop-grid">
+        <article class="return-panel">
+          <p class="eyebrow">Follow</p>
+          <h3>Subscribe without handing over an inbox.</h3>
+          <p>Use the site feed for fresh guides, then save the homepage locally so return visitors can jump back into the library in one click.</p>
+          <div class="action-cluster">
+            <a class="button" href="rss.xml">Open RSS feed</a>
+            <button class="button secondary utility-button" type="button" data-copy-feed-url data-feed-url="${site.url}/rss.xml">Copy feed URL</button>
+            <button class="button ghost utility-button" type="button" data-bookmark-site>Save site</button>
+          </div>
+        </article>
+        <article class="return-panel">
+          <p class="eyebrow">Saved guides</p>
+          <h3>Build a shortlist worth revisiting.</h3>
+          <p>When a reader saves an article, it appears here on the next visit so the homepage becomes a working dashboard instead of a one-time landing page.</p>
+          <div class="reader-loop-list" data-saved-articles>
+            <p class="empty-state">No saved guides yet. Open an article and use the Save article button to start a private shortlist in this browser.</p>
+          </div>
+        </article>
+        <article class="return-panel">
+          <p class="eyebrow">Continue reading</p>
+          <h3>Pick up where you left off.</h3>
+          <p>Recent reading history turns the homepage into a return surface, especially when the site adds new daily guides and comparison pages.</p>
+          <div class="reader-loop-list" data-recent-articles>
+            <p class="empty-state">No recent reading history yet. Open a guide and it will appear here automatically.</p>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="section" id="ai-skills-preview">
@@ -2603,6 +2681,7 @@ function simplePage({ file, title, description, heading, body }) {
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(metaDesc)}">
   <meta property="og:type" content="website">
+  ${rssAlternateLink()}
   <link rel="stylesheet" href="assets/styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
@@ -2650,6 +2729,7 @@ function generateSitemap() {
     "index.html",
     "ai-sites.html",
     "ai-skills.html",
+    "rss.xml",
     ...clusters.map((cluster) => `categories/${cluster.slug}.html`),
     ...articles.map((article) => `articles/${article.slug}.html`),
     "privacy.html",
@@ -2660,6 +2740,31 @@ function generateSitemap() {
   ];
   const urls = pages.map((page) => `  <url><loc>${site.url}/${page}</loc><lastmod>${site.date}</lastmod></url>`).join("\n");
   writeFile("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
+}
+
+function generateRss() {
+  const items = [...articles]
+    .sort((a, b) => String(articleDate(b)).localeCompare(String(articleDate(a))) || String(b.title).localeCompare(String(a.title)))
+    .slice(0, 40)
+    .map((article) => {
+      const link = `${site.url}/articles/${article.slug}.html`;
+      const description = article.summary || articleStandfirst(article);
+      return [
+        "  <item>",
+        `    <title>${escapeXml(article.title)}</title>`,
+        `    <link>${escapeXml(link)}</link>`,
+        `    <guid>${escapeXml(link)}</guid>`,
+        `    <pubDate>${formatRfc822(articleDate(article))}</pubDate>`,
+        `    <description>${escapeXml(description)}</description>`,
+        "  </item>",
+      ].join("\n");
+    })
+    .join("\n");
+
+  writeFile(
+    "rss.xml",
+    `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n<channel>\n  <title>${escapeXml(site.name)}</title>\n  <link>${escapeXml(site.url)}</link>\n  <description>${escapeXml(site.description)}</description>\n  <language>en-us</language>\n  <lastBuildDate>${formatRfc822(site.date)}</lastBuildDate>\n${items}\n</channel>\n</rss>\n`
+  );
 }
 
 function generateSite() {
@@ -2674,6 +2779,7 @@ function generateSite() {
   writeFile("ai-skills.html", aiSkillsPage());
   writeFile("index.html", homePage());
   generatePolicyPages();
+  generateRss();
   generateSitemap();
   writeFile("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
   console.log(`Generated ${articles.length} articles and ${clusters.length} category pages.`);
