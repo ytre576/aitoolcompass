@@ -249,6 +249,61 @@ function ensureDir(dir) {
   fs.mkdirSync(path.join(root, dir), { recursive: true });
 }
 
+const buildLockDir = path.join(root, ".site-build.lock");
+const buildLockPidFile = path.join(buildLockDir, "pid");
+const buildLockSleep = new Int32Array(new SharedArrayBuffer(4));
+
+function sleepMs(duration) {
+  Atomics.wait(buildLockSleep, 0, 0, duration);
+}
+
+function isProcessRunning(pid) {
+  if (!Number.isInteger(pid) || pid <= 0) return false;
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (error) {
+    return error && error.code === "EPERM";
+  }
+}
+
+function acquireBuildLock(timeoutMs = 30000) {
+  const startedAt = Date.now();
+
+  while (true) {
+    try {
+      fs.mkdirSync(buildLockDir);
+      fs.writeFileSync(buildLockPidFile, String(process.pid), "utf8");
+      return;
+    } catch (error) {
+      if (!error || error.code !== "EEXIST") {
+        throw error;
+      }
+
+      if (Date.now() - startedAt >= timeoutMs) {
+        throw new Error(`Timed out waiting for build lock: ${buildLockDir}`);
+      }
+
+      sleepMs(50);
+    }
+  }
+}
+
+function releaseBuildLock() {
+  if (!fs.existsSync(buildLockDir)) return;
+
+  let ownerPid = NaN;
+  try {
+    ownerPid = Number.parseInt(fs.readFileSync(buildLockPidFile, "utf8"), 10);
+  } catch {
+    ownerPid = NaN;
+  }
+
+  if (ownerPid === process.pid) {
+    fs.rmSync(buildLockDir, { recursive: true, force: true });
+  }
+}
+
 function cleanHtmlDir(dir) {
   const fullDir = path.join(root, dir);
   if (!fs.existsSync(fullDir)) return;
@@ -458,6 +513,35 @@ function articleRecords() {
 }
 
 const articles = articleRecords();
+const articleBySlug = new Map(articles.map((article) => [article.slug, article]));
+
+function pickArticles(slugs) {
+  return slugs.map((slug) => articleBySlug.get(slug)).filter(Boolean);
+}
+
+function uniqueBySlug(items) {
+  const seen = new Set();
+  return items.filter((item) => {
+    if (!item || seen.has(item.slug)) return false;
+    seen.add(item.slug);
+    return true;
+  });
+}
+
+function uniqueByKey(items, keyFn) {
+  const seen = new Set();
+  return items.filter((item) => {
+    if (!item) return false;
+    const key = keyFn(item);
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function firstArticleByTypes(clusterArticles, types) {
+  return clusterArticles.find((article) => types.includes(article.type));
+}
 
 function articleArtPath(article) {
   return `assets/article-art/${article.slug}.svg`;
@@ -1624,6 +1708,8 @@ function articleBody(article) {
       : `<p class="article-meta-line"><strong>Published:</strong> ${escapeHtml(published)}</p>`;
   const sourceTitleLine = article.sourceTitle ? `<p class="article-source-title">Based on topic: ${escapeHtml(article.sourceTitle)}</p>` : "";
   const articleDek = escapeHtml(standfirst);
+  const nextRoutes = articleRouteTargets(article);
+  const feedUrl = `${site.url}/rss.xml`;
   return `
         <header class="article-hero">
           <div class="article-hero-copy">
@@ -1800,6 +1886,58 @@ Quality bar: explain trade-offs clearly, flag uncertain claims, avoid hype, and 
           </ul>
         </section>
 
+        <section id="next-step-routes">
+          <h2>Continue with the next highest-value page.</h2>
+          <p>Use the routes below to keep momentum. The best traffic clusters do not trap readers on one article; they hand them to the next decision, workflow, or validation step with intent.</p>
+          <div class="article-route-grid">
+            ${nextRoutes.map((route) => `
+              <article class="article-route-card">
+                <span class="eyebrow">${escapeHtml(route.label)}</span>
+                <h3>${escapeHtml(route.title)}</h3>
+                <p>${escapeHtml(route.text)}</p>
+                <a class="route-link" href="${route.href}">${escapeHtml(route.linkLabel)}</a>
+              </article>
+            `).join("")}
+          </div>
+        </section>
+
+        <section id="return-surface">
+          <h2>Keep the research thread alive.</h2>
+          <p>Do not rely on memory. Save the guide, keep the broader site bookmarked, and let the browser hold your strongest pages so the next session starts with signal instead of friction.</p>
+          <div class="article-return-grid">
+            <article class="article-return-card">
+              <span class="eyebrow">Save this page</span>
+              <h3>Keep the article in your shortlist.</h3>
+              <p>Use the same save action you see in the hero so the guide stays available while you compare tools, briefs, and workflows.</p>
+              <div class="action-cluster">
+                <button class="button secondary utility-button" type="button" data-save-article>Save article</button>
+                <button class="button ghost utility-button" type="button" data-share-page>Share article</button>
+              </div>
+            </article>
+            <article class="article-return-card">
+              <span class="eyebrow">Save the system</span>
+              <h3>Return to the wider editorial stack.</h3>
+              <p>Bookmark the whole site and keep the feed URL nearby so you can jump back into directories, comparisons, and new posts without restarting research.</p>
+              <div class="action-cluster">
+                <button class="button secondary utility-button" type="button" data-bookmark-site>Save site</button>
+                <button class="button ghost utility-button" type="button" data-copy-feed-url data-feed-url="${feedUrl}">Copy feed URL</button>
+              </div>
+            </article>
+            <article class="article-return-card">
+              <span class="eyebrow">Saved shortlist</span>
+              <h3>Articles you marked for later.</h3>
+              <p>The browser keeps a lightweight shortlist so you can return to the strongest pages after you finish comparing vendors or drafting prompts.</p>
+              <div class="reader-loop-list" data-saved-articles></div>
+            </article>
+            <article class="article-return-card">
+              <span class="eyebrow">Recent reading</span>
+              <h3>Pages you visited most recently.</h3>
+              <p>Recent reading history helps you resume the thread instead of reopening random tabs and losing the route across the cluster.</p>
+              <div class="reader-loop-list" data-recent-articles></div>
+            </article>
+          </div>
+        </section>
+
         <section id="faq">
           <h2>FAQ</h2>
           <h3>What is the easiest way to start?</h3>
@@ -1908,6 +2046,8 @@ function articlePage(article) {
         <a href="#common-mistakes">Common mistakes</a>
         <a href="#quality-bar">Quality bar</a>
         <a href="#final-checklist">Final checklist</a>
+        <a href="#next-step-routes">Next-step routes</a>
+        <a href="#return-surface">Return surface</a>
         <a href="#faq">FAQ</a>
       </nav>
     </article>
@@ -1923,6 +2063,78 @@ function relatedLinks(article) {
   const sameCluster = articles.filter((item) => item.cluster === article.cluster && item.slug !== article.slug).slice(0, 3);
   const nearby = articles.filter((item) => item.cluster !== article.cluster).slice(article.index, article.index + 2);
   return [...sameCluster, ...nearby].slice(0, 5);
+}
+
+function articleRouteTargets(article) {
+  const clusterArticles = articles.filter((item) => item.cluster === article.cluster && item.slug !== article.slug);
+  const guideArticle =
+    clusterArticles.find((item) => /^best-/.test(item.slug)) ||
+    firstArticleByTypes(clusterArticles, ["Guide", "Tutorial"]);
+  const comparisonArticle = firstArticleByTypes(clusterArticles, ["Comparison"]);
+  const workflowArticle = firstArticleByTypes(clusterArticles, ["Workflow", "Tutorial", "Template"]);
+  const promptOrChecklistArticle = firstArticleByTypes(clusterArticles, ["Prompt Library", "Checklist", "Template"]);
+
+  return uniqueByKey(
+    [
+      guideArticle && {
+        key: `article:${guideArticle.slug}`,
+        label: "Best starting page",
+        title: guideArticle.title,
+        text: `Use the broadest ${article.category.toLowerCase()} guide first if you want the fastest route from curiosity into a real decision.`,
+        href: `${guideArticle.slug}.html`,
+        linkLabel: "Open starting guide",
+      },
+      comparisonArticle && {
+        key: `article:${comparisonArticle.slug}`,
+        label: "Compare before paying",
+        title: comparisonArticle.title,
+        text: "Open a comparison page before you lock in one subscription, default assistant, or workflow stack.",
+        href: `${comparisonArticle.slug}.html`,
+        linkLabel: "Open comparison",
+      },
+      workflowArticle && {
+        key: `article:${workflowArticle.slug}`,
+        label: "Follow a workflow",
+        title: workflowArticle.title,
+        text: `Move from research into execution with a step-by-step pattern that turns ${article.focus} into a repeatable process.`,
+        href: `${workflowArticle.slug}.html`,
+        linkLabel: "Open workflow",
+      },
+      promptOrChecklistArticle && {
+        key: `article:${promptOrChecklistArticle.slug}`,
+        label: "Reduce mistakes",
+        title: promptOrChecklistArticle.title,
+        text: "Tighten the output with a prompt library, checklist, or template before you publish, ship, or share the result.",
+        href: `${promptOrChecklistArticle.slug}.html`,
+        linkLabel: "Open checklist",
+      },
+      {
+        key: `category:${article.cluster}`,
+        label: "Cluster map",
+        title: `${article.category} category hub`,
+        text: `Scan the full ${article.category.toLowerCase()} cluster to find narrower tutorials, comparisons, and supporting pages in one place.`,
+        href: `../categories/${article.cluster}.html`,
+        linkLabel: "Open category page",
+      },
+      {
+        key: "skills",
+        label: "Prompt system",
+        title: "AI Skills & Prompt Playbooks",
+        text: "Pull a reusable prompt, review checklist, or workflow note into your next session before generating more output.",
+        href: "../ai-skills.html",
+        linkLabel: "Open playbooks",
+      },
+      {
+        key: "sites",
+        label: "Tool directory",
+        title: "AI Sites directory",
+        text: "Compare pricing, positioning, and upgrade triggers before committing to a paid plan.",
+        href: "../ai-sites.html",
+        linkLabel: "Open AI sites",
+      },
+    ],
+    (item) => item.key
+  ).slice(0, 6);
 }
 
 function articleCard(article, prefix = "") {
@@ -1941,6 +2153,45 @@ function articleCard(article, prefix = "") {
 
 function categoryPage(cluster) {
   const clusterArticles = articles.filter((article) => article.cluster === cluster.slug);
+  const guideArticle =
+    clusterArticles.find((article) => /^best-/.test(article.slug)) ||
+    firstArticleByTypes(clusterArticles, ["Guide", "Tutorial"]);
+  const comparisonArticle = firstArticleByTypes(clusterArticles, ["Comparison"]);
+  const workflowArticle = firstArticleByTypes(clusterArticles, ["Workflow", "Tutorial", "Template"]);
+  const promptOrChecklistArticle = firstArticleByTypes(clusterArticles, ["Prompt Library", "Checklist", "Template"]);
+  const featuredRoutes = [
+    guideArticle && {
+      label: "Best starting page",
+      title: guideArticle.title,
+      text: "Start here if you want the fastest overview before drilling into narrower use cases.",
+      href: `../articles/${guideArticle.slug}.html`,
+      linkLabel: "Open starting guide",
+    },
+    comparisonArticle && {
+      label: "Compare options",
+      title: comparisonArticle.title,
+      text: "Use a comparison page before you choose a subscription, workflow, or default tool in this cluster.",
+      href: `../articles/${comparisonArticle.slug}.html`,
+      linkLabel: "Open comparison",
+    },
+    workflowArticle && {
+      label: "Follow a workflow",
+      title: workflowArticle.title,
+      text: "Move from tool discovery into a repeatable sequence that helps a beginner finish an actual task.",
+      href: `../articles/${workflowArticle.slug}.html`,
+      linkLabel: "Open workflow",
+    },
+    promptOrChecklistArticle && {
+      label: "Reduce mistakes",
+      title: promptOrChecklistArticle.title,
+      text: "Use a prompt library or checklist to tighten output quality before you publish, ship, or pay.",
+      href: `../articles/${promptOrChecklistArticle.slug}.html`,
+      linkLabel: "Open prompt or checklist",
+    },
+  ].filter(Boolean);
+  const guideCount = clusterArticles.filter((article) => ["Guide", "Tutorial", "Workflow"].includes(article.type)).length;
+  const comparisonCount = clusterArticles.filter((article) => article.type === "Comparison").length;
+  const promptCount = clusterArticles.filter((article) => ["Prompt Library", "Template", "Checklist"].includes(article.type)).length;
   const title = `${cluster.name} Guides and Tutorials`;
   const desc = metaDescription(`Beginner-friendly ${cluster.name} tutorials, comparisons, workflows, prompt examples, and common mistake checklists for ${cluster.intent}.`);
   const canonical = `${site.url}/categories/${cluster.slug}.html`;
@@ -1976,10 +2227,69 @@ function categoryPage(cluster) {
       <h1>${escapeHtml(cluster.name)} Guides</h1>
       <p class="section-lead">Tutorials, comparisons, prompt examples, and beginner workflows for ${escapeHtml(cluster.intent)}.</p>
     </section>
+
+    <section class="stats-strip" aria-label="Category highlights">
+      <div class="stat"><strong>${clusterArticles.length}</strong> pages focused on one practical cluster instead of scattered tool mentions</div>
+      <div class="stat"><strong>${guideCount}</strong> guides, tutorials, and workflows readers can apply to a real task</div>
+      <div class="stat"><strong>${comparisonCount}</strong> comparison pages for tool choice before a paid commitment</div>
+      <div class="stat"><strong>${promptCount}</strong> prompts, templates, and checklists to reduce beginner mistakes</div>
+    </section>
+
     <section class="tool-row-list" aria-label="Category highlights">
       <div class="tool-row"><span class="tag ${cluster.color}">Start here</span><div><h3>Best for</h3><p>${escapeHtml(cluster.intent)}.</p></div><div class="score">${clusterArticles.length} guides</div></div>
       <div class="tool-row"><span class="tag ${cluster.color}">Tools</span><div><h3>${escapeHtml(cluster.tools.join(", "))}</h3><p>Use the comparison tables to decide which tool fits each job.</p></div><div class="score">4 tools</div></div>
     </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Start here</p>
+          <h2>Start with the highest-leverage page in this category.</h2>
+        </div>
+        <p class="section-lead">A strong category page should not make the reader guess which article matters first. These picks route a beginner into the fastest useful next step.</p>
+      </div>
+      <div class="cluster-start-grid">
+        ${featuredRoutes
+          .map(
+            (route) => `<article class="cluster-start-card">
+              <span class="tag ${cluster.color}">${escapeHtml(route.label)}</span>
+              <h3>${escapeHtml(route.title)}</h3>
+              <p>${escapeHtml(route.text)}</p>
+              <a href="${route.href}">${escapeHtml(route.linkLabel)}</a>
+            </article>`
+          )
+          .join("")}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Use the cluster well</p>
+          <h2>Fastest way to get value from this cluster.</h2>
+        </div>
+        <p class="section-lead">This layer is here to increase search utility: when to use the category, what to compare, and how to avoid wasting a subscription on the wrong task.</p>
+      </div>
+      <div class="cluster-route-grid">
+        <article class="cluster-route-card">
+          <h3>Use this category when</h3>
+          <p>${escapeHtml(`You need help with ${cluster.intent} and want a task-first route instead of opening tools at random.`)}</p>
+        </article>
+        <article class="cluster-route-card">
+          <h3>Compare before you pay</h3>
+          <p>${escapeHtml(`Do not treat brand awareness as proof. Use the comparison pages to check workflow fit, output quality, and review burden first.`)}</p>
+        </article>
+        <article class="cluster-route-card">
+          <h3>Start small</h3>
+          <p>${escapeHtml(`Pick one guide, test one real task, and only then decide whether this cluster needs a paid tool or just a better workflow.`)}</p>
+        </article>
+        <article class="cluster-route-card">
+          <h3>Keep the output useful</h3>
+          <p>${escapeHtml(`Look for pages with examples, prompts, checklists, and mistake prevention. Those are stronger than generic tool roundups.`)}</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section compact-section">
       <div class="section-header"><div><p class="eyebrow">Library</p><h2>All ${escapeHtml(cluster.name)} articles</h2></div></div>
       <div class="grid articles">${clusterArticles.map((article) => articleCard(article, "../")).join("")}</div>
@@ -1993,6 +2303,60 @@ function categoryPage(cluster) {
 }
 
 function aiSitesPage() {
+  const siteRoutes = [
+    {
+      label: "Chat and writing",
+      title: "Start with one general assistant, not five tabs.",
+      text: "Use ChatGPT or Claude when you need drafting, reasoning, editing, and everyday task support before buying a specialist tool.",
+      links: [
+        ["ChatGPT", "https://chatgpt.com/"],
+        ["Claude", "https://claude.com/"],
+        ["Beginner comparison", "articles/chatgpt-vs-claude-vs-gemini.html"],
+      ],
+    },
+    {
+      label: "Research and sources",
+      title: "Use research-first tools when the answer needs evidence.",
+      text: "Perplexity and Gemini make more sense when citations, retrieval, and source review matter more than open-ended drafting.",
+      links: [
+        ["Perplexity", "https://www.perplexity.ai/"],
+        ["Gemini", "https://gemini.google.com/"],
+        ["Research workflow", "articles/perplexity-ai-research-workflow.html"],
+      ],
+    },
+    {
+      label: "Coding and product work",
+      title: "Pick the editor or assistant that fits your review discipline.",
+      text: "Cursor and Copilot are useful only if the workflow keeps verification, tests, and scope under control.",
+      links: [
+        ["Cursor", "https://cursor.com/"],
+        ["Copilot", "https://copilot.microsoft.com/"],
+        ["Coding guide", "articles/cursor-ai-workflow-guide.html"],
+      ],
+    },
+    {
+      label: "Creator stack",
+      title: "Images, video, and voice tools should be chosen as a workflow set.",
+      text: "Midjourney, Runway, and ElevenLabs are strongest when you know whether the job is visuals, motion, or narration before paying.",
+      links: [
+        ["Midjourney", "https://www.midjourney.com/"],
+        ["Runway", "https://runwayml.com/"],
+        ["Creator guide", "articles/ai-video-storyboard-workflow.html"],
+      ],
+    },
+  ];
+  const comparisonArticles = pickArticles([
+    "chatgpt-vs-claude-vs-gemini",
+    "perplexity-vs-chatgpt-research",
+    "midjourney-vs-dalle-vs-ideogram",
+    "runway-vs-pika-vs-synthesia",
+  ]);
+  const preBuyGuides = pickArticles([
+    "best-ai-tools-2026",
+    "best-ai-coding-tools",
+    "best-ai-image-generators",
+    "best-ai-video-generators",
+  ]);
   const title = "AI Sites Directory: Official Links, Pricing, and Offers";
   const desc = metaDescription(
     `A curated directory of mainstream AI websites with official links, beginner use cases, pricing notes, current offers, and verification dates for ChatGPT, Claude, Gemini, Cursor, Midjourney, Runway, and more.`
@@ -2034,12 +2398,13 @@ function aiSitesPage() {
   <main id="main">
     <section class="hero directory-hero">
       <div class="hero-copy">
-        <p class="eyebrow">AI website navigation</p>
-        <h1>AI sites, official links, and offer notes.</h1>
+        <p class="eyebrow">AI directory for buyers and beginners</p>
+        <h1>Browse AI by use case before you compare prices.</h1>
         <p>Use this page as a practical navigation board for mainstream AI tools. Each card includes the official website, pricing page, beginner use case, and a short note on current free plans, trials, or visible discounts.</p>
         <div class="hero-actions">
-          <a class="button" href="#ai-site-list">Browse AI sites</a>
-          <a class="button secondary" href="#offer-notes">Check offer notes</a>
+          <a class="button" href="best-ai-tools-by-job.html">Start by job</a>
+          <a class="button secondary" href="#ai-site-list">Browse AI sites</a>
+          <a class="button ghost" href="#pre-buy-guides">Read guides first</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -2064,6 +2429,30 @@ function aiSitesPage() {
       </div>
       <div class="directory-note">
         <p><strong>Editorial rule:</strong> do not present a temporary discount as guaranteed. Mark trial periods, student deals, and annual-plan discounts clearly, and update this page when official pages change.</p>
+      </div>
+    </section>
+
+    <section class="section" id="site-routes">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Task-first routes</p>
+          <h2>Best starting points by job</h2>
+        </div>
+        <p class="section-lead">The strongest directories route readers by outcome first. These cards help a beginner move from "I need help" to the right tool family before touching a pricing page.</p>
+      </div>
+      <div class="site-route-grid">
+        ${siteRoutes
+          .map(
+            (route) => `<article class="site-route-card">
+              <span class="tag">${escapeHtml(route.label)}</span>
+              <h3>${escapeHtml(route.title)}</h3>
+              <p>${escapeHtml(route.text)}</p>
+              <div class="command-links">${route.links
+                .map(([label, href]) => `<a href="${href}"${href.startsWith("http") ? ' rel="nofollow noopener" target="_blank"' : ""}>${escapeHtml(label)}</a>`)
+                .join("")}</div>
+            </article>`
+          )
+          .join("")}
       </div>
     </section>
 
@@ -2099,6 +2488,39 @@ function aiSitesPage() {
           .join("")}
       </div>
       <div class="ad-slot">Reserved directory ad placement</div>
+    </section>
+
+    <section class="section" id="comparison-lab">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Comparison routes</p>
+          <h2>Compare the tools people pay for most often.</h2>
+        </div>
+        <p class="section-lead">A directory becomes more useful when it points into real comparison intent. These are the pages that help readers avoid the wrong subscription instead of just opening more tabs.</p>
+      </div>
+      <div class="comparison-grid">
+        ${comparisonArticles
+          .map(
+            (article) => `<article class="comparison-card">
+              <span class="tag ${article.color}">${escapeHtml(article.category)}</span>
+              <h3>${escapeHtml(article.title)}</h3>
+              <p>${escapeHtml(articleCardCopy(article))}</p>
+              <a href="articles/${article.slug}.html">Open comparison</a>
+            </article>`
+          )
+          .join("")}
+      </div>
+    </section>
+
+    <section class="section" id="pre-buy-guides">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Pre-buy guides</p>
+          <h2>Read a guide before you buy the tool.</h2>
+        </div>
+        <p class="section-lead">Directory traffic is stronger when it can hand users into deeper editorial pages. These guides turn a tool name into a workflow decision instead of a reflex purchase.</p>
+      </div>
+      <div class="grid articles home-library-grid">${preBuyGuides.map((article) => articleCard(article)).join("")}</div>
     </section>
 
     <section class="section">
@@ -2352,46 +2774,498 @@ Quality bar: flag uncertainty, separate facts from assumptions, and list what a 
 `;
 }
 
-function homePage() {
-  const latestArticles = [...articles].slice(-10).reverse();
-  const featured = [
-    ...articles.filter((article) => ["best-ai-tools-2026", "chatgpt-vs-claude-vs-gemini", "perplexity-ai-research-workflow", "midjourney-prompt-guide", "runway-ai-video-guide", "canva-ai-design-workflow"].includes(article.slug)),
-    ...articles.filter((article) => article.type === "Comparison").slice(0, 6),
-  ].slice(0, 12);
-  const featuredSites = aiSites.slice(0, 8);
-  const learningPaths = [
+function bestAiToolsByJobPage() {
+  const jobRoutes = [
     {
-      label: "Beginner stack",
-      title: "Choose your first AI toolkit",
-      text: "Start with one chatbot, one research assistant, and one productivity workspace before buying specialist tools.",
+      label: "Writer / marketer",
+      title: "Draft, edit, and repurpose one idea across channels",
+      text: "Start here if the job is blog posts, landing pages, newsletters, or brand voice systems that need speed without sounding generic.",
+      links: [
+        ["Best AI Writing Tools", "articles/best-ai-writing-tools.html"],
+        ["Copywriting prompts", "articles/ai-copywriting-prompts.html"],
+        ["Writing category", "categories/writing.html"],
+      ],
+    },
+    {
+      label: "Research analyst",
+      title: "Answer with sources before you publish or present",
+      text: "Use this route when evidence, citations, retrieval, and claim checking matter more than fast drafting.",
+      links: [
+        ["Best AI Research Tools", "articles/best-ai-research-tools.html"],
+        ["Fact-checking workflow", "articles/ai-fact-checking-workflow.html"],
+        ["Research category", "categories/research.html"],
+      ],
+    },
+    {
+      label: "Designer / visual creator",
+      title: "Turn prompts into thumbnails, visuals, and layouts",
+      text: "Pick this role path for blog art, thumbnails, design support, and product visuals that need stronger review loops.",
+      links: [
+        ["Best AI Image Generators", "articles/best-ai-image-generators.html"],
+        ["Thumbnail workflow", "articles/ai-thumbnail-workflow.html"],
+        ["Image category", "categories/image.html"],
+      ],
+    },
+    {
+      label: "Video creator",
+      title: "Plan scenes first, then spend credits on generation",
+      text: "This route is for storyboards, short-form video, scripts, and B-roll decisions where structure matters before prompting.",
+      links: [
+        ["Best AI Video Generators", "articles/best-ai-video-generators.html"],
+        ["Storyboard workflow", "articles/ai-video-storyboard-workflow.html"],
+        ["Video category", "categories/video.html"],
+      ],
+    },
+    {
+      label: "Operator / team lead",
+      title: "Reduce meeting drag and keep workflows reusable",
+      text: "Choose this path when the work is notes, task capture, process documentation, and lightweight automation without tool sprawl.",
       links: [
         ["Best AI Tools", "articles/best-ai-tools-2026.html"],
+        ["Meeting notes workflow", "articles/ai-meeting-notes-workflow.html"],
+        ["Productivity category", "categories/productivity.html"],
+      ],
+    },
+    {
+      label: "Developer",
+      title: "Ship code with tests, review discipline, and tighter scope",
+      text: "Use this route for coding assistants, debugging, test generation, and implementation workflows that keep human verification visible.",
+      links: [
+        ["Best AI Coding Tools", "articles/best-ai-coding-tools.html"],
+        ["AI debugging workflow", "articles/ai-debugging-workflow.html"],
+        ["Coding category", "categories/coding.html"],
+      ],
+    },
+  ];
+  const jobStacks = [
+    {
+      label: "Starter content stack",
+      title: "Choose one assistant, one research tool, one publishing loop",
+      text: "Most beginners get value faster by pairing a general assistant with one fact-checking flow and one repeatable writing system.",
+      links: [
+        ["AI Sites directory", "ai-sites.html"],
+        ["AI Skills playbooks", "ai-skills.html"],
+        ["Best AI Tools", "articles/best-ai-tools-2026.html"],
+      ],
+    },
+    {
+      label: "Research publishing stack",
+      title: "Gather evidence, compress notes, and publish with review checkpoints",
+      text: "Use a research-first tool, a citation workflow, and a final plain-English review so source-backed work survives the edit pass.",
+      links: [
+        ["Research workflow", "articles/perplexity-ai-research-workflow.html"],
+        ["Citation management guide", "articles/ai-citation-management-guide.html"],
+        ["Research prompts", "articles/research-prompt-templates.html"],
+      ],
+    },
+    {
+      label: "Visual creator stack",
+      title: "Map the asset job before choosing image or video tools",
+      text: "Separate thumbnails, product visuals, and motion work so you pick the right prompt style and avoid burning credits on the wrong medium.",
+      links: [
+        ["Image workflow", "articles/ai-image-editing-workflow.html"],
+        ["Video workflow", "articles/ai-video-storyboard-workflow.html"],
+        ["Design category", "categories/design.html"],
+      ],
+    },
+    {
+      label: "Builder stack",
+      title: "Spec, test, then accept the suggestion",
+      text: "Coding AI works best when the stack includes a clear task, a verification habit, and a place to compare tools before you upgrade.",
+      links: [
+        ["Cursor workflow guide", "articles/cursor-ai-workflow-guide.html"],
+        ["Unit test generation", "articles/ai-unit-test-generation.html"],
+        ["Copilot comparison", "articles/copilot-vs-cursor-vs-replit.html"],
+      ],
+    },
+  ];
+  const latestRoleArticles = pickArticles([
+    "best-ai-tools-2026",
+    "best-ai-writing-tools",
+    "best-ai-research-tools",
+    "best-ai-coding-tools",
+    "best-ai-video-generators",
+    "best-ai-image-generators",
+  ]);
+  const title = "Best AI Tools by Job: Role-Based Stacks for Real Work";
+  const desc = metaDescription(
+    "Find the best AI tool stack by role, with job-based routes for writers, researchers, designers, video creators, operators, and developers."
+  );
+  const canonical = `${site.url}/best-ai-tools-by-job.html`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: title,
+    description: desc,
+    url: canonical,
+    hasPart: jobRoutes.map((route) => ({
+      "@type": "CreativeWork",
+      name: route.title,
+      description: route.text,
+    })),
+  };
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtml(metaTitle(title))}</title>
+  <meta name="description" content="${escapeHtml(desc)}">
+  <link rel="canonical" href="${canonical}">
+  <meta property="og:title" content="${escapeHtml(title)}">
+  <meta property="og:description" content="${escapeHtml(desc)}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="${site.url}/assets/hero-ai-tool-compass.svg">
+  ${rssAlternateLink()}
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="application/ld+json">${JSON.stringify(schema)}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  ${nav("")}
+  <main id="main">
+    <section class="hero home-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Role-based AI routes</p>
+        <h1>Find the best AI stack by job, not by tool category.</h1>
+        <p>This hub is built for readers who know the work they need to finish but do not want to compare dozens of tools first. Start with the role, move into the smallest useful stack, then open the deeper guides only when they help the job.</p>
+        <div class="hero-actions">
+          <a class="button" href="#job-routes">Browse routes by role</a>
+          <a class="button secondary" href="ai-sites.html">Open AI Sites</a>
+          <a class="button secondary" href="ai-skills.html">Open AI Skills</a>
+          <a class="button ghost" href="#return-loops">See return loops</a>
+        </div>
+        <div class="hero-proof">
+          <span>${jobRoutes.length} role routes</span>
+          <span>${jobStacks.length} starter stacks</span>
+          <span>${latestRoleArticles.length} linked buying guides</span>
+          <span>${clusters.length} task clusters underneath</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/hero-ai-tool-compass.svg" alt="Role-based AI routes that connect job types to practical tool stacks" width="1200" height="760">
+      </div>
+    </section>
+
+    <section class="stats-strip" aria-label="Role hub highlights">
+      <div class="stat"><strong>${jobRoutes.length}</strong>role-based entry points for faster decisions</div>
+      <div class="stat"><strong>${jobStacks.length}</strong>starter stacks for first useful wins</div>
+      <div class="stat"><strong>${aiSites.length}</strong>tracked AI tools behind the routes</div>
+      <div class="stat"><strong>${site.date}</strong>local rebuild date for the current hub</div>
+    </section>
+
+    <section class="section" id="job-routes">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Start by role</p>
+          <h2>Best starting routes by role</h2>
+        </div>
+        <p class="section-lead">These route cards keep the job visible. Each one points to one broad guide, one workflow or prompt page, and one category hub so readers can move without wandering.</p>
+      </div>
+      <div class="job-route-grid">
+        ${jobRoutes
+          .map(
+            (route) => `<article class="job-route-card">
+              <span class="tag">${escapeHtml(route.label)}</span>
+              <h3>${escapeHtml(route.title)}</h3>
+              <p>${escapeHtml(route.text)}</p>
+              <div class="command-links">${route.links.map(([label, href]) => `<a href="${href}">${escapeHtml(label)}</a>`).join("")}</div>
+            </article>`
+          )
+          .join("")}
+      </div>
+    </section>
+
+    <section class="section" id="starter-stacks">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">First useful win</p>
+          <h2>Get to a first useful win without testing every tool.</h2>
+        </div>
+        <p class="section-lead">A better stack is usually smaller than people expect. These bundles keep one role, one outcome, and one review habit together so readers can ship something before the tool list grows out of control.</p>
+      </div>
+      <div class="job-stack-grid">
+        ${jobStacks
+          .map(
+            (stack) => `<article class="job-stack-card">
+              <span class="tag">${escapeHtml(stack.label)}</span>
+              <h3>${escapeHtml(stack.title)}</h3>
+              <p>${escapeHtml(stack.text)}</p>
+              <div class="command-links">${stack.links.map(([label, href]) => `<a href="${href}">${escapeHtml(label)}</a>`).join("")}</div>
+            </article>`
+          )
+          .join("")}
+      </div>
+    </section>
+
+    <section class="section" id="role-guides">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Guide handoff</p>
+          <h2>Open the deeper page only when the route is clear.</h2>
+        </div>
+        <p class="section-lead">Once the role is decided, move into the strongest long-form guide instead of sampling random tools. This preserves editorial depth without forcing it too early.</p>
+      </div>
+      <div class="grid articles home-library-grid">${latestRoleArticles.map((article) => articleCard(article)).join("")}</div>
+    </section>
+
+    <section class="section reader-tools-section" id="return-loops">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Return loops</p>
+          <h2>Return to the right pages, not random tabs.</h2>
+        </div>
+        <p class="section-lead">A role hub works better when it remembers context. Saved pages, recent reading, and the site feed help readers resume the same decision path on the next visit.</p>
+      </div>
+      <div class="reader-loop-grid">
+        <article class="return-panel">
+          <p class="eyebrow">Track</p>
+          <h3>Follow the editorial layer, not just tool launches.</h3>
+          <p>Use the feed when you want updates on comparisons, workflows, and new buying guidance without refreshing the whole directory.</p>
+          <div class="action-cluster">
+            <a class="button" href="rss.xml">Open RSS feed</a>
+            <button class="button secondary utility-button" type="button" data-copy-feed-url data-feed-url="${site.url}/rss.xml">Copy feed URL</button>
+          </div>
+        </article>
+        <article class="return-panel">
+          <p class="eyebrow">Saved guides</p>
+          <h3>Keep the role path you plan to reuse.</h3>
+          <p>Saved pages give repeat visitors a smaller working set, which matters more than raw article volume once they know their role.</p>
+          <div class="reader-loop-list" data-saved-articles>
+            <p class="empty-state">No saved guides yet. Save an article or comparison page and it will appear here automatically.</p>
+          </div>
+        </article>
+        <article class="return-panel">
+          <p class="eyebrow">Continue reading</p>
+          <h3>Resume the route with context already attached.</h3>
+          <p>Recent reading makes it easier to keep one research thread alive instead of reopening unrelated tabs on the next session.</p>
+          <div class="reader-loop-list" data-recent-articles>
+            <p class="empty-state">No recent reading history yet. Open a route target and it will show up here automatically.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  ${footer("")}
+  <script src="assets/site.js" defer></script>
+</body>
+</html>
+`;
+}
+
+function homePage() {
+  const bySlug = new Map(articles.map((article) => [article.slug, article]));
+  const pickArticles = (slugs) => slugs.map((slug) => bySlug.get(slug)).filter(Boolean);
+  const uniqueArticles = (items) => {
+    const seen = new Set();
+    return items.filter((item) => {
+      if (!item || seen.has(item.slug)) return false;
+      seen.add(item.slug);
+      return true;
+    });
+  };
+  const latestArticles = [...articles].slice(-10).reverse();
+  const latestSignals = [...articles]
+    .filter((article) => article.sourceLabel)
+    .slice(-4)
+    .reverse();
+  const featured = uniqueArticles([
+    ...pickArticles([
+      "best-ai-tools-2026",
+      "chatgpt-vs-claude-vs-gemini",
+      "perplexity-ai-research-workflow",
+      "midjourney-prompt-guide",
+      "runway-ai-video-guide",
+      "canva-ai-design-workflow",
+      "best-ai-writing-tools",
+      "best-ai-video-generators",
+    ]),
+    ...articles.filter((article) => article.type === "Comparison"),
+  ]).slice(0, 12);
+  const featuredSites = aiSites.slice(0, 8);
+  const popularComparisons = pickArticles([
+    "chatgpt-vs-claude-vs-gemini",
+    "perplexity-vs-chatgpt-research",
+    "midjourney-vs-dalle-vs-ideogram",
+    "runway-vs-pika-vs-synthesia",
+  ]);
+  const commandCards = [
+    {
+      label: "Tool selection",
+      title: "I need the right AI tool first",
+      text: "Start with the directory, then move into one beginner guide instead of opening five trial tabs at once.",
+      links: [
+        ["By job hub", "best-ai-tools-by-job.html"],
+        ["AI Sites Directory", "ai-sites.html"],
+        ["Best AI Tools in 2026", "articles/best-ai-tools-2026.html"],
+      ],
+    },
+    {
+      label: "Workflow",
+      title: "I need a workflow I can copy",
+      text: "Go straight to reusable prompts, beginner-safe playbooks, and structured tutorials that turn one task into a repeatable system.",
+      links: [
         ["AI Skills", "ai-skills.html"],
+        ["Featured library", "#featured-library"],
+      ],
+    },
+    {
+      label: "Comparison",
+      title: "I need to compare before I pay",
+      text: "Use high-intent comparison pages to decide which tool to test, which plan to skip, and what trade-off actually matters.",
+      links: [
+        ["Popular comparisons", "#comparison-lab"],
+        ["Offer watch", "#offer-watch"],
+      ],
+    },
+    {
+      label: "Signals",
+      title: "I need to know what changed this week",
+      text: "Fresh signal articles explain why launches, pricing shifts, and new AI workflows matter before they turn into stale roundup content.",
+      links: [
+        ["Weekly AI signals", "#signal-watch"],
+        ["RSS feed", "rss.xml"],
+      ],
+    },
+  ];
+  const toolFinderRoutes = [
+    {
+      label: "Writing",
+      title: "Write, rewrite, and polish faster",
+      text: "Use this route for blog posts, newsletters, landing copy, and brand voice work.",
+      links: [
+        ["Best AI Writing Tools", "articles/best-ai-writing-tools.html"],
+        ["Brand voice guide", "articles/ai-brand-voice-guide.html"],
+        ["Writing category", "categories/writing.html"],
+      ],
+    },
+    {
+      label: "Research",
+      title: "Find sources and verify claims",
+      text: "Best for research briefs, source-backed answers, citations, and fact-checking before you publish.",
+      links: [
+        ["Best AI Research Tools", "articles/best-ai-research-tools.html"],
+        ["Fact-checking workflow", "articles/ai-fact-checking-workflow.html"],
+        ["Research category", "categories/research.html"],
+      ],
+    },
+    {
+      label: "Image",
+      title: "Make visuals, thumbnails, and blog art",
+      text: "Use practical image prompts and workflow guides instead of chasing random prompt formulas.",
+      links: [
+        ["Best AI Image Generators", "articles/best-ai-image-generators.html"],
+        ["Thumbnail workflow", "articles/ai-thumbnail-workflow.html"],
+        ["Image category", "categories/image.html"],
+      ],
+    },
+    {
+      label: "Video",
+      title: "Plan and produce short-form video",
+      text: "Start with storyboards, prompt structure, and budget-conscious video generation checks.",
+      links: [
+        ["Best AI Video Generators", "articles/best-ai-video-generators.html"],
+        ["Social video workflow", "articles/ai-social-video-workflow.html"],
+        ["Video category", "categories/video.html"],
+      ],
+    },
+    {
+      label: "Productivity",
+      title: "Organize notes, meetings, and automations",
+      text: "Choose this path for personal productivity, team operating systems, and low-chaos automation.",
+      links: [
+        ["Best AI Tools", "articles/best-ai-tools-2026.html"],
+        ["Meeting notes workflow", "articles/ai-meeting-notes-workflow.html"],
+        ["Productivity category", "categories/productivity.html"],
+      ],
+    },
+    {
+      label: "Coding",
+      title: "Code with review discipline",
+      text: "Follow this route for coding assistants, debugging, tests, and guarded AI implementation workflows.",
+      links: [
+        ["Best AI Coding Tools", "articles/best-ai-coding-tools.html"],
+        ["AI debugging workflow", "articles/ai-debugging-workflow.html"],
+        ["Coding category", "categories/coding.html"],
+      ],
+    },
+  ];
+  const creatorWorkflows = [
+    {
+      label: "Visual publishing",
+      title: "Create thumbnails, article art, and product visuals",
+      text: "Good creator output starts with a clear image job, a tighter prompt, and a faster review loop.",
+      links: [
+        ["Thumbnail workflow", "articles/ai-thumbnail-workflow.html"],
+        ["Blog illustration workflow", "articles/ai-blog-illustration-workflow.html"],
+        ["Image category", "categories/image.html"],
+      ],
+    },
+    {
+      label: "Video production",
+      title: "Storyboard first, generate second",
+      text: "Reduce wasted credits by planning scenes, prompts, and motion before opening a video generator.",
+      links: [
+        ["Video storyboard workflow", "articles/ai-video-storyboard-workflow.html"],
+        ["Video script prompts", "articles/ai-video-script-prompts.html"],
+        ["Video category", "categories/video.html"],
+      ],
+    },
+    {
+      label: "Audience growth",
+      title: "Turn one idea into newsletter and social output",
+      text: "Use AI to repurpose ideas, sharpen copy, and keep a consistent publishing rhythm without sounding generic.",
+      links: [
+        ["Newsletter writing guide", "articles/ai-newsletter-writing-guide.html"],
+        ["Copywriting prompts", "articles/ai-copywriting-prompts.html"],
+        ["Writing category", "categories/writing.html"],
+      ],
+    },
+    {
+      label: "Audio workflow",
+      title: "Record cleaner voice and podcast content",
+      text: "From short voiceovers to podcast notes, keep pacing, cleanup, and review standards visible.",
+      links: [
+        ["ElevenLabs guide", "articles/elevenlabs-voiceover-guide.html"],
+        ["Podcast workflow", "articles/ai-podcast-workflow.html"],
+        ["Audio category", "categories/audio.html"],
+      ],
+    },
+  ];
+  const learningPaths = [
+    {
+      label: "Starter stack",
+      title: "Build a first AI setup that stays useful",
+      text: "Start with one chatbot, one research assistant, and one productivity workflow before paying for specialist tools.",
+      links: [
+        ["Best AI Tools", "articles/best-ai-tools-2026.html"],
         ["AI Sites", "ai-sites.html"],
+        ["AI Skills", "ai-skills.html"],
       ],
     },
     {
       label: "Creator stack",
-      title: "Build visuals, video, and voice",
-      text: "Use image prompts, storyboard-first video planning, and short voice samples to control cost and quality.",
+      title: "Move from ideas to publishable assets",
+      text: "Combine image prompts, short video planning, writing systems, and audio cleanup into one practical creator stack.",
       links: [
+        ["Creator workflows", "#creator-workflows"],
         ["Image workflow", "categories/image.html"],
         ["Video workflow", "categories/video.html"],
       ],
     },
     {
-      label: "Work stack",
-      title: "Automate meetings, notes, and email",
-      text: "Turn repeatable work into checklists and only automate the steps that are already stable.",
+      label: "Research stack",
+      title: "Ask better questions and verify faster",
+      text: "Use this path if you need sources, structured notes, evidence checks, and fewer expensive false conclusions.",
       links: [
-        ["Productivity guides", "categories/productivity.html"],
-        ["Meeting notes", "articles/ai-meeting-notes-workflow.html"],
+        ["Research guides", "categories/research.html"],
+        ["Fact-checking workflow", "articles/ai-fact-checking-workflow.html"],
       ],
     },
     {
       label: "Builder stack",
-      title: "Use AI coding without chaos",
-      text: "Clarify requirements, write a small spec, keep project memory, then edit one function or file at a time.",
+      title: "Use AI coding without losing control",
+      text: "Clarify the task, keep scope small, verify output, and rely on tests instead of accepting every suggestion.",
       links: [
         ["Coding guides", "categories/coding.html"],
         ["Cursor workflow", "articles/cursor-ai-workflow-guide.html"],
@@ -2418,11 +3292,11 @@ function homePage() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI Tool Compass: ${articles.length} Practical AI Guides</title>
-  <meta name="description" content="A practical AI tool tutorial site with ${articles.length} beginner-friendly guides, comparisons, workflows, prompt templates, SEO clusters, and AdSense-ready layouts.">
+  <title>Best AI Tools and Workflows for Beginners | AI Tool Compass</title>
+  <meta name="description" content="Compare the best AI tools, beginner workflows, creator playbooks, and weekly AI signals for writing, research, image, video, productivity, and coding.">
   <link rel="canonical" href="${site.url}/index.html">
-  <meta property="og:title" content="AI Tool Compass: ${articles.length} Practical AI Guides">
-  <meta property="og:description" content="Choose the right AI tools faster with practical tutorials, comparisons, workflows, and beginner-friendly examples.">
+  <meta property="og:title" content="Best AI Tools and Workflows for Beginners | AI Tool Compass">
+  <meta property="og:description" content="Find the right AI tool, compare plans before paying, and use practical workflows for beginner and creator tasks.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="${site.url}/assets/hero-ai-tool-compass.svg">
   ${rssAlternateLink()}
@@ -2435,36 +3309,37 @@ function homePage() {
   <main id="main">
     <section class="hero home-hero">
       <div class="hero-copy">
-        <p class="eyebrow">AI tool intelligence hub</p>
-        <h1>Find the right AI tool before you pay for the wrong one.</h1>
-        <p>${site.name} is a practical blue-chip style AI navigation and tutorial hub: official AI website links, pricing checkpoints, beginner workflows, comparison tables, and monetization-ready editorial pages.</p>
+        <p class="eyebrow">AI tools for beginners and creators</p>
+        <h1>Pick the right AI tool, then put it to work.</h1>
+        <p>${site.name} helps readers choose useful AI tools, compare plans before paying, and move straight into practical workflows for writing, research, image generation, video, productivity, and coding.</p>
         <div class="hero-actions">
-          <a class="button" href="ai-sites.html">Open AI Sites Directory</a>
-          <a class="button secondary" href="ai-skills.html">AI Skills & Prompt Playbooks</a>
-          <a class="button secondary" href="articles/best-ai-tools-2026.html">Read the tool stack guide</a>
-          <a class="button ghost" href="#learning-paths">Pick a learning path</a>
+          <a class="button" href="#tool-finder">Open AI Tool Finder</a>
+          <a class="button secondary" href="best-ai-tools-by-job.html">Browse by Job</a>
+          <a class="button secondary" href="ai-sites.html">Browse AI Sites</a>
+          <a class="button secondary" href="ai-skills.html">Open AI Skills</a>
+          <a class="button ghost" href="#signal-watch">See weekly AI signals</a>
         </div>
         <div class="hero-proof">
-          <span>${articles.length} in-depth guides</span>
-          <span>12 AI sites tracked</span>
-          <span>10 SEO clusters</span>
-          <span>AI Skills library</span>
+          <span>${articles.length} practical guides</span>
+          <span>${aiSites.length} top AI sites tracked</span>
+          <span>${clusters.length} task-focused clusters</span>
+          <span>${latestSignals.length} fresh signal stories featured</span>
         </div>
         <div class="hero-briefing" aria-label="Homepage briefing">
           <article class="hero-briefing-card">
-            <span>Directory</span>
-            <strong>Start with official AI sites and pricing checkpoints.</strong>
-            <p>Use verified landing pages and pricing links before comparing plans or repeating temporary offers.</p>
+            <span>Find</span>
+            <strong>Start with the job, not the brand.</strong>
+            <p>Browse by writing, research, image, video, productivity, or coding to reach the right tool family faster.</p>
           </article>
           <article class="hero-briefing-card">
-            <span>Workflows</span>
-            <strong>Move from browsing to repeatable execution.</strong>
-            <p>Pick a category, open a guide, and follow prompts, tables, and tool-fit checks instead of hype.</p>
+            <span>Compare</span>
+            <strong>Use comparisons before you touch a paid plan.</strong>
+            <p>Check free tiers, workflow fit, output quality, and beginner risk before you treat pricing pages like proof.</p>
           </article>
           <article class="hero-briefing-card">
-            <span>Retention</span>
-            <strong>Save the site, save articles, and resume later.</strong>
-            <p>The homepage doubles as a return surface with RSS, saved guides, and reading continuity.</p>
+            <span>Publish</span>
+            <strong>Move from tool discovery to creator output.</strong>
+            <p>Use creator workflows for visuals, short video, audio, and writing systems that can actually ship content.</p>
           </article>
         </div>
       </div>
@@ -2474,47 +3349,53 @@ function homePage() {
     </section>
 
     <section class="stats-strip" aria-label="Site highlights">
-      <div class="stat"><strong>${articles.length}</strong>long-form tutorials with examples, checks, FAQs, and comparison tables</div>
-      <div class="stat"><strong>12</strong>mainstream AI websites with official links and pricing pages</div>
-      <div class="stat"><strong>10</strong>topic clusters covering chat, research, image, video, coding, and marketing</div>
-      <div class="stat"><strong>2026</strong>offer notes marked with a local verification date</div>
+      <div class="stat"><strong>${articles.length}</strong> long-form guides built around real search intent, not thin keyword padding</div>
+      <div class="stat"><strong>${aiSites.length}</strong> mainstream AI tools tracked with official links and pricing checkpoints</div>
+      <div class="stat"><strong>${clusters.length}</strong> content clusters covering beginner tasks and creator workflows</div>
+      <div class="stat"><strong>${latestSignals.length}</strong> current AI signals surfaced on the homepage for return visits</div>
     </section>
 
-    <section class="section reader-tools-section" id="reader-tools">
+    <section class="section" id="start-here">
       <div class="section-header">
         <div>
-          <p class="eyebrow">Return faster</p>
-          <h2>Give readers a reason to come back instead of bouncing once.</h2>
+          <p class="eyebrow">Start here</p>
+          <h2>Choose the fastest path into the site.</h2>
         </div>
-        <p class="section-lead">This block combines follow, save, and resume actions that work on a static site: RSS for subscription, local save states for favorites, and recent-reading continuity across visits.</p>
+        <p class="section-lead">This homepage is built for first-time visitors who want immediate direction: find a tool, copy a workflow, compare plans, or catch up on what changed this week.</p>
       </div>
-      <div class="reader-loop-grid">
-        <article class="return-panel">
-          <p class="eyebrow">Follow</p>
-          <h3>Subscribe without handing over an inbox.</h3>
-          <p>Use the site feed for fresh guides, then save the homepage locally so return visitors can jump back into the library in one click.</p>
-          <div class="action-cluster">
-            <a class="button" href="rss.xml">Open RSS feed</a>
-            <button class="button secondary utility-button" type="button" data-copy-feed-url data-feed-url="${site.url}/rss.xml">Copy feed URL</button>
-            <button class="button ghost utility-button" type="button" data-bookmark-site>Save site</button>
-          </div>
-        </article>
-        <article class="return-panel">
-          <p class="eyebrow">Saved guides</p>
-          <h3>Build a shortlist worth revisiting.</h3>
-          <p>When a reader saves an article, it appears here on the next visit so the homepage becomes a working dashboard instead of a one-time landing page.</p>
-          <div class="reader-loop-list" data-saved-articles>
-            <p class="empty-state">No saved guides yet. Open an article and use the Save article button to start a private shortlist in this browser.</p>
-          </div>
-        </article>
-        <article class="return-panel">
-          <p class="eyebrow">Continue reading</p>
-          <h3>Pick up where you left off.</h3>
-          <p>Recent reading history turns the homepage into a return surface, especially when the site adds new daily guides and comparison pages.</p>
-          <div class="reader-loop-list" data-recent-articles>
-            <p class="empty-state">No recent reading history yet. Open a guide and it will appear here automatically.</p>
-          </div>
-        </article>
+      <div class="command-grid">
+        ${commandCards
+          .map(
+            (card) => `<article class="command-card">
+              <span class="tag">${escapeHtml(card.label)}</span>
+              <h3>${escapeHtml(card.title)}</h3>
+              <p>${escapeHtml(card.text)}</p>
+              <div class="command-links">${card.links.map(([label, href]) => `<a href="${href}">${escapeHtml(label)}</a>`).join("")}</div>
+            </article>`
+          )
+          .join("")}
+      </div>
+    </section>
+
+    <section class="section" id="tool-finder">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">AI Tool Finder</p>
+          <h2>Browse by job, not by brand.</h2>
+        </div>
+        <p class="section-lead">The strongest AI sites do not force readers to know product names first. This section routes visitors by task so search traffic lands on useful decisions faster.</p>
+      </div>
+      <div class="finder-grid">
+        ${toolFinderRoutes
+          .map(
+            (route) => `<article class="finder-card">
+              <span class="tag">${escapeHtml(route.label)}</span>
+              <h3>${escapeHtml(route.title)}</h3>
+              <p>${escapeHtml(route.text)}</p>
+              <div class="finder-links">${route.links.map(([label, href]) => `<a href="${href}">${escapeHtml(label)}</a>`).join("")}</div>
+            </article>`
+          )
+          .join("")}
       </div>
     </section>
 
@@ -2538,9 +3419,9 @@ function homePage() {
       <div class="section-header">
         <div>
           <p class="eyebrow">Featured AI websites</p>
-          <h2>Main tools readers actually search for.</h2>
+          <h2>Main AI tools readers actually search for.</h2>
         </div>
-        <p class="section-lead">The homepage now works like an AI navigation portal: quick summaries, official links, pricing notes, and a clean route into deeper tutorials.</p>
+        <p class="section-lead">This is the directory layer of the homepage: major AI products, simple summaries, official routes, and offer notes that help readers check a tool before opening the pricing tab.</p>
       </div>
       <div class="site-mini-grid featured-sites-grid">
         ${featuredSites
@@ -2553,6 +3434,53 @@ function homePage() {
             </a>`
           )
           .join("")}
+      </div>
+    </section>
+
+    <section class="section" id="creator-workflows">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Creator workflows</p>
+          <h2>Creator workflows that lead to published output.</h2>
+        </div>
+        <p class="section-lead">This block is the bridge between AI curiosity and creator action. It exists to turn search visitors into repeat readers by helping them publish something real.</p>
+      </div>
+      <div class="creator-grid">
+        ${creatorWorkflows
+          .map(
+            (workflow) => `<article class="creator-card">
+              <span class="tag">${escapeHtml(workflow.label)}</span>
+              <h3>${escapeHtml(workflow.title)}</h3>
+              <p>${escapeHtml(workflow.text)}</p>
+              <div class="creator-links">${workflow.links.map(([label, href]) => `<a href="${href}">${escapeHtml(label)}</a>`).join("")}</div>
+            </article>`
+          )
+          .join("")}
+      </div>
+    </section>
+
+    <section class="section" id="comparison-lab">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Comparison lab</p>
+          <h2>Popular comparisons before you upgrade</h2>
+        </div>
+        <p class="section-lead">Comparison pages are where commercial intent becomes useful user intent. Readers come here to avoid the wrong subscription, not to read a generic winner-takes-all verdict.</p>
+      </div>
+      <div class="comparison-grid">
+        ${popularComparisons
+          .map(
+            (article) => `<article class="comparison-card">
+              <span class="tag ${article.color}">${escapeHtml(article.category)}</span>
+              <h3>${escapeHtml(article.title)}</h3>
+              <p>${escapeHtml(articleCardCopy(article))}</p>
+              <a href="articles/${article.slug}.html">Open comparison</a>
+            </article>`
+          )
+          .join("")}
+      </div>
+      <div class="comparison-note">
+        <strong>What to compare:</strong> free tier limits, workflow fit, output quality, speed, and the review burden a beginner will still carry after the tool responds.
       </div>
     </section>
 
@@ -2572,6 +3500,28 @@ function homePage() {
               <h3>${escapeHtml(path.title)}</h3>
               <p>${escapeHtml(path.text)}</p>
               <div class="path-links">${path.links.map(([label, href]) => `<a href="${href}">${escapeHtml(label)}</a>`).join("")}</div>
+            </article>`
+          )
+          .join("")}
+      </div>
+    </section>
+
+    <section class="section" id="signal-watch">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Signal watch</p>
+          <h2>This week's AI signals worth tracking.</h2>
+        </div>
+        <p class="section-lead">High-traffic AI sites earn repeat visits by explaining what changed and why it matters. These fresh signal articles translate launches, pricing moves, and model news into workflow-level meaning.</p>
+      </div>
+      <div class="signal-grid">
+        ${latestSignals
+          .map(
+            (article) => `<article class="signal-card">
+              <span class="tag ${article.color}">${escapeHtml(article.tag)}</span>
+              <h3><a href="articles/${article.slug}.html">${escapeHtml(article.title)}</a></h3>
+              <p>${escapeHtml(articleCardCopy(article))}</p>
+              <p class="signal-meta">Published ${escapeHtml(articleDate(article))} · ${escapeHtml(article.sourceTitle || article.category)}</p>
             </article>`
           )
           .join("")}
@@ -2633,7 +3583,7 @@ function homePage() {
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="featured-library">
       <div class="section-header">
         <div>
           <p class="eyebrow">Featured library</p>
@@ -2655,13 +3605,51 @@ function homePage() {
       <div class="grid articles home-library-grid">${latestArticles.map((article) => articleCard(article)).join("")}</div>
     </section>
 
+    <section class="section reader-tools-section" id="reader-tools">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Return faster</p>
+          <h2>Save the useful parts and come back with context.</h2>
+        </div>
+        <p class="section-lead">Return features matter more after the reader has found value. This block combines RSS, saved guides, and reading continuity so the homepage can become a working dashboard on repeat visits.</p>
+      </div>
+      <div class="reader-loop-grid">
+        <article class="return-panel">
+          <p class="eyebrow">Follow</p>
+          <h3>Subscribe without giving up your inbox.</h3>
+          <p>Use the feed for fresh guides, then save the homepage locally so returning readers can jump back into the library in one click.</p>
+          <div class="action-cluster">
+            <a class="button" href="rss.xml">Open RSS feed</a>
+            <button class="button secondary utility-button" type="button" data-copy-feed-url data-feed-url="${site.url}/rss.xml">Copy feed URL</button>
+            <button class="button ghost utility-button" type="button" data-bookmark-site>Save site</button>
+          </div>
+        </article>
+        <article class="return-panel">
+          <p class="eyebrow">Saved guides</p>
+          <h3>Build a shortlist worth revisiting.</h3>
+          <p>When a reader saves an article, it appears here on the next visit so the homepage becomes a working dashboard instead of a one-time landing page.</p>
+          <div class="reader-loop-list" data-saved-articles>
+            <p class="empty-state">No saved guides yet. Open an article and use the Save article button to start a private shortlist in this browser.</p>
+          </div>
+        </article>
+        <article class="return-panel">
+          <p class="eyebrow">Continue reading</p>
+          <h3>Pick up where you left off.</h3>
+          <p>Recent reading history turns the homepage into a return surface, especially when the site adds new daily guides and comparison pages.</p>
+          <div class="reader-loop-list" data-recent-articles>
+            <p class="empty-state">No recent reading history yet. Open a guide and it will appear here automatically.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="section">
       <div class="section-header">
         <div>
           <p class="eyebrow">Trust and monetization</p>
           <h2>Monetization roadmap without weakening trust.</h2>
         </div>
-        <p class="section-lead">Monetization roadmap: build useful pages first, then add compliant ad placements, affiliate disclosures, comparison intent pages, and recurring update checks.</p>
+        <p class="section-lead">Monetization should trail usefulness, not replace it. Build search-worthy pages first, then add transparent monetization layers that do not weaken editorial trust.</p>
       </div>
       <div class="roadmap">
         <div><strong>1</strong><h3>Publish helpful clusters</h3><p>Keep the 100-page structure organized around real search intent and practical tasks.</p></div>
@@ -2748,6 +3736,7 @@ function generateSitemap() {
     "index.html",
     "ai-sites.html",
     "ai-skills.html",
+    "best-ai-tools-by-job.html",
     "rss.xml",
     ...clusters.map((cluster) => `categories/${cluster.slug}.html`),
     ...articles.map((article) => `articles/${article.slug}.html`),
@@ -2787,21 +3776,27 @@ function generateRss() {
 }
 
 function generateSite() {
-  ensureDir("articles");
-  ensureDir("categories");
-  cleanHtmlDir("articles");
-  cleanHtmlDir("categories");
-  generateAssets();
-  articles.forEach((article) => writeFile(`articles/${article.slug}.html`, articlePage(article)));
-  clusters.forEach((cluster) => writeFile(`categories/${cluster.slug}.html`, categoryPage(cluster)));
-  writeFile("ai-sites.html", aiSitesPage());
-  writeFile("ai-skills.html", aiSkillsPage());
-  writeFile("index.html", homePage());
-  generatePolicyPages();
-  generateRss();
-  generateSitemap();
-  writeFile("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
-  console.log(`Generated ${articles.length} articles and ${clusters.length} category pages.`);
+  acquireBuildLock();
+  try {
+    ensureDir("articles");
+    ensureDir("categories");
+    cleanHtmlDir("articles");
+    cleanHtmlDir("categories");
+    generateAssets();
+    articles.forEach((article) => writeFile(`articles/${article.slug}.html`, articlePage(article)));
+    clusters.forEach((cluster) => writeFile(`categories/${cluster.slug}.html`, categoryPage(cluster)));
+    writeFile("ai-sites.html", aiSitesPage());
+    writeFile("ai-skills.html", aiSkillsPage());
+    writeFile("best-ai-tools-by-job.html", bestAiToolsByJobPage());
+    writeFile("index.html", homePage());
+    generatePolicyPages();
+    generateRss();
+    generateSitemap();
+    writeFile("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
+    console.log(`Generated ${articles.length} articles and ${clusters.length} category pages.`);
+  } finally {
+    releaseBuildLock();
+  }
 }
 
 generateSite();

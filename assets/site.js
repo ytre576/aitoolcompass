@@ -359,7 +359,7 @@ if (typeof document !== "undefined" && typeof window !== "undefined") {
   initVisitCounter();
 
   const revealTargets = document.querySelectorAll(
-    ".section-header, .card, .article-card, .site-mini-card, .path-card, .tech-panel, .offer-row, .roadmap > div, .stat, .directory-strip, .return-panel, .reader-loop-item"
+    ".section-header, .card, .article-card, .site-mini-card, .path-card, .tech-panel, .offer-row, .roadmap > div, .stat, .directory-strip, .site-route-card, .cluster-start-card, .cluster-route-card, .article-route-card, .article-return-card, .return-panel, .reader-loop-item"
   );
 
   if ("IntersectionObserver" in window) {

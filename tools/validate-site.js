@@ -15,6 +15,7 @@ const supportFiles = [
   "contact.html",
   "ai-sites.html",
   "ai-skills.html",
+  "best-ai-tools-by-job.html",
   "assets/styles.css",
   "assets/site.js",
   "assets/hero-ai-tool-compass.svg",
@@ -128,9 +129,15 @@ for (const file of htmlFiles) {
 
 const index = read("index.html");
 assert(index.includes("AI Tool Compass"), "Homepage must include the site name");
-assert(index.includes("AdSense-ready"), "Homepage must describe monetization readiness");
+assert(index.includes("Pick the right AI tool, then put it to work."), "Homepage needs the new task-first hero positioning");
 assert(index.includes("AI Sites"), "Homepage must link to the AI sites directory");
 assert(index.includes("AI Skills"), "Homepage must link to the AI skills library");
+assert(index.includes("best-ai-tools-by-job.html"), "Homepage must link to the by-job hub");
+assert(index.includes("AI Tool Finder"), "Homepage needs the AI Tool Finder section");
+assert(index.includes("Browse by job, not by brand."), "Homepage needs task-based browsing copy");
+assert(index.includes("Creator workflows that lead to published output."), "Homepage needs the creator workflow section");
+assert(index.includes("Popular comparisons before you upgrade"), "Homepage needs the comparison section");
+assert(index.includes("This week's AI signals worth tracking."), "Homepage needs the weekly AI signals section");
 assert(index.includes("Prompt Playbooks"), "Homepage must promote prompt playbooks");
 assert(index.includes("Featured AI websites"), "Homepage needs a filled AI websites section");
 assert(index.includes("Learning paths"), "Homepage needs learning paths content");
@@ -139,6 +146,11 @@ assert(index.includes("Editor's toolkit"), "Homepage needs an editor toolkit sec
 assert(index.includes("Monetization roadmap"), "Homepage needs a monetization roadmap section");
 assert((index.match(/site-mini-card/g) || []).length >= 6, "Homepage should show at least six AI site cards");
 assert((index.match(/path-card/g) || []).length >= 4, "Homepage should show at least four learning path cards");
+assert((index.match(/command-card/g) || []).length >= 4, "Homepage should show at least four start-here cards");
+assert((index.match(/finder-card/g) || []).length >= 6, "Homepage should show at least six tool finder cards");
+assert((index.match(/creator-card/g) || []).length >= 4, "Homepage should show at least four creator workflow cards");
+assert((index.match(/comparison-card/g) || []).length >= 4, "Homepage should show at least four comparison cards");
+assert((index.match(/signal-card/g) || []).length >= 4, "Homepage should show at least four signal cards");
 assert((index.match(/ai-skills\.html/g) || []).length >= 3, "Homepage should link to AI skills in multiple useful places");
 assert((index.match(/articles\//g) || []).length >= 12, "Homepage should link to at least 12 articles");
 assert((index.match(/categories\//g) || []).length >= 10, "Homepage should link to at least 10 category pages");
@@ -157,6 +169,31 @@ assert((aiSkills.match(/class=["']prompt-card/g) || []).length >= 9, "AI skills 
 assert((aiSkills.match(/class=["']source-card/g) || []).length >= 4, "AI skills page should cite at least four official source families");
 assert((aiSkills.match(/prompt-box/g) || []).length >= 20, "AI skills page should include many practical prompt blocks");
 
+const aiSites = read("ai-sites.html");
+assert(aiSites.includes("Browse AI by use case before you compare prices."), "AI sites page needs a task-first hero");
+assert(aiSites.includes("best-ai-tools-by-job.html"), "AI sites page must link to the by-job hub");
+assert(aiSites.includes("Best starting points by job"), "AI sites page needs task-first route cards");
+assert(aiSites.includes("Compare the tools people pay for most often."), "AI sites page needs a comparison route section");
+assert(aiSites.includes("Read a guide before you buy the tool."), "AI sites page needs deeper editorial handoff");
+assert((aiSites.match(/site-route-card/g) || []).length >= 4, "AI sites page should include at least four route cards");
+assert((aiSites.match(/comparison-card/g) || []).length >= 4, "AI sites page should include at least four comparison cards");
+
+const byJob = read("best-ai-tools-by-job.html");
+assert(byJob.includes("Find the best AI stack by job, not by tool category."), "By-job hub needs a role-based hero");
+assert(byJob.includes("Best starting routes by role"), "By-job hub needs route cards by role");
+assert(byJob.includes("Get to a first useful win without testing every tool."), "By-job hub needs a starter stack section");
+assert(byJob.includes("Return to the right pages, not random tabs."), "By-job hub needs a return-loop section");
+assert((byJob.match(/class=["']job-route-card["']/g) || []).length >= 6, "By-job hub should include at least six role route cards");
+assert((byJob.match(/class=["']job-stack-card["']/g) || []).length >= 4, "By-job hub should include at least four starter stack cards");
+assert(/data-recent-articles/i.test(byJob), "By-job hub needs a recent-articles return loop");
+
+const writingCategory = read("categories/writing.html");
+assert(writingCategory.includes("Start with the highest-leverage page in this category."), "Category pages need a start-here layer");
+assert(writingCategory.includes("Fastest way to get value from this cluster."), "Category pages need a route guidance section");
+assert(writingCategory.includes("Use this category when"), "Category pages need usage guidance");
+assert((writingCategory.match(/cluster-start-card/g) || []).length >= 3, "Category pages should include multiple start cards");
+assert((writingCategory.match(/cluster-route-card/g) || []).length >= 4, "Category pages should include route guidance cards");
+
 for (const file of articleFiles) {
   const html = read(file);
   assert(/<article\b/i.test(html), `${file} needs article markup`);
@@ -170,6 +207,13 @@ for (const file of articleFiles) {
   assert(/class=["']mistake-grid["']/i.test(html), `${file} needs specific beginner mistake guidance`);
   assert(/<table\b/i.test(html), `${file} needs at least one comparison table`);
   assert((html.match(/<h2\b/gi) || []).length >= 8, `${file} needs at least eight H2 sections`);
+  assert(html.includes("Continue with the next highest-value page."), `${file} needs a next-step route section`);
+  assert(html.includes("Keep the research thread alive."), `${file} needs a return surface section`);
+  assert((html.match(/class=["']article-route-card["']/g) || []).length >= 4, `${file} should include at least four article route cards`);
+  assert(/data-saved-articles/i.test(html), `${file} needs a saved-articles return loop`);
+  assert(/data-recent-articles/i.test(html), `${file} needs a recent-articles return loop`);
+  assert(/href=["']#next-step-routes["']/i.test(html), `${file} needs a next-step TOC link`);
+  assert(/href=["']#return-surface["']/i.test(html), `${file} needs a return-surface TOC link`);
   const localImages = [...html.matchAll(/<img\b[^>]+src=["']([^"']+)["']/gi)].map((match) => normalizeLocalTarget(file, match[1])).filter(Boolean);
   assert(localImages.some((image) => image === `assets/article-art/${path.basename(file, ".html")}.svg`), `${file} needs its own article illustration`);
   const textLength = html
@@ -191,6 +235,7 @@ for (const file of ["index.html", ...categoryFiles, ...articleFiles, "privacy.ht
 }
 assert(sitemap.includes("ai-sites.html"), "sitemap.xml missing ai-sites.html");
 assert(sitemap.includes("ai-skills.html"), "sitemap.xml missing ai-skills.html");
+assert(sitemap.includes("best-ai-tools-by-job.html"), "sitemap.xml missing best-ai-tools-by-job.html");
 
 const robots = read("robots.txt");
 assert(/Sitemap:/i.test(robots), "robots.txt needs Sitemap directive");
