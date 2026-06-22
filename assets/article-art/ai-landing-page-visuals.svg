@@ -1,49 +1,60 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
   <title id="title">AI Landing Page Visual Workflow</title>
-  <desc id="desc">Blue technology editorial cover for AI Landing Page Visual Workflow, showing create visuals that support conversion-focused pages.</desc>
+  <desc id="desc">AI tool workflow cover for AI Landing Page Visual Workflow</desc>
   <defs>
-    <linearGradient id="articleBg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#0b2d55"/>
-      <stop offset=".56" stop-color="#071a33"/>
-      <stop offset="1" stop-color="#030712"/>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
     </linearGradient>
-    <linearGradient id="articleAccent" x1="0" x2="1">
-      <stop offset="0" stop-color="#7dd3fc"/>
-      <stop offset="1" stop-color="#38bdf8"/>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#10b981"/>
+      <stop offset="1" stop-color="#059669"/>
     </linearGradient>
-    <filter id="articleShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#020617" flood-opacity=".42"/>
-    </filter>
+    <linearGradient id="step" x1="0" x2="1">
+      <stop offset="0" stop-color="#10b981" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#059669" stop-opacity="0.2"/>
+    </linearGradient>
   </defs>
-  <rect width="1200" height="680" fill="url(#articleBg)"/>
-  <path d="M0 76h1200M0 188h1200M0 300h1200M0 412h1200M0 524h1200M90 0v680M246 0v680M402 0v680M558 0v680M714 0v680M870 0v680M1026 0v680" stroke="#7dd3fc" stroke-width="2" opacity=".10"/>
-  <path d="M-24 120L1260 520M-40 404L1230 96" stroke="#7dd3fc" stroke-width="2" stroke-opacity=".08"/>
-  <g filter="url(#articleShadow)">
-    <rect x="54" y="46" width="1092" height="588" rx="28" fill="#061426" stroke="#7dd3fc" stroke-opacity=".34" stroke-width="2"/>
-    <rect x="92" y="80" width="278" height="54" rx="999" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".26"/>
-    <rect x="92" y="80" width="12" height="54" rx="6" fill="url(#articleAccent)"/>
-    <text x="122" y="116" font-family="Cascadia Mono,Consolas,monospace" font-size="18" font-weight="800" fill="#7dd3fc">Design / Workflow</text>
-    <text x="846" y="116" font-family="Cascadia Mono,Consolas,monospace" font-size="17" fill="#a7b8cc">AI TOOL GUIDE</text>
-    <g transform="translate(92 190)">
-      <rect width="1016" height="326" rx="24" fill="#081f3a" stroke="#7dd3fc" stroke-opacity=".25" stroke-width="2"/>
-      <path d="M70 196C158 96 256 252 342 142S516 82 600 174s188 72 282-54" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
-      <g font-family="Segoe UI,Trebuchet MS,sans-serif">
-        <rect x="54" y="54" width="206" height="100" rx="16" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".22"/>
-        <text x="82" y="94" font-size="25" font-weight="800" fill="#eef7ff">Scope</text>
-        <text x="82" y="126" font-size="17" fill="#a7b8cc">Define the job</text>
-        <rect x="394" y="66" width="228" height="118" rx="16" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".44"/>
-        <text x="424" y="108" font-size="25" font-weight="800" fill="#eef7ff">Prompt</text>
-        <text x="424" y="140" font-size="17" fill="#a7b8cc">Add constraints</text>
-        <rect x="744" y="154" width="206" height="100" rx="16" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".22"/>
-        <text x="772" y="194" font-size="25" font-weight="800" fill="#eef7ff">Verify</text>
-        <text x="772" y="226" font-size="17" fill="#a7b8cc">Check output</text>
-      </g>
-      <circle cx="70" cy="196" r="13" fill="#7dd3fc"/>
-      <circle cx="342" cy="142" r="13" fill="#2dd4bf"/>
-      <circle cx="600" cy="174" r="13" fill="#7dd3fc"/>
-      <circle cx="882" cy="120" r="13" fill="#38bdf8"/>
-    </g>
-    <text x="92" y="598" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="34" font-weight="800" fill="#eef7ff">AI Landing Page Visual Workflow</text>
-    <text x="92" y="636" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="20" fill="#a7b8cc">Decision route: create visuals that support conversion-focused pages</text>
+  <rect width="1200" height="680" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="120" fill="url(#accent)" opacity="0.1"/>
+  <rect x="50" y="50" width="1100" height="580" rx="24" fill="#1e293b" stroke="#10b981" stroke-opacity="0.3" stroke-width="2"/>
+  <text x="100" y="100" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">🔄 AI Landing Page Visual Workflow</text>
+  <text x="100" y="130" font-family="system-ui,sans-serif" font-size="16" fill="#6ee7b7">Workflow Guide</text>
+  <g transform="translate(80, 180)">
+    <rect width="220" height="200" rx="16" fill="url(#step)" stroke="#10b981" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="110" cy="60" r="35" fill="#10b981" opacity="0.3"/>
+    <text x="95" y="75" font-family="system-ui,sans-serif" font-size="24" font-weight="700" fill="#f8fafc">1</text>
+    <text x="110" y="120" font-family="system-ui,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">Plan</text>
+    <text x="110" y="145" font-family="system-ui,sans-serif" font-size="12" fill="#6ee7b7" text-anchor="middle">Define scope</text>
+    <text x="110" y="170" font-family="system-ui,sans-serif" font-size="12" fill="#6ee7b7" text-anchor="middle">Set goals</text>
   </g>
+  <path d="M310 280 L370 280" stroke="#10b981" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrow)"/>
+  <g transform="translate(380, 180)">
+    <rect width="220" height="200" rx="16" fill="url(#step)" stroke="#10b981" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="110" cy="60" r="35" fill="#10b981" opacity="0.3"/>
+    <text x="95" y="75" font-family="system-ui,sans-serif" font-size="24" font-weight="700" fill="#f8fafc">2</text>
+    <text x="110" y="120" font-family="system-ui,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">Setup</text>
+    <text x="110" y="145" font-family="system-ui,sans-serif" font-size="12" fill="#6ee7b7" text-anchor="middle">Configure tools</text>
+    <text x="110" y="170" font-family="system-ui,sans-serif" font-size="12" fill="#6ee7b7" text-anchor="middle">Prepare data</text>
+  </g>
+  <path d="M610 280 L670 280" stroke="#10b981" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrow)"/>
+  <g transform="translate(680, 180)">
+    <rect width="220" height="200" rx="16" fill="url(#step)" stroke="#10b981" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="110" cy="60" r="35" fill="#10b981" opacity="0.3"/>
+    <text x="95" y="75" font-family="system-ui,sans-serif" font-size="24" font-weight="700" fill="#f8fafc">3</text>
+    <text x="110" y="120" font-family="system-ui,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">Execute</text>
+    <text x="110" y="145" font-family="system-ui,sans-serif" font-size="12" fill="#6ee7b7" text-anchor="middle">Run workflow</text>
+    <text x="110" y="170" font-family="system-ui,sans-serif" font-size="12" fill="#6ee7b7" text-anchor="middle">Monitor progress</text>
+  </g>
+  <g transform="translate(80, 420)">
+    <rect width="1040" height="120" rx="16" fill="#10b981" opacity="0.08"/>
+    <text x="40" y="40" font-family="system-ui,sans-serif" font-size="14" fill="#6ee7b7">Key Benefits</text>
+    <text x="40" y="70" font-family="system-ui,sans-serif" font-size="16" fill="#f8fafc">• Save time with automation</text>
+    <text x="40" y="95" font-family="system-ui,sans-serif" font-size="16" fill="#f8fafc">• Reduce manual errors</text>
+    <text x="360" y="70" font-family="system-ui,sans-serif" font-size="16" fill="#f8fafc">• Improve consistency</text>
+    <text x="360" y="95" font-family="system-ui,sans-serif" font-size="16" fill="#f8fafc">• Scale operations</text>
+    <text x="680" y="70" font-family="system-ui,sans-serif" font-size="16" fill="#f8fafc">• Better documentation</text>
+    <text x="680" y="95" font-family="system-ui,sans-serif" font-size="16" fill="#f8fafc">• Team collaboration</text>
+  </g>
+  <text x="600" y="590" font-family="system-ui,sans-serif" font-size="12" fill="rgba(255,255,255,0.3)" text-anchor="middle">AI Tool Compass • Design • Workflow</text>
 </svg>
