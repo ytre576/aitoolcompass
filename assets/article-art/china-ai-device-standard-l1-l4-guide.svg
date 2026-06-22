@@ -8,8 +8,8 @@
       <stop offset="1" stop-color="#030712"/>
     </linearGradient>
     <linearGradient id="articleAccent" x1="0" x2="1">
-      <stop offset="0" stop-color="#60a5fa"/>
-      <stop offset="1" stop-color="#0891b2"/>
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#38bdf8"/>
     </linearGradient>
     <filter id="articleShadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#020617" flood-opacity=".42"/>
@@ -22,27 +22,28 @@
     <rect x="54" y="46" width="1092" height="588" rx="28" fill="#061426" stroke="#7dd3fc" stroke-opacity=".34" stroke-width="2"/>
     <rect x="92" y="80" width="278" height="54" rx="999" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".26"/>
     <rect x="92" y="80" width="12" height="54" rx="6" fill="url(#articleAccent)"/>
-    <text x="122" y="116" font-family="Cascadia Mono,Consolas,monospace" font-size="18" font-weight="800" fill="#60a5fa">Research / Guide</text>
+    <text x="122" y="116" font-family="Cascadia Mono,Consolas,monospace" font-size="18" font-weight="800" fill="#7dd3fc">Research / Guide</text>
     <text x="846" y="116" font-family="Cascadia Mono,Consolas,monospace" font-size="17" fill="#a7b8cc">AI TOOL GUIDE</text>
-    <g transform="translate(96 170)">
-      <rect width="1008" height="356" rx="24" fill="#081f3a" stroke="#7dd3fc" stroke-opacity=".25" stroke-width="2"/>
+    <g transform="translate(92 190)">
+      <rect width="1016" height="326" rx="24" fill="#081f3a" stroke="#7dd3fc" stroke-opacity=".25" stroke-width="2"/>
+      <path d="M70 196C158 96 256 252 342 142S516 82 600 174s188 72 282-54" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
       <g font-family="Segoe UI,Trebuchet MS,sans-serif">
-        <rect x="54" y="60" width="244" height="238" rx="18" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".24"/>
-        <text x="84" y="120" font-size="28" font-weight="800" fill="#eef7ff">AI terminals</text>
-        <text x="84" y="160" font-size="18" fill="#a7b8cc">fit and constraints</text>
-        <rect x="84" y="206" width="154" height="14" rx="7" fill="#60a5fa"/>
-        <rect x="386" y="40" width="244" height="278" rx="20" fill="#0b2444" stroke="#60a5fa" stroke-opacity=".50"/>
-        <text x="416" y="108" font-size="28" font-weight="800" fill="#eef7ff">Edge AI</text>
-        <text x="416" y="148" font-size="18" fill="#a7b8cc">workflow engine</text>
-        <rect x="416" y="206" width="184" height="14" rx="7" fill="#0891b2"/>
-        <rect x="718" y="60" width="244" height="238" rx="18" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".24"/>
-        <text x="748" y="120" font-size="28" font-weight="800" fill="#eef7ff">Gemini</text>
-        <text x="748" y="160" font-size="18" fill="#a7b8cc">review checkpoint</text>
-        <rect x="748" y="206" width="132" height="14" rx="7" fill="#22d3ee"/>
+        <rect x="54" y="54" width="206" height="100" rx="16" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".22"/>
+        <text x="82" y="94" font-size="25" font-weight="800" fill="#eef7ff">Scope</text>
+        <text x="82" y="126" font-size="17" fill="#a7b8cc">Define the job</text>
+        <rect x="394" y="66" width="228" height="118" rx="16" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".44"/>
+        <text x="424" y="108" font-size="25" font-weight="800" fill="#eef7ff">Prompt</text>
+        <text x="424" y="140" font-size="17" fill="#a7b8cc">Add constraints</text>
+        <rect x="744" y="154" width="206" height="100" rx="16" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".22"/>
+        <text x="772" y="194" font-size="25" font-weight="800" fill="#eef7ff">Verify</text>
+        <text x="772" y="226" font-size="17" fill="#a7b8cc">Check output</text>
       </g>
-      <path d="M298 180h88M630 180h88" stroke="#7dd3fc" stroke-width="5" stroke-opacity=".34" stroke-linecap="round"/>
+      <circle cx="70" cy="196" r="13" fill="#7dd3fc"/>
+      <circle cx="342" cy="142" r="13" fill="#2dd4bf"/>
+      <circle cx="600" cy="174" r="13" fill="#7dd3fc"/>
+      <circle cx="882" cy="120" r="13" fill="#38bdf8"/>
     </g>
     <text x="92" y="598" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="34" font-weight="800" fill="#eef7ff">China&#39;s AI Device Standard: What L1-L4.</text>
-    <text x="92" y="636" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="20" fill="#a7b8cc">Workflow stack: understand what a new L1-L4 intelligence standard could.</text>
+    <text x="92" y="636" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="20" fill="#a7b8cc">Decision route: understand what a new L1-L4 intelligence standard could.</text>
   </g>
 </svg>

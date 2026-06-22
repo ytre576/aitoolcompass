@@ -5,7 +5,11 @@
     "type": "Guide",
     "focus": "understand why the Ring-2.6-1T launch matters for long-context reasoning and agent workflows",
     "cluster": "research",
-    "tools": ["Ring", "DeepSeek", "Claude"],
+    "tools": [
+      "Ring",
+      "DeepSeek",
+      "Claude"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT highlighted Ring-2.6-1T as a new trillion-parameter reasoning model aimed at stronger hard-task performance and broader context handling. For practical readers, the real question is whether this kind of release changes the trade-off between capability, cost, and deployment risk.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -22,7 +26,12 @@
       "Latency and cost curves once teams test real agent loops.",
       "Whether the model appears in stable APIs with reliable tool-calling behavior."
     ],
-    "keywords": ["ring-2-6-1t", "reasoning model", "long context", "ai research"]
+    "keywords": [
+      "ring-2-6-1t",
+      "reasoning model",
+      "long context",
+      "ai research"
+    ]
   },
   {
     "slug": "emo-moe-pretraining-guide",
@@ -30,7 +39,11 @@
     "type": "Guide",
     "focus": "understand how EMO-style modular pretraining may change scaling and efficiency choices in AI research",
     "cluster": "research",
-    "tools": ["EMO", "Mixtral", "DeepSeek"],
+    "tools": [
+      "EMO",
+      "Mixtral",
+      "DeepSeek"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT surfaced EMO as a mixture-of-experts direction focused on modular growth without retraining everything from scratch. That is important because model builders increasingly care about how to scale capability while keeping compute waste under control.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -47,7 +60,12 @@
       "How much retraining can actually be avoided in practical updates.",
       "Whether modular growth leads to cheaper domain-specific model options."
     ],
-    "keywords": ["emo", "mixture of experts", "modular pretraining", "model scaling"]
+    "keywords": [
+      "emo",
+      "mixture of experts",
+      "modular pretraining",
+      "model scaling"
+    ]
   },
   {
     "slug": "grok-connectors-cross-app-workflows-guide",
@@ -55,7 +73,11 @@
     "type": "Guide",
     "focus": "understand why Grok connectors across iOS, Android, and web plans matter for cross-app AI workflows",
     "cluster": "productivity",
-    "tools": ["Grok", "Gemini", "Claude"],
+    "tools": [
+      "Grok",
+      "Gemini",
+      "Claude"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT noted that Grok connectors are expanding across iOS, Android, and web subscriptions. The practical signal is that AI assistants are moving closer to real cross-app context instead of isolated chat windows.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -72,7 +94,12 @@
       "How permissions, revocation, and visibility are handled.",
       "Whether cross-app context produces better outputs than manual paste-in."
     ],
-    "keywords": ["grok connectors", "cross app ai", "productivity ai", "assistant integrations"]
+    "keywords": [
+      "grok connectors",
+      "cross app ai",
+      "productivity ai",
+      "assistant integrations"
+    ]
   },
   {
     "slug": "gemini-notebooks-complex-tasks-guide",
@@ -80,7 +107,11 @@
     "type": "Guide",
     "focus": "understand how Gemini notebooks could help organize complex multi-step AI work",
     "cluster": "productivity",
-    "tools": ["Gemini", "NotebookLM", "Claude"],
+    "tools": [
+      "Gemini",
+      "NotebookLM",
+      "Claude"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT pointed to Gemini notebooks as a better way to manage complex tasks. That matters because more AI work now depends on keeping context, references, and structured notes together instead of asking for a one-shot answer.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -97,7 +128,12 @@
       "Whether sources, outputs, and revisions stay traceable.",
       "How well notebook workflows export into normal team tools."
     ],
-    "keywords": ["gemini notebooks", "workspace ai", "complex tasks", "notebook workflow"]
+    "keywords": [
+      "gemini notebooks",
+      "workspace ai",
+      "complex tasks",
+      "notebook workflow"
+    ]
   },
   {
     "slug": "bugbot-usage-based-pricing-guide",
@@ -105,7 +141,11 @@
     "type": "Guide",
     "focus": "understand what usage-based pricing means for AI code review and bug-finding workflows",
     "cluster": "coding",
-    "tools": ["Bugbot", "Cursor", "GitHub Copilot"],
+    "tools": [
+      "Bugbot",
+      "Cursor",
+      "GitHub Copilot"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT flagged Bugbot's move toward usage-based pricing. For developers and small teams, that changes how AI review tools are evaluated because cost now depends more directly on actual review volume and workflow intensity.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -122,7 +162,12 @@
       "Whether cost scales cleanly for bursty review weeks.",
       "Which review tasks still justify paid AI versus manual checks."
     ],
-    "keywords": ["bugbot", "usage based pricing", "ai code review", "developer tools"]
+    "keywords": [
+      "bugbot",
+      "usage based pricing",
+      "ai code review",
+      "developer tools"
+    ]
   },
   {
     "slug": "alibaba-smart-studio-self-hosted-guide",
@@ -130,7 +175,11 @@
     "type": "Guide",
     "focus": "understand why Alibaba Cloud Smart Studio matters for self-hosted model deployment and internal AI stacks",
     "cluster": "productivity",
-    "tools": ["Alibaba Cloud", "Qwen", "Open WebUI"],
+    "tools": [
+      "Alibaba Cloud",
+      "Qwen",
+      "Open WebUI"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT highlighted Alibaba Cloud Smart Studio as a way to make self-hosted model work more approachable. That is relevant because many teams want local control, internal data boundaries, and less dependence on purely hosted AI tools.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -147,7 +196,12 @@
       "What access control, observability, and model management look like.",
       "Whether teams can move from demo to maintained internal service."
     ],
-    "keywords": ["alibaba smart studio", "self hosted ai", "model deployment", "internal ai stack"]
+    "keywords": [
+      "alibaba smart studio",
+      "self hosted ai",
+      "model deployment",
+      "internal ai stack"
+    ]
   },
   {
     "slug": "openrouter-human-review-agents-guide",
@@ -155,7 +209,11 @@
     "type": "Guide",
     "focus": "understand why human review hooks matter in tool-using AI agent workflows",
     "cluster": "coding",
-    "tools": ["OpenRouter", "Claude", "GPT-4o"],
+    "tools": [
+      "OpenRouter",
+      "Claude",
+      "GPT-4o"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT called out OpenRouter's agent SDK support for human review. This is a meaningful pattern because more agent systems are now powerful enough to act on tools, files, and external systems where a human checkpoint can prevent expensive mistakes.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -172,7 +230,12 @@
       "Whether approval flows can be tuned by tool, cost, or risk.",
       "How much agent speed is lost once humans stay in the loop."
     ],
-    "keywords": ["openrouter", "human review", "ai agents", "tool safety"]
+    "keywords": [
+      "openrouter",
+      "human review",
+      "ai agents",
+      "tool safety"
+    ]
   },
   {
     "slug": "china-ai-device-standard-l1-l4-guide",
@@ -180,7 +243,11 @@
     "type": "Guide",
     "focus": "understand what a new L1-L4 intelligence standard could mean for AI devices and buyer expectations",
     "cluster": "research",
-    "tools": ["AI terminals", "Edge AI", "Gemini"],
+    "tools": [
+      "AI terminals",
+      "Edge AI",
+      "Gemini"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT reported a new standard around AI device intelligence levels from L1 to L4. This matters because hardware AI claims are becoming crowded, and a clearer language for capability levels can reshape product comparison and marketing discipline.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -197,7 +264,12 @@
       "Whether vendors adopt the language consistently in marketing.",
       "How buyers can verify level claims beyond launch slides."
     ],
-    "keywords": ["ai device standard", "l1 l4", "edge ai", "hardware ai"]
+    "keywords": [
+      "ai device standard",
+      "l1 l4",
+      "edge ai",
+      "hardware ai"
+    ]
   },
   {
     "slug": "anthropic-teach-claude-why-guide",
@@ -205,7 +277,11 @@
     "type": "Guide",
     "focus": "understand why teaching Claude the reasoning behind safe behavior matters for alignment and product quality",
     "cluster": "chatbots",
-    "tools": ["Claude", "ChatGPT", "Gemini"],
+    "tools": [
+      "Claude",
+      "ChatGPT",
+      "Gemini"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT highlighted Anthropic's idea of teaching Claude the reasons behind safe behavior rather than only enforcing outcomes. That matters because alignment quality affects not just refusal behavior, but how well a model explains trade-offs and handles ambiguous tasks.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -222,7 +298,12 @@
       "How explanation quality changes for borderline requests.",
       "Whether users see fewer confusing reversals across similar prompts."
     ],
-    "keywords": ["anthropic", "claude safety", "alignment", "chatbot behavior"]
+    "keywords": [
+      "anthropic",
+      "claude safety",
+      "alignment",
+      "chatbot behavior"
+    ]
   },
   {
     "slug": "openai-accidental-cot-grading-guide",
@@ -230,7 +311,11 @@
     "type": "Guide",
     "focus": "understand why accidental chain-of-thought grading can distort AI evaluations and product claims",
     "cluster": "research",
-    "tools": ["OpenAI", "evals", "reasoning models"],
+    "tools": [
+      "OpenAI",
+      "evals",
+      "reasoning models"
+    ],
     "createdAt": "2026-05-09",
     "summary": "AI HOT surfaced OpenAI's discussion of accidental chain-of-thought grading. This is important because evaluation design strongly affects what model benchmarks appear to prove, especially when reasoning traces leak into the scoring setup.",
     "sourceUrl": "https://aihot.virxact.com/daily/2026-05-09",
@@ -247,6 +332,2820 @@
       "How vendor marketing interprets benchmark gains after methodology changes.",
       "Whether buyers ask for task-level evidence instead of leaderboard summaries."
     ],
-    "keywords": ["openai evals", "chain of thought", "benchmark design", "reasoning model evaluation"]
+    "keywords": [
+      "openai evals",
+      "chain of thought",
+      "benchmark design",
+      "reasoning model evaluation"
+    ]
+  },
+  {
+    "slug": "gpt55-instant-beginner-guide",
+    "title": "GPT-5.5 Instant: What Beginners Need to Know",
+    "type": "Guide",
+    "focus": "understand what GPT-5.5 Instant means for beginners choosing a chatbot",
+    "cluster": "chatbots",
+    "tools": [
+      "ChatGPT",
+      "GPT-5.5",
+      "Claude"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "GPT-5.5 Instant offers faster responses and improved reasoning for everyday tasks.",
+    "cardSummary": "GPT-5.5 Instant prioritizes speed and clarity for everyday assistant work.",
+    "readerLens": "Watch for response quality, not just speed claims.",
+    "watchlist": [
+      "Independent speed benchmarks",
+      "Real-world accuracy tests",
+      "Pricing tier changes"
+    ],
+    "keywords": [
+      "gpt-5.5",
+      "instant",
+      "chatgpt",
+      "beginner"
+    ]
+  },
+  {
+    "slug": "claude-opus48-new-features",
+    "title": "Claude Opus 4.8: New Features Breakdown",
+    "type": "Guide",
+    "focus": "understand what Claude Opus 4.8 improvements mean for coding and reasoning tasks",
+    "cluster": "chatbots",
+    "tools": [
+      "Claude",
+      "Opus 4.8",
+      "Anthropic"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Claude Opus 4.8 brings enhanced coding and reasoning capabilities.",
+    "cardSummary": "Opus 4.8 shows measurable gains in structured coding and multi-step reasoning.",
+    "readerLens": "Focus on task-specific improvements rather than general benchmarks.",
+    "watchlist": [
+      "Real coding task comparisons",
+      "Cost-per-token changes",
+      "API availability"
+    ],
+    "keywords": [
+      "claude",
+      "opus",
+      "anthropic",
+      "coding"
+    ]
+  },
+  {
+    "slug": "gemini-35-flash-review",
+    "title": "Gemini 3.5 Flash: Fast AI for Everyday Use",
+    "type": "Review",
+    "focus": "evaluate Gemini 3.5 Flash for daily assistant tasks and Google workspace workflows",
+    "cluster": "chatbots",
+    "tools": [
+      "Gemini",
+      "Google AI",
+      "Flash"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Gemini 3.5 Flash delivers quick responses with Google ecosystem integration.",
+    "cardSummary": "Flash excels when Google ecosystem integration matters more than raw reasoning.",
+    "readerLens": "Compare response speed against actual task completion quality.",
+    "watchlist": [
+      "Integration depth with Google apps",
+      "Context window limits",
+      "Privacy implications"
+    ],
+    "keywords": [
+      "gemini",
+      "flash",
+      "google",
+      "speed"
+    ]
+  },
+  {
+    "slug": "kimi26-chatbot-guide",
+    "title": "Kimi 2.6: The Rising Chinese Chatbot",
+    "type": "Guide",
+    "focus": "understand Kimi 2.6 capabilities for Chinese language tasks and global users",
+    "cluster": "chatbots",
+    "tools": [
+      "Kimi",
+      "Moonshot AI",
+      "Chinese AI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Kimi 2.6 offers strong Chinese language support and competitive performance.",
+    "cardSummary": "Kimi 2.6 matters most for Chinese language workflows and regional data compliance.",
+    "readerLens": "Evaluate language-specific strengths rather than universal superiority claims.",
+    "watchlist": [
+      "English language improvements",
+      "API availability outside China",
+      "Data handling policies"
+    ],
+    "keywords": [
+      "kimi",
+      "chinese",
+      "moonshot",
+      "language"
+    ]
+  },
+  {
+    "slug": "glm51-smart-platform",
+    "title": "GLM-5.1: Smart AI Platform Review",
+    "type": "Review",
+    "focus": "evaluate GLM-5.1 for enterprise and Chinese market use cases",
+    "cluster": "chatbots",
+    "tools": [
+      "GLM",
+      "Zhipu AI",
+      "Chinese AI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "GLM-5.1 provides enterprise-grade AI capabilities with Chinese market focus.",
+    "cardSummary": "GLM-5.1 targets enterprise workflows with strong Chinese language support.",
+    "readerLens": "Consider regional availability and compliance requirements.",
+    "watchlist": [
+      "Enterprise pricing models",
+      "Integration partnerships",
+      "Performance benchmarks"
+    ],
+    "keywords": [
+      "glm",
+      "zhipu",
+      "enterprise",
+      "chinese"
+    ]
+  },
+  {
+    "slug": "minimax-m3-chatbot",
+    "title": "MiniMax M3: Multimodal Chatbot Pioneer",
+    "type": "Guide",
+    "focus": "understand MiniMax M3 multimodal capabilities and practical use cases",
+    "cluster": "chatbots",
+    "tools": [
+      "MiniMax",
+      "M3",
+      "Multimodal"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "MiniMax M3 combines text, image, and voice in a unified chatbot experience.",
+    "cardSummary": "M3 shows promise for multimodal tasks but needs real-world workflow testing.",
+    "readerLens": "Test multimodal claims against actual production use cases.",
+    "watchlist": [
+      "Multimodal accuracy",
+      "API stability",
+      "Pricing competitiveness"
+    ],
+    "keywords": [
+      "minimax",
+      "m3",
+      "multimodal",
+      "voice"
+    ]
+  },
+  {
+    "slug": "tabbit-international-free-models",
+    "title": "Tabbit: Free Access to GPT-5.5 and Claude Opus",
+    "type": "Guide",
+    "focus": "evaluate Tabbit free model access and understand its business model",
+    "cluster": "chatbots",
+    "tools": [
+      "Tabbit",
+      "GPT-5.5",
+      "Claude Opus"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Tabbit international version offers free access to multiple flagship AI models.",
+    "cardSummary": "Free multi-model access raises questions about sustainability and data practices.",
+    "readerLens": "Verify data handling and long-term availability before relying on free tiers.",
+    "watchlist": [
+      "Sustainability of free tier",
+      "Data privacy policies",
+      "Rate limit changes"
+    ],
+    "keywords": [
+      "tabbit",
+      "free",
+      "multi-model",
+      "access"
+    ]
+  },
+  {
+    "slug": "chatgpt-enterprise-samsung-deployment",
+    "title": "Samsung Deploys ChatGPT Enterprise Globally",
+    "type": "Analysis",
+    "focus": "analyze what Samsung's deployment means for enterprise AI adoption patterns",
+    "cluster": "chatbots",
+    "tools": [
+      "ChatGPT Enterprise",
+      "Samsung",
+      "Enterprise AI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Samsung's global ChatGPT Enterprise deployment signals enterprise AI adoption acceleration.",
+    "cardSummary": "Large-scale enterprise deployments validate AI assistant viability for sensitive work.",
+    "readerLens": "Watch for deployment patterns that might influence your organization's AI strategy.",
+    "watchlist": [
+      "Enterprise security requirements",
+      "Integration complexity",
+      "ROI measurement approaches"
+    ],
+    "keywords": [
+      "samsung",
+      "enterprise",
+      "deployment",
+      "adoption"
+    ]
+  },
+  {
+    "slug": "ai-chatbot-comparison-table-2026",
+    "title": "2026 AI Chatbot Comparison: Complete Table",
+    "type": "Comparison",
+    "focus": "compare major AI chatbots by features, pricing, and use case fit",
+    "cluster": "chatbots",
+    "tools": [
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "Kimi"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Comprehensive comparison table of top AI chatbots in 2026.",
+    "cardSummary": "Use comparison tables as starting points, not final decision criteria.",
+    "readerLens": "Focus on your specific use case rather than overall feature lists.",
+    "watchlist": [
+      "Feature accuracy",
+      "Pricing updates",
+      "New model releases"
+    ],
+    "keywords": [
+      "comparison",
+      "table",
+      "2026",
+      "overview"
+    ]
+  },
+  {
+    "slug": "chatbot-prompting-advanced-techniques",
+    "title": "Advanced Chatbot Prompting Techniques",
+    "type": "Tutorial",
+    "focus": "learn advanced prompting strategies for complex AI assistant tasks",
+    "cluster": "chatbots",
+    "tools": [
+      "Prompt Engineering",
+      "ChatGPT",
+      "Claude"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Master advanced prompting techniques for better AI chatbot results.",
+    "cardSummary": "Advanced prompting improves results but requires understanding model limitations.",
+    "readerLens": "Practice techniques with real tasks rather than synthetic benchmarks.",
+    "watchlist": [
+      "Model-specific prompt optimizations",
+      "Prompt injection risks",
+      "Evaluation methods"
+    ],
+    "keywords": [
+      "prompting",
+      "advanced",
+      "techniques",
+      "engineering"
+    ]
+  },
+  {
+    "slug": "ai-chatbot-workflow-automation",
+    "title": "Chatbot Workflow Automation Guide",
+    "type": "Workflow",
+    "focus": "build automated workflows using AI chatbots and integration tools",
+    "cluster": "chatbots",
+    "tools": [
+      "ChatGPT",
+      "Zapier",
+      "Automation"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Automate repetitive tasks using AI chatbot integrations.",
+    "cardSummary": "Workflow automation works best for repetitive, rule-based tasks with clear inputs.",
+    "readerLens": "Start with simple automations and expand based on proven reliability.",
+    "watchlist": [
+      "Integration reliability",
+      "Error handling patterns",
+      "Cost scaling"
+    ],
+    "keywords": [
+      "automation",
+      "workflow",
+      "integration",
+      "zapier"
+    ]
+  },
+  {
+    "slug": "chatbot-privacy-best-practices",
+    "title": "AI Chatbot Privacy Best Practices",
+    "type": "Guide",
+    "focus": "implement privacy best practices for AI chatbot usage in personal and work contexts",
+    "cluster": "chatbots",
+    "tools": [
+      "Privacy",
+      "Data Security",
+      "AI Safety"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Protect your data while using AI chatbots effectively.",
+    "cardSummary": "Privacy practices should match the sensitivity of tasks you delegate to AI.",
+    "readerLens": "Evaluate data handling before sharing sensitive information with any AI tool.",
+    "watchlist": [
+      "Data retention policies",
+      "Third-party sharing",
+      "Regulatory compliance"
+    ],
+    "keywords": [
+      "privacy",
+      "security",
+      "best-practices",
+      "data"
+    ]
+  },
+  {
+    "slug": "chatbot-for-education-2026",
+    "title": "AI Chatbots in Education: 2026 Guide",
+    "type": "Guide",
+    "focus": "understand AI chatbot applications in educational contexts and learning workflows",
+    "cluster": "chatbots",
+    "tools": [
+      "Education AI",
+      "ChatGPT",
+      "Claude"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "How AI chatbots are transforming education and learning workflows.",
+    "cardSummary": "Educational AI works best as supplementary tool, not replacement for critical thinking.",
+    "readerLens": "Focus on learning outcomes rather than task completion shortcuts.",
+    "watchlist": [
+      "Academic integrity policies",
+      "Learning effectiveness studies",
+      "Age-appropriate usage"
+    ],
+    "keywords": [
+      "education",
+      "learning",
+      "students",
+      "academic"
+    ]
+  },
+  {
+    "slug": "chatbot-cost-optimization",
+    "title": "AI Chatbot Cost Optimization Strategies",
+    "type": "Guide",
+    "focus": "optimize AI chatbot spending through model selection and usage patterns",
+    "cluster": "chatbots",
+    "tools": [
+      "Cost Management",
+      "API Optimization",
+      "Budget AI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Reduce AI chatbot costs while maintaining quality output.",
+    "cardSummary": "Cost optimization requires understanding when to use different model tiers.",
+    "readerLens": "Track actual usage patterns before optimizing based on theoretical savings.",
+    "watchlist": [
+      "Pricing tier changes",
+      "Usage tracking tools",
+      "Quality-cost tradeoffs"
+    ],
+    "keywords": [
+      "cost",
+      "optimization",
+      "budget",
+      "pricing"
+    ]
+  },
+  {
+    "slug": "chatbot-voice-mode-comparison",
+    "title": "AI Chatbot Voice Mode Comparison",
+    "type": "Comparison",
+    "focus": "evaluate voice mode features and practical utility across chatbot platforms",
+    "cluster": "chatbots",
+    "tools": [
+      "Voice AI",
+      "ChatGPT Voice",
+      "Gemini Live"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare voice capabilities across major AI chatbots.",
+    "cardSummary": "Voice modes show promise but need testing for specific use cases.",
+    "readerLens": "Test voice features in your actual environment before relying on them.",
+    "watchlist": [
+      "Voice accuracy",
+      "Language support",
+      "Privacy implications"
+    ],
+    "keywords": [
+      "voice",
+      "mode",
+      "comparison",
+      "audio"
+    ]
+  },
+  {
+    "slug": "logos-unified-science-model",
+    "title": "LOGOS: The Unified Science AI Model",
+    "type": "Guide",
+    "focus": "understand what LOGOS means for scientific research and cross-domain analysis",
+    "cluster": "research",
+    "tools": [
+      "LOGOS",
+      "Science AI",
+      "Research"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "LOGOS represents the first unified scientific AI model for multi-domain research.",
+    "cardSummary": "Unified science models matter when cross-domain insights outweigh specialized depth.",
+    "readerLens": "Evaluate whether generalization improves or dilutes domain-specific accuracy.",
+    "watchlist": [
+      "Domain-specific performance",
+      "Reproducibility studies",
+      "Access availability"
+    ],
+    "keywords": [
+      "logos",
+      "science",
+      "unified",
+      "research"
+    ]
+  },
+  {
+    "slug": "causal-ai-fourth-paradigm",
+    "title": "Causal AI: The Fourth Research Paradigm",
+    "type": "Analysis",
+    "focus": "understand how causal AI changes research methodology and data analysis",
+    "cluster": "research",
+    "tools": [
+      "Causal AI",
+      "Research Methods",
+      "Statistics"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Causal AI introduces a new paradigm for understanding cause-effect relationships.",
+    "cardSummary": "Causal AI matters when correlation-based approaches miss important mechanisms.",
+    "readerLens": "Consider whether your research questions require causal or correlational insights.",
+    "watchlist": [
+      "Methodology validation",
+      "Tool availability",
+      "Expertise requirements"
+    ],
+    "keywords": [
+      "causal",
+      "paradigm",
+      "research",
+      "methodology"
+    ]
+  },
+  {
+    "slug": "zvec-vector-database-guide",
+    "title": "Zvec: Open Source Vector Database",
+    "type": "Guide",
+    "focus": "evaluate Zvec for vector search and AI retrieval applications",
+    "cluster": "research",
+    "tools": [
+      "Zvec",
+      "Vector Database",
+      "Alibaba"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Alibaba's Zvec open source vector database for AI-powered search and retrieval.",
+    "cardSummary": "Vector databases matter for RAG systems and similarity search at scale.",
+    "readerLens": "Compare performance against existing solutions for your specific use case.",
+    "watchlist": [
+      "Performance benchmarks",
+      "Community adoption",
+      "Integration ecosystem"
+    ],
+    "keywords": [
+      "zvec",
+      "vector",
+      "database",
+      "alibaba"
+    ]
+  },
+  {
+    "slug": "perplexity-ai-research-update-2026",
+    "title": "Perplexity AI Research: 2026 Updates",
+    "type": "Update",
+    "focus": "evaluate Perplexity AI improvements for research workflows and fact-checking",
+    "cluster": "research",
+    "tools": [
+      "Perplexity",
+      "AI Research",
+      "Search"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Latest updates to Perplexity AI for research and information retrieval.",
+    "cardSummary": "Search-focused AI improves when source quality and citation practices improve.",
+    "readerLens": "Verify source claims independently rather than trusting citation counts.",
+    "watchlist": [
+      "Source quality metrics",
+      "Citation accuracy",
+      "Competitive positioning"
+    ],
+    "keywords": [
+      "perplexity",
+      "search",
+      "research",
+      "updates"
+    ]
+  },
+  {
+    "slug": "notebooklm-complex-research-tasks",
+    "title": "NotebookLM for Complex Research Tasks",
+    "type": "Tutorial",
+    "focus": "apply NotebookLM to multi-source research organization and synthesis tasks",
+    "cluster": "research",
+    "tools": [
+      "NotebookLM",
+      "Google AI",
+      "Research"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Use NotebookLM for organizing and analyzing complex research materials.",
+    "cardSummary": "Notebook tools help when research requires persistent context across sessions.",
+    "readerLens": "Test notebook persistence and export capabilities before committing workflows.",
+    "watchlist": [
+      "Context durability",
+      "Export formats",
+      "Collaboration features"
+    ],
+    "keywords": [
+      "notebooklm",
+      "google",
+      "research",
+      "organization"
+    ]
+  },
+  {
+    "slug": "ai-literature-review-automation",
+    "title": "Automating Literature Reviews with AI",
+    "type": "Workflow",
+    "focus": "build automated workflows for literature review and research synthesis",
+    "cluster": "research",
+    "tools": [
+      "Literature Review",
+      "Elicit",
+      "Semantic Scholar"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Automate literature screening and synthesis using AI research tools.",
+    "cardSummary": "Automation helps screening but human judgment remains essential for synthesis.",
+    "readerLens": "Use automation for initial screening, not final analysis or conclusions.",
+    "watchlist": [
+      "Screening accuracy",
+      "Bias detection",
+      "Reproducibility standards"
+    ],
+    "keywords": [
+      "literature",
+      "review",
+      "automation",
+      "screening"
+    ]
+  },
+  {
+    "slug": "ai-fact-checking-advanced",
+    "title": "Advanced AI Fact-Checking Techniques",
+    "type": "Tutorial",
+    "focus": "implement rigorous fact-checking workflows for AI-assisted research",
+    "cluster": "research",
+    "tools": [
+      "Fact-Checking",
+      "Verification",
+      "AI Safety"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Advanced methods for verifying AI-generated claims and information.",
+    "cardSummary": "Fact-checking requires multiple verification sources and critical evaluation.",
+    "readerLens": "Never rely on a single AI tool for fact verification.",
+    "watchlist": [
+      "Verification methodology",
+      "Source reliability",
+      "Bias awareness"
+    ],
+    "keywords": [
+      "fact-checking",
+      "verification",
+      "accuracy",
+      "reliability"
+    ]
+  },
+  {
+    "slug": "ai-citation-management-2026",
+    "title": "AI Citation Management: 2026 Best Practices",
+    "type": "Guide",
+    "focus": "optimize citation management workflows with AI tools and best practices",
+    "cluster": "research",
+    "tools": [
+      "Citation",
+      "Zotero",
+      "Reference Management"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Modern citation management workflows using AI assistance.",
+    "cardSummary": "Citation management improves when AI handles collection, not final formatting.",
+    "readerLens": "Verify AI-assisted citations against original sources.",
+    "watchlist": [
+      "Format accuracy",
+      "Source verification",
+      "Integration with writing tools"
+    ],
+    "keywords": [
+      "citation",
+      "management",
+      "references",
+      "zotero"
+    ]
+  },
+  {
+    "slug": "ai-research-prompt-library",
+    "title": "AI Research Prompt Templates Library",
+    "type": "Prompt Library",
+    "focus": "access research-optimized prompts for literature review, analysis, and synthesis",
+    "cluster": "research",
+    "tools": [
+      "Prompts",
+      "Research Methods",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Collection of research-focused AI prompts for common tasks.",
+    "cardSummary": "Prompt libraries work best when adapted to specific research contexts.",
+    "readerLens": "Customize templates to your field's terminology and standards.",
+    "watchlist": [
+      "Prompt effectiveness",
+      "Domain adaptation",
+      "Version updates"
+    ],
+    "keywords": [
+      "prompts",
+      "templates",
+      "library",
+      "research"
+    ]
+  },
+  {
+    "slug": "ai-market-research-automation",
+    "title": "Automating Market Research with AI",
+    "type": "Workflow",
+    "focus": "build automated market research workflows with AI assistance",
+    "cluster": "research",
+    "tools": [
+      "Market Research",
+      "Competitive Analysis",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Streamline market research using AI-powered analysis tools.",
+    "cardSummary": "Market research automation accelerates data collection, not strategic interpretation.",
+    "readerLens": "Use AI for data gathering, human judgment for strategic decisions.",
+    "watchlist": [
+      "Data quality",
+      "Competitive intelligence ethics",
+      "Regulatory compliance"
+    ],
+    "keywords": [
+      "market",
+      "research",
+      "automation",
+      "competitive"
+    ]
+  },
+  {
+    "slug": "ai-academic-writing-workflow",
+    "title": "AI-Assisted Academic Writing Workflow",
+    "type": "Workflow",
+    "focus": "build ethical AI-assisted writing workflows for academic contexts",
+    "cluster": "research",
+    "tools": [
+      "Academic Writing",
+      "Grammarly",
+      "AI Editing"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Integrate AI into academic writing without compromising integrity.",
+    "cardSummary": "Academic writing AI works best for editing and structure, not content generation.",
+    "readerLens": "Understand your institution's AI usage policies before implementation.",
+    "watchlist": [
+      "Academic integrity standards",
+      "Plagiarism detection",
+      "Institutional policies"
+    ],
+    "keywords": [
+      "academic",
+      "writing",
+      "integrity",
+      "workflow"
+    ]
+  },
+  {
+    "slug": "ai-data-analysis-research",
+    "title": "AI for Research Data Analysis",
+    "type": "Tutorial",
+    "focus": "apply AI tools to research data analysis, visualization, and interpretation tasks",
+    "cluster": "research",
+    "tools": [
+      "Data Analysis",
+      "Python",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Use AI to accelerate research data analysis and visualization.",
+    "cardSummary": "AI accelerates analysis but requires validation of statistical methods.",
+    "readerLens": "Verify AI-suggested analyses against established statistical practices.",
+    "watchlist": [
+      "Statistical validity",
+      "Reproducibility",
+      "Methodology transparency"
+    ],
+    "keywords": [
+      "data",
+      "analysis",
+      "statistics",
+      "visualization"
+    ]
+  },
+  {
+    "slug": "ai-research-collaboration-tools",
+    "title": "AI Research Collaboration Platforms",
+    "type": "Comparison",
+    "focus": "evaluate research collaboration platforms with AI features for team workflows",
+    "cluster": "research",
+    "tools": [
+      "Collaboration",
+      "Research Platforms",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare AI-enhanced research collaboration tools and platforms.",
+    "cardSummary": "Collaboration AI helps coordination but doesn't replace domain expertise.",
+    "readerLens": "Evaluate integration with existing research workflows and tools.",
+    "watchlist": [
+      "Platform maturity",
+      "Integration options",
+      "Data security"
+    ],
+    "keywords": [
+      "collaboration",
+      "platforms",
+      "teams",
+      "tools"
+    ]
+  },
+  {
+    "slug": "ai-research-ethics-guidelines",
+    "title": "AI Research Ethics: Updated Guidelines",
+    "type": "Guide",
+    "focus": "understand current ethical standards for AI usage in research contexts",
+    "cluster": "research",
+    "tools": [
+      "Ethics",
+      "Research Integrity",
+      "AI Safety"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Updated ethical guidelines for AI-assisted research.",
+    "cardSummary": "Research ethics evolve with AI capabilities; stay current with guidelines.",
+    "readerLens": "Consult institutional review boards for specific project requirements.",
+    "watchlist": [
+      "Regulatory updates",
+      "Institutional policies",
+      "Field-specific standards"
+    ],
+    "keywords": [
+      "ethics",
+      "guidelines",
+      "integrity",
+      "standards"
+    ]
+  },
+  {
+    "slug": "ai-research-future-trends",
+    "title": "Future of AI in Research: 2026-2030",
+    "type": "Analysis",
+    "focus": "anticipate how AI will transform research methodologies and capabilities",
+    "cluster": "research",
+    "tools": [
+      "Future Trends",
+      "AI Research",
+      "Technology Forecast"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Predicted trends for AI in academic and commercial research.",
+    "cardSummary": "Future predictions should inform strategy, not dictate current decisions.",
+    "readerLens": "Focus on adaptable skills rather than tool-specific expertise.",
+    "watchlist": [
+      "Technology development",
+      "Regulatory changes",
+      "Skill requirements"
+    ],
+    "keywords": [
+      "future",
+      "trends",
+      "forecast",
+      "2026-2030"
+    ]
+  },
+  {
+    "slug": "riverflow25-image-model",
+    "title": "Riverflow 2.5: Controllable Image Generation",
+    "type": "Guide",
+    "focus": "understand Riverflow 2.5 controllable image generation capabilities",
+    "cluster": "image",
+    "tools": [
+      "Riverflow",
+      "Image Generation",
+      "AI Art"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Riverflow 2.5 introduces controllable scoring for image generation quality.",
+    "cardSummary": "Controllable scoring helps when quality consistency matters more than variety.",
+    "readerLens": "Test scoring controls against your specific quality requirements.",
+    "watchlist": [
+      "Scoring accuracy",
+      "Style consistency",
+      "API availability"
+    ],
+    "keywords": [
+      "riverflow",
+      "controllable",
+      "scoring",
+      "quality"
+    ]
+  },
+  {
+    "slug": "grok-imagine-15-preview",
+    "title": "Grok Imagine 1.5: Image Generation Preview",
+    "type": "Review",
+    "focus": "evaluate Grok Imagine 1.5 image generation quality and features",
+    "cluster": "image",
+    "tools": [
+      "Grok",
+      "Imagine",
+      "xAI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Grok Imagine 1.5 preview shows improved image generation capabilities.",
+    "cardSummary": "Preview releases show direction but need testing before production use.",
+    "readerLens": "Compare against established tools rather than evaluating in isolation.",
+    "watchlist": [
+      "Release timeline",
+      "Pricing",
+      "Feature parity with competitors"
+    ],
+    "keywords": [
+      "grok",
+      "imagine",
+      "preview",
+      "xai"
+    ]
+  },
+  {
+    "slug": "midjourney-prompt-advanced-2026",
+    "title": "Advanced Midjourney Prompting 2026",
+    "type": "Tutorial",
+    "focus": "learn advanced Midjourney prompting for professional image generation",
+    "cluster": "image",
+    "tools": [
+      "Midjourney",
+      "Prompt Engineering",
+      "AI Art"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Master advanced prompting techniques for Midjourney v7.",
+    "cardSummary": "Advanced prompting improves results but requires understanding model evolution.",
+    "readerLens": "Practice techniques with your specific use cases, not generic examples.",
+    "watchlist": [
+      "Version updates",
+      "New parameter releases",
+      "Community discoveries"
+    ],
+    "keywords": [
+      "midjourney",
+      "prompting",
+      "advanced",
+      "v7"
+    ]
+  },
+  {
+    "slug": "dalle-vs-ideogram-2026",
+    "title": "DALL-E vs Ideogram: 2026 Comparison",
+    "type": "Comparison",
+    "focus": "evaluate DALL-E versus Ideogram for different image generation needs",
+    "cluster": "image",
+    "tools": [
+      "DALL-E",
+      "Ideogram",
+      "OpenAI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare DALL-E and Ideogram for text rendering and image quality.",
+    "cardSummary": "Text rendering capabilities often determine tool choice more than overall quality.",
+    "readerLens": "Test text rendering with your specific content requirements.",
+    "watchlist": [
+      "Text accuracy",
+      "Style control",
+      "Pricing changes"
+    ],
+    "keywords": [
+      "dalle",
+      "ideogram",
+      "comparison",
+      "text"
+    ]
+  },
+  {
+    "slug": "ai-product-photography-2026",
+    "title": "AI Product Photography: 2026 Guide",
+    "type": "Guide",
+    "focus": "build AI-assisted product photography workflows for e-commerce",
+    "cluster": "image",
+    "tools": [
+      "Product Photography",
+      "AI Editing",
+      "E-commerce"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create professional product photos using AI tools and workflows.",
+    "cardSummary": "AI product photos work best for concepts, not final commercial imagery.",
+    "readerLens": "Understand limitations for commercial use and brand consistency.",
+    "watchlist": [
+      "Commercial licensing",
+      "Quality consistency",
+      "Customer acceptance"
+    ],
+    "keywords": [
+      "product",
+      "photography",
+      "ecommerce",
+      "commercial"
+    ]
+  },
+  {
+    "slug": "ai-thumbnail-creation-workflow",
+    "title": "AI Thumbnail Creation Workflow",
+    "type": "Workflow",
+    "focus": "build efficient thumbnail creation workflows with AI tools",
+    "cluster": "image",
+    "tools": [
+      "Thumbnails",
+      "YouTube",
+      "Content Creation"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create click-worthy thumbnails using AI image generation and editing.",
+    "cardSummary": "Thumbnail creation works best when AI handles generation, humans handle strategy.",
+    "readerLens": "Focus on click-through metrics rather than aesthetic perfection.",
+    "watchlist": [
+      "A/B testing results",
+      "Platform guidelines",
+      "Audience preferences"
+    ],
+    "keywords": [
+      "thumbnail",
+      "youtube",
+      "click",
+      "workflow"
+    ]
+  },
+  {
+    "slug": "ai-logo-design-beginners",
+    "title": "AI Logo Design for Beginners",
+    "type": "Guide",
+    "focus": "use AI tools for logo design while understanding limitations and best practices",
+    "cluster": "image",
+    "tools": [
+      "Logo Design",
+      "Branding",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create professional logos using AI design tools without design experience.",
+    "cardSummary": "AI logos work for concepts and drafts, professional refinement still needed.",
+    "readerLens": "Consider trademark and uniqueness requirements for commercial use.",
+    "watchlist": [
+      "Uniqueness verification",
+      "Trademark conflicts",
+      "Scalability testing"
+    ],
+    "keywords": [
+      "logo",
+      "design",
+      "branding",
+      "beginners"
+    ]
+  },
+  {
+    "slug": "ai-image-commercial-use-2026",
+    "title": "AI Image Commercial Use: 2026 Legal Guide",
+    "type": "Guide",
+    "focus": "understand legal requirements and best practices for commercial AI image use",
+    "cluster": "image",
+    "tools": [
+      "Legal",
+      "Commercial Use",
+      "AI Rights"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Navigate legal requirements for commercial use of AI-generated images.",
+    "cardSummary": "Commercial use requires understanding licensing terms and liability.",
+    "readerLens": "Consult legal experts for specific commercial use cases.",
+    "watchlist": [
+      "Legal developments",
+      "Platform policy changes",
+      "Industry standards"
+    ],
+    "keywords": [
+      "commercial",
+      "legal",
+      "license",
+      "rights"
+    ]
+  },
+  {
+    "slug": "ai-image-style-transfer-guide",
+    "title": "AI Style Transfer: Complete Guide",
+    "type": "Tutorial",
+    "focus": "master AI style transfer for creative and commercial applications",
+    "cluster": "image",
+    "tools": [
+      "Style Transfer",
+      "Artistic AI",
+      "Image Editing"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Apply artistic styles to images using AI style transfer techniques.",
+    "cardSummary": "Style transfer works best when artistic intent guides technical application.",
+    "readerLens": "Understand licensing implications of style referencing.",
+    "watchlist": [
+      "Copyright considerations",
+      "Quality consistency",
+      "Tool availability"
+    ],
+    "keywords": [
+      "style",
+      "transfer",
+      "artistic",
+      "technique"
+    ]
+  },
+  {
+    "slug": "ai-image-upscaling-comparison",
+    "title": "AI Image Upscaling Tools Comparison",
+    "type": "Comparison",
+    "focus": "evaluate AI upscaling tools for different image enhancement needs",
+    "cluster": "image",
+    "tools": [
+      "Upscaling",
+      "Image Enhancement",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare AI image upscaling tools for quality and speed.",
+    "cardSummary": "Upscaling quality varies significantly by source image and tool choice.",
+    "readerLens": "Test with your specific image types before committing.",
+    "watchlist": [
+      "Quality metrics",
+      "Processing speed",
+      "Batch capabilities"
+    ],
+    "keywords": [
+      "upscaling",
+      "enhancement",
+      "quality",
+      "comparison"
+    ]
+  },
+  {
+    "slug": "ai-illustration-workflow",
+    "title": "AI Illustration Workflow for Projects",
+    "type": "Workflow",
+    "focus": "build illustration workflows combining AI generation with human editing",
+    "cluster": "image",
+    "tools": [
+      "Illustration",
+      "Content Creation",
+      "AI Art"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create custom illustrations using AI tools and human refinement.",
+    "cardSummary": "Illustration workflows work when AI handles iteration, humans handle vision.",
+    "readerLens": "Define clear style guidelines before starting AI generation.",
+    "watchlist": [
+      "Style consistency",
+      "Revision efficiency",
+      "Client acceptance"
+    ],
+    "keywords": [
+      "illustration",
+      "workflow",
+      "custom",
+      "projects"
+    ]
+  },
+  {
+    "slug": "ai-image-editing-advanced",
+    "title": "Advanced AI Image Editing Techniques",
+    "type": "Tutorial",
+    "focus": "learn advanced AI editing techniques for complex image manipulation tasks",
+    "cluster": "image",
+    "tools": [
+      "Image Editing",
+      "Photoshop AI",
+      "Generative Fill"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Master advanced AI image editing for professional results.",
+    "cardSummary": "Advanced editing combines AI capabilities with traditional techniques.",
+    "readerLens": "Practice techniques on non-critical images first.",
+    "watchlist": [
+      "Tool updates",
+      "New feature releases",
+      "Workflow improvements"
+    ],
+    "keywords": [
+      "editing",
+      "advanced",
+      "photoshop",
+      "generative"
+    ]
+  },
+  {
+    "slug": "ai-image-prompt-mistakes-2026",
+    "title": "Common AI Image Prompt Mistakes 2026",
+    "type": "Checklist",
+    "focus": "identify and avoid common mistakes in AI image generation prompts",
+    "cluster": "image",
+    "tools": [
+      "Prompt Engineering",
+      "Common Mistakes",
+      "Best Practices"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Avoid common pitfalls in AI image generation prompts.",
+    "cardSummary": "Prompt mistakes waste generation credits and time.",
+    "readerLens": "Review your prompts against common error patterns.",
+    "watchlist": [
+      "Community discoveries",
+      "Tool-specific quirks",
+      "Updated best practices"
+    ],
+    "keywords": [
+      "mistakes",
+      "prompting",
+      "checklist",
+      "common"
+    ]
+  },
+  {
+    "slug": "ai-image-generation-pricing",
+    "title": "AI Image Generation Pricing Comparison",
+    "type": "Comparison",
+    "focus": "evaluate AI image generation costs for different usage patterns and budgets",
+    "cluster": "image",
+    "tools": [
+      "Pricing",
+      "Cost Analysis",
+      "Budget AI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare costs across AI image generation platforms and plans.",
+    "cardSummary": "Pricing analysis should account for quality, not just cost per image.",
+    "readerLens": "Calculate total cost including failed generations and iteration.",
+    "watchlist": [
+      "Pricing changes",
+      "Free tier limitations",
+      "Volume discounts"
+    ],
+    "keywords": [
+      "pricing",
+      "cost",
+      "budget",
+      "comparison"
+    ]
+  },
+  {
+    "slug": "ai-image-consistency-techniques",
+    "title": "Maintaining AI Image Consistency",
+    "type": "Tutorial",
+    "focus": "achieve style consistency in AI-generated images for brand and project needs",
+    "cluster": "image",
+    "tools": [
+      "Consistency",
+      "Brand Guidelines",
+      "AI Workflows"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Techniques for maintaining consistent AI image style across projects.",
+    "cardSummary": "Consistency requires systematic approach, not just prompt repetition.",
+    "readerLens": "Develop style guides before starting consistent image generation.",
+    "watchlist": [
+      "Style guide effectiveness",
+      "Tool limitations",
+      "Workflow scalability"
+    ],
+    "keywords": [
+      "consistency",
+      "style",
+      "brand",
+      "techniques"
+    ]
+  },
+  {
+    "slug": "minimax-m3-video-capabilities",
+    "title": "MiniMax M3: Video Generation Capabilities",
+    "type": "Guide",
+    "focus": "evaluate MiniMax M3 video generation for practical production use",
+    "cluster": "video",
+    "tools": [
+      "MiniMax",
+      "M3",
+      "Video AI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Explore MiniMax M3's video generation and multimodal capabilities.",
+    "cardSummary": "Multimodal models show promise but need real-world production testing.",
+    "readerLens": "Compare video quality against dedicated video generation tools.",
+    "watchlist": [
+      "Quality benchmarks",
+      "Generation speed",
+      "Pricing structure"
+    ],
+    "keywords": [
+      "minimax",
+      "video",
+      "multimodal",
+      "generation"
+    ]
+  },
+  {
+    "slug": "runway-mcp-server-guide",
+    "title": "Runway MCP Server: Developer Integration",
+    "type": "Tutorial",
+    "focus": "use Runway MCP server for programmatic video generation",
+    "cluster": "video",
+    "tools": [
+      "Runway",
+      "MCP",
+      "Developer Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Integrate Runway video generation into developer workflows via MCP server.",
+    "cardSummary": "MCP integration enables automated video workflows but requires development effort.",
+    "readerLens": "Evaluate development cost against manual workflow savings.",
+    "watchlist": [
+      "API stability",
+      "Documentation quality",
+      "Pricing for developers"
+    ],
+    "keywords": [
+      "runway",
+      "mcp",
+      "developer",
+      "api"
+    ]
+  },
+  {
+    "slug": "ai-video-ads-2026-guide",
+    "title": "AI Video Ads: 2026 Production Guide",
+    "type": "Guide",
+    "focus": "build AI-assisted video ad production workflows for marketing campaigns",
+    "cluster": "video",
+    "tools": [
+      "Video Ads",
+      "Advertising",
+      "AI Production"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create effective video ads using AI tools and production workflows.",
+    "cardSummary": "AI video ads work for concepts and variations, human direction remains essential.",
+    "readerLens": "Focus on message clarity rather than production complexity.",
+    "watchlist": [
+      "Platform ad policies",
+      "Quality requirements",
+      "Performance metrics"
+    ],
+    "keywords": [
+      "video",
+      "ads",
+      "advertising",
+      "production"
+    ]
+  },
+  {
+    "slug": "luma-ugc-ad-generation",
+    "title": "Luma AI: UGC Ad Generation at Scale",
+    "type": "Guide",
+    "focus": "use Luma AI for scalable UGC-style advertising content creation",
+    "cluster": "video",
+    "tools": [
+      "Luma AI",
+      "UGC",
+      "Advertising"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Generate user-generated content style ads using Luma AI.",
+    "cardSummary": "UGC-style AI ads need authentic feel, not just technical quality.",
+    "readerLens": "Test audience reception before scaling production.",
+    "watchlist": [
+      "Authenticity metrics",
+      "Platform acceptance",
+      "Cost effectiveness"
+    ],
+    "keywords": [
+      "luma",
+      "ugc",
+      "advertising",
+      "scale"
+    ]
+  },
+  {
+    "slug": "ai-video-storyboard-advanced",
+    "title": "Advanced AI Video Storyboarding",
+    "type": "Tutorial",
+    "focus": "master AI-assisted storyboarding for video production planning",
+    "cluster": "video",
+    "tools": [
+      "Storyboarding",
+      "Pre-production",
+      "AI Planning"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create professional storyboards using AI planning tools.",
+    "cardSummary": "Storyboarding works best when AI handles visualization, humans handle narrative.",
+    "readerLens": "Practice with simple projects before complex productions.",
+    "watchlist": [
+      "Tool updates",
+      "Workflow improvements",
+      "Collaboration features"
+    ],
+    "keywords": [
+      "storyboard",
+      "pre-production",
+      "planning",
+      "advanced"
+    ]
+  },
+  {
+    "slug": "ai-avatar-video-creation",
+    "title": "AI Avatar Video Creation Guide",
+    "type": "Guide",
+    "focus": "build AI avatar video workflows for training and communication content",
+    "cluster": "video",
+    "tools": [
+      "Avatar AI",
+      "Synthesia",
+      "Digital Humans"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create professional avatar videos using AI generation tools.",
+    "cardSummary": "Avatar videos work for standardized content, not personalized communication.",
+    "readerLens": "Consider audience acceptance and ethical implications.",
+    "watchlist": [
+      "Avatar realism",
+      "Customization options",
+      "Ethical guidelines"
+    ],
+    "keywords": [
+      "avatar",
+      "digital",
+      "human",
+      "synthesia"
+    ]
+  },
+  {
+    "slug": "ai-video-editing-automation",
+    "title": "AI Video Editing Automation",
+    "type": "Workflow",
+    "focus": "build automated video editing workflows for common production tasks",
+    "cluster": "video",
+    "tools": [
+      "Video Editing",
+      "Descript",
+      "Automation"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Automate video editing tasks using AI tools and workflows.",
+    "cardSummary": "Automation works for repetitive tasks, creative editing needs human judgment.",
+    "readerLens": "Start with simple automations and expand based on reliability.",
+    "watchlist": [
+      "Tool reliability",
+      "Quality consistency",
+      "Learning curve"
+    ],
+    "keywords": [
+      "editing",
+      "automation",
+      "descript",
+      "workflow"
+    ]
+  },
+  {
+    "slug": "ai-video-script-writing",
+    "title": "AI Video Script Writing Guide",
+    "type": "Tutorial",
+    "focus": "use AI to improve video script writing efficiency and quality",
+    "cluster": "video",
+    "tools": [
+      "Script Writing",
+      "Content Planning",
+      "AI Writing"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Write effective video scripts using AI assistance.",
+    "cardSummary": "AI script writing works for structure and variation, human voice remains essential.",
+    "readerLens": "Maintain authentic voice while leveraging AI efficiency.",
+    "watchlist": [
+      "Voice consistency",
+      "Audience engagement",
+      "Platform requirements"
+    ],
+    "keywords": [
+      "script",
+      "writing",
+      "content",
+      "planning"
+    ]
+  },
+  {
+    "slug": "ai-broll-generation-workflow",
+    "title": "AI B-Roll Generation Workflow",
+    "type": "Workflow",
+    "focus": "build efficient B-roll generation workflows with AI tools",
+    "cluster": "video",
+    "tools": [
+      "B-Roll",
+      "Supporting Footage",
+      "AI Generation"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Generate supporting footage for videos using AI tools.",
+    "cardSummary": "AI B-roll works for generic footage, specific concepts need custom generation.",
+    "readerLens": "Match B-roll quality to main content production value.",
+    "watchlist": [
+      "Quality consistency",
+      "Generation speed",
+      "Licensing clarity"
+    ],
+    "keywords": [
+      "broll",
+      "footage",
+      "supporting",
+      "workflow"
+    ]
+  },
+  {
+    "slug": "ai-video-subtitles-captions",
+    "title": "AI Video Subtitles and Captions",
+    "type": "Tutorial",
+    "focus": "use AI tools for accurate subtitle and caption generation",
+    "cluster": "video",
+    "tools": [
+      "Subtitles",
+      "Captions",
+      "Accessibility"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Generate accurate subtitles and captions using AI transcription.",
+    "cardSummary": "AI subtitles work well but need human review for accuracy.",
+    "readerLens": "Always review AI-generated subtitles for critical content.",
+    "watchlist": [
+      "Accuracy rates",
+      "Language support",
+      "Timing precision"
+    ],
+    "keywords": [
+      "subtitles",
+      "captions",
+      "accessibility",
+      "transcription"
+    ]
+  },
+  {
+    "slug": "ai-video-repurposing-guide",
+    "title": "AI Video Content Repurposing",
+    "type": "Workflow",
+    "focus": "build content repurposing workflows for multi-platform video distribution",
+    "cluster": "video",
+    "tools": [
+      "Content Repurposing",
+      "Multi-platform",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Repurpose video content across platforms using AI tools.",
+    "cardSummary": "Repurposing works when platform-specific requirements are understood.",
+    "readerLens": "Adapt content for each platform rather than just resizing.",
+    "watchlist": [
+      "Platform guidelines",
+      "Quality degradation",
+      "Engagement metrics"
+    ],
+    "keywords": [
+      "repurposing",
+      "multi-platform",
+      "distribution",
+      "content"
+    ]
+  },
+  {
+    "slug": "ai-video-analytics-insights",
+    "title": "AI Video Analytics and Insights",
+    "type": "Guide",
+    "focus": "apply AI analytics to improve video content strategy and performance",
+    "cluster": "video",
+    "tools": [
+      "Analytics",
+      "Performance",
+      "AI Insights"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Use AI to analyze video performance and audience engagement.",
+    "cardSummary": "Analytics work when insights drive actionable improvements.",
+    "readerLens": "Focus on metrics that align with your content goals.",
+    "watchlist": [
+      "Metric definitions",
+      "Insight accuracy",
+      "Actionability"
+    ],
+    "keywords": [
+      "analytics",
+      "insights",
+      "performance",
+      "metrics"
+    ]
+  },
+  {
+    "slug": "ai-video-translation-localization",
+    "title": "AI Video Translation and Localization",
+    "type": "Tutorial",
+    "focus": "build video translation and localization workflows with AI assistance",
+    "cluster": "video",
+    "tools": [
+      "Translation",
+      "Localization",
+      "Global Content"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Translate and localize video content using AI tools.",
+    "cardSummary": "AI translation works for understanding, professional localization needs human review.",
+    "readerLens": "Consider cultural context beyond literal translation.",
+    "watchlist": [
+      "Translation quality",
+      "Cultural adaptation",
+      "Lip-sync accuracy"
+    ],
+    "keywords": [
+      "translation",
+      "localization",
+      "global",
+      "multilingual"
+    ]
+  },
+  {
+    "slug": "ai-live-streaming-tools",
+    "title": "AI Live Streaming Enhancement Tools",
+    "type": "Comparison",
+    "focus": "evaluate AI enhancement tools for live streaming workflows",
+    "cluster": "video",
+    "tools": [
+      "Live Streaming",
+      "Real-time AI",
+      "Broadcasting"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare AI tools for enhancing live streaming production quality.",
+    "cardSummary": "Live streaming AI works best for automation, not creative direction.",
+    "readerLens": "Test reliability in live environments before depending on AI tools.",
+    "watchlist": [
+      "Latency impact",
+      "Reliability",
+      "Cost justification"
+    ],
+    "keywords": [
+      "live",
+      "streaming",
+      "real-time",
+      "broadcasting"
+    ]
+  },
+  {
+    "slug": "ai-video-production-cost-reduction",
+    "title": "Reducing Video Production Costs with AI",
+    "type": "Guide",
+    "focus": "identify opportunities to reduce video production costs with AI tools",
+    "cluster": "video",
+    "tools": [
+      "Cost Reduction",
+      "Production Efficiency",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Strategies for reducing video production costs using AI automation.",
+    "cardSummary": "Cost reduction works when AI handles repetitive tasks, humans handle quality.",
+    "readerLens": "Calculate ROI including learning curve and quality impact.",
+    "watchlist": [
+      "Quality trade-offs",
+      "Learning investment",
+      "Scalability"
+    ],
+    "keywords": [
+      "cost",
+      "reduction",
+      "efficiency",
+      "production"
+    ]
+  },
+  {
+    "slug": "canva-ai-2026-features",
+    "title": "Canva AI 2026: Latest Features Review",
+    "type": "Review",
+    "focus": "evaluate Canva's 2026 AI features for design workflows",
+    "cluster": "design",
+    "tools": [
+      "Canva",
+      "Canva AI",
+      "Design Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Review of Canva's latest AI features for 2026.",
+    "cardSummary": "Canva AI works best for rapid prototyping, not final production design.",
+    "readerLens": "Test features against your specific design requirements.",
+    "watchlist": [
+      "Feature updates",
+      "Pricing changes",
+      "Quality improvements"
+    ],
+    "keywords": [
+      "canva",
+      "features",
+      "2026",
+      "review"
+    ]
+  },
+  {
+    "slug": "ai-design-system-automation",
+    "title": "AI Design System Automation",
+    "type": "Workflow",
+    "focus": "build AI-assisted design system workflows for consistency and efficiency",
+    "cluster": "design",
+    "tools": [
+      "Design Systems",
+      "Automation",
+      "Brand Management"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Automate design system maintenance and component generation.",
+    "cardSummary": "Design system AI helps maintain consistency, not replace design thinking.",
+    "readerLens": "Establish clear rules before automating design decisions.",
+    "watchlist": [
+      "Consistency metrics",
+      "Maintenance overhead",
+      "Scalability"
+    ],
+    "keywords": [
+      "design",
+      "system",
+      "automation",
+      "consistency"
+    ]
+  },
+  {
+    "slug": "ai-presentation-design-advanced",
+    "title": "Advanced AI Presentation Design",
+    "type": "Tutorial",
+    "focus": "master AI presentation design for business and educational contexts",
+    "cluster": "design",
+    "tools": [
+      "Presentations",
+      "Slides",
+      "AI Design"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create professional presentations using advanced AI design techniques.",
+    "cardSummary": "AI presentations work for structure and visuals, narrative needs human direction.",
+    "readerLens": "Focus on message clarity rather than visual complexity.",
+    "watchlist": [
+      "Tool updates",
+      "Template quality",
+      "Audience engagement"
+    ],
+    "keywords": [
+      "presentation",
+      "slides",
+      "advanced",
+      "design"
+    ]
+  },
+  {
+    "slug": "ai-social-media-graphics",
+    "title": "AI Social Media Graphics Guide",
+    "type": "Guide",
+    "focus": "build efficient social media graphic creation workflows with AI",
+    "cluster": "design",
+    "tools": [
+      "Social Media",
+      "Graphics",
+      "Content Creation"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create engaging social media graphics using AI design tools.",
+    "cardSummary": "Social graphics work when AI handles iteration, humans handle strategy.",
+    "readerLens": "Track engagement metrics to validate design choices.",
+    "watchlist": [
+      "Platform changes",
+      "Trend shifts",
+      "Brand consistency"
+    ],
+    "keywords": [
+      "social",
+      "media",
+      "graphics",
+      "content"
+    ]
+  },
+  {
+    "slug": "ai-brand-kit-creation",
+    "title": "AI Brand Kit Creation Guide",
+    "type": "Tutorial",
+    "focus": "use AI to create and maintain brand identity systems",
+    "cluster": "design",
+    "tools": [
+      "Brand Kits",
+      "Brand Guidelines",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create comprehensive brand kits using AI design assistance.",
+    "cardSummary": "Brand kit AI helps with variations, core identity needs human vision.",
+    "readerLens": "Establish brand strategy before generating visual variations.",
+    "watchlist": [
+      "Consistency requirements",
+      "Scalability",
+      "Legal considerations"
+    ],
+    "keywords": [
+      "brand",
+      "kit",
+      "identity",
+      "creation"
+    ]
+  },
+  {
+    "slug": "ai-infographic-design",
+    "title": "AI Infographic Design Workflow",
+    "type": "Workflow",
+    "focus": "build infographic design workflows combining AI generation with data accuracy",
+    "cluster": "design",
+    "tools": [
+      "Infographics",
+      "Data Visualization",
+      "AI Design"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create data-driven infographics using AI design tools.",
+    "cardSummary": "Infographic AI helps with layout, data accuracy needs human verification.",
+    "readerLens": "Verify data representation accuracy before publishing.",
+    "watchlist": [
+      "Data accuracy",
+      "Visual clarity",
+      "Accessibility"
+    ],
+    "keywords": [
+      "infographic",
+      "data",
+      "visualization",
+      "workflow"
+    ]
+  },
+  {
+    "slug": "ai-email-template-design",
+    "title": "AI Email Template Design Guide",
+    "type": "Guide",
+    "focus": "use AI to create and optimize email template designs",
+    "cluster": "design",
+    "tools": [
+      "Email Design",
+      "Templates",
+      "Marketing"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Design effective email templates using AI tools.",
+    "cardSummary": "Email design AI helps with variations, conversion testing needs human analysis.",
+    "readerLens": "Test email designs across devices and clients.",
+    "watchlist": [
+      "Compatibility",
+      "Conversion metrics",
+      "Accessibility standards"
+    ],
+    "keywords": [
+      "email",
+      "template",
+      "design",
+      "marketing"
+    ]
+  },
+  {
+    "slug": "ai-web-design-beginners",
+    "title": "AI Web Design for Beginners",
+    "type": "Guide",
+    "focus": "use AI tools for web design while understanding limitations and best practices",
+    "cluster": "design",
+    "tools": [
+      "Web Design",
+      "Landing Pages",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create web designs using AI tools without coding experience.",
+    "cardSummary": "AI web design works for prototypes, production sites need professional development.",
+    "readerLens": "Understand technical limitations before committing to AI design.",
+    "watchlist": [
+      "Technical constraints",
+      "Performance impact",
+      "SEO implications"
+    ],
+    "keywords": [
+      "web",
+      "design",
+      "beginners",
+      "landing"
+    ]
+  },
+  {
+    "slug": "ai-design-collaboration-workflow",
+    "title": "AI Design Collaboration Workflow",
+    "type": "Workflow",
+    "focus": "build collaborative design workflows incorporating AI assistance",
+    "cluster": "design",
+    "tools": [
+      "Collaboration",
+      "Team Design",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Collaborate on design projects using AI-enhanced workflows.",
+    "cardSummary": "Collaboration AI helps coordination, not creative direction.",
+    "readerLens": "Establish clear roles and review processes.",
+    "watchlist": [
+      "Tool integration",
+      "Version control",
+      "Feedback efficiency"
+    ],
+    "keywords": [
+      "collaboration",
+      "team",
+      "workflow",
+      "design"
+    ]
+  },
+  {
+    "slug": "ai-design-quality-checklist",
+    "title": "AI Design Quality Checklist",
+    "type": "Checklist",
+    "focus": "establish quality standards and review processes for AI-generated designs",
+    "cluster": "design",
+    "tools": [
+      "Quality Assurance",
+      "Design Review",
+      "Best Practices"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Checklist for ensuring AI-generated designs meet quality standards.",
+    "cardSummary": "Quality checklists help maintain standards when AI accelerates production.",
+    "readerLens": "Customize checklist for your specific design requirements.",
+    "watchlist": [
+      "Quality metrics",
+      "Review efficiency",
+      "Standard updates"
+    ],
+    "keywords": [
+      "quality",
+      "checklist",
+      "standards",
+      "review"
+    ]
+  },
+  {
+    "slug": "notion-ai-2026-features",
+    "title": "Notion AI 2026: New Features Guide",
+    "type": "Guide",
+    "focus": "evaluate Notion AI 2026 features for workspace productivity",
+    "cluster": "productivity",
+    "tools": [
+      "Notion",
+      "Notion AI",
+      "Workspace"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Explore Notion AI's latest 2026 features for productivity.",
+    "cardSummary": "Notion AI works best when integrated into existing workflows.",
+    "readerLens": "Test features against your actual productivity needs.",
+    "watchlist": [
+      "Feature updates",
+      "Pricing changes",
+      "Integration improvements"
+    ],
+    "keywords": [
+      "notion",
+      "features",
+      "2026",
+      "workspace"
+    ]
+  },
+  {
+    "slug": "ai-meeting-transcription-comparison",
+    "title": "AI Meeting Transcription Tools Comparison",
+    "type": "Comparison",
+    "focus": "evaluate meeting transcription tools for different use cases and requirements",
+    "cluster": "productivity",
+    "tools": [
+      "Transcription",
+      "Meeting Notes",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare AI meeting transcription tools for accuracy and features.",
+    "cardSummary": "Transcription accuracy varies significantly by tool and meeting conditions.",
+    "readerLens": "Test with your typical meeting conditions and participants.",
+    "watchlist": [
+      "Accuracy rates",
+      "Language support",
+      "Privacy policies"
+    ],
+    "keywords": [
+      "meeting",
+      "transcription",
+      "comparison",
+      "tools"
+    ]
+  },
+  {
+    "slug": "ai-email-management-2026",
+    "title": "AI Email Management: 2026 Guide",
+    "type": "Guide",
+    "focus": "build AI-assisted email management workflows for productivity",
+    "cluster": "productivity",
+    "tools": [
+      "Email",
+      "Inbox Management",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Manage email effectively using AI-powered tools and techniques.",
+    "cardSummary": "Email AI helps with sorting and drafting, judgment calls need humans.",
+    "readerLens": "Start with low-risk emails before automating important communications.",
+    "watchlist": [
+      "Accuracy",
+      "Privacy considerations",
+      "Integration quality"
+    ],
+    "keywords": [
+      "email",
+      "management",
+      "inbox",
+      "productivity"
+    ]
+  },
+  {
+    "slug": "ai-task-management-advanced",
+    "title": "Advanced AI Task Management",
+    "type": "Tutorial",
+    "focus": "implement advanced AI task management for complex project workflows",
+    "cluster": "productivity",
+    "tools": [
+      "Task Management",
+      "Planning",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Master advanced AI task management techniques for complex projects.",
+    "cardSummary": "Task management AI helps organization, strategic planning needs human direction.",
+    "readerLens": "Practice with simpler projects before complex implementations.",
+    "watchlist": [
+      "Tool updates",
+      "Workflow improvements",
+      "Integration options"
+    ],
+    "keywords": [
+      "task",
+      "management",
+      "advanced",
+      "planning"
+    ]
+  },
+  {
+    "slug": "ai-automation-workflows",
+    "title": "Building AI Automation Workflows",
+    "type": "Workflow",
+    "focus": "design and implement AI automation workflows for common tasks",
+    "cluster": "productivity",
+    "tools": [
+      "Automation",
+      "Zapier",
+      "Workflow Design"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create effective automation workflows using AI tools.",
+    "cardSummary": "Automation works best for repetitive, rule-based tasks with clear triggers.",
+    "readerLens": "Document workflows before automating to identify optimization opportunities.",
+    "watchlist": [
+      "Reliability",
+      "Error handling",
+      "Maintenance requirements"
+    ],
+    "keywords": [
+      "automation",
+      "workflow",
+      "zapier",
+      "building"
+    ]
+  },
+  {
+    "slug": "ai-knowledge-base-management",
+    "title": "AI Knowledge Base Management",
+    "type": "Guide",
+    "focus": "build AI-assisted knowledge management workflows for teams",
+    "cluster": "productivity",
+    "tools": [
+      "Knowledge Management",
+      "Documentation",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Organize and maintain knowledge bases using AI assistance.",
+    "cardSummary": "Knowledge base AI helps organization, quality control needs human oversight.",
+    "readerLens": "Establish content standards before implementing AI organization.",
+    "watchlist": [
+      "Accuracy",
+      "Search quality",
+      "Maintenance overhead"
+    ],
+    "keywords": [
+      "knowledge",
+      "base",
+      "management",
+      "documentation"
+    ]
+  },
+  {
+    "slug": "ai-project-planning-tools",
+    "title": "AI Project Planning Tools Comparison",
+    "type": "Comparison",
+    "focus": "evaluate AI project planning tools for different team sizes and methodologies",
+    "cluster": "productivity",
+    "tools": [
+      "Project Planning",
+      "PM Tools",
+      "AI Features"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare AI-enhanced project planning tools and features.",
+    "cardSummary": "Planning AI helps with estimation and scheduling, decisions need human judgment.",
+    "readerLens": "Match tools to your project management methodology.",
+    "watchlist": [
+      "Feature accuracy",
+      "Integration options",
+      "Pricing models"
+    ],
+    "keywords": [
+      "project",
+      "planning",
+      "tools",
+      "comparison"
+    ]
+  },
+  {
+    "slug": "ai-document-creation-workflow",
+    "title": "AI Document Creation Workflow",
+    "type": "Workflow",
+    "focus": "build document creation workflows combining AI generation with human editing",
+    "cluster": "productivity",
+    "tools": [
+      "Document Creation",
+      "Writing",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create professional documents efficiently using AI assistance.",
+    "cardSummary": "Document AI helps with drafting and structure, quality needs human review.",
+    "readerLens": "Establish templates and standards before automating creation.",
+    "watchlist": [
+      "Quality consistency",
+      "Format compliance",
+      "Review efficiency"
+    ],
+    "keywords": [
+      "document",
+      "creation",
+      "workflow",
+      "writing"
+    ]
+  },
+  {
+    "slug": "ai-data-entry-automation",
+    "title": "AI Data Entry Automation Guide",
+    "type": "Guide",
+    "focus": "implement AI data entry automation for common business processes",
+    "cluster": "productivity",
+    "tools": [
+      "Data Entry",
+      "Automation",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Automate data entry tasks using AI recognition and processing.",
+    "cardSummary": "Data entry AI works for structured data, exceptions need human handling.",
+    "readerLens": "Validate accuracy before relying on automated data entry.",
+    "watchlist": [
+      "Accuracy rates",
+      "Error handling",
+      "Cost justification"
+    ],
+    "keywords": [
+      "data",
+      "entry",
+      "automation",
+      "business"
+    ]
+  },
+  {
+    "slug": "ai-productivity-metrics-2026",
+    "title": "Measuring AI Productivity Impact 2026",
+    "type": "Guide",
+    "focus": "establish metrics and methods for measuring AI productivity impact",
+    "cluster": "productivity",
+    "tools": [
+      "Productivity Metrics",
+      "Measurement",
+      "AI ROI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Measure and optimize the productivity impact of AI tools.",
+    "cardSummary": "Productivity measurement requires clear baselines and realistic expectations.",
+    "readerLens": "Measure actual outcomes, not just activity metrics.",
+    "watchlist": [
+      "Metric validity",
+      "Measurement methods",
+      "Improvement tracking"
+    ],
+    "keywords": [
+      "productivity",
+      "metrics",
+      "measurement",
+      "roi"
+    ]
+  },
+  {
+    "slug": "ai-blog-writing-2026",
+    "title": "AI Blog Writing: 2026 Best Practices",
+    "type": "Guide",
+    "focus": "apply current best practices for AI-assisted blog content creation",
+    "cluster": "writing",
+    "tools": [
+      "Blog Writing",
+      "Content Creation",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Best practices for AI-assisted blog writing in 2026.",
+    "cardSummary": "Blog writing AI works for drafts and structure, voice and insight need humans.",
+    "readerLens": "Focus on unique value rather than volume of content.",
+    "watchlist": [
+      "SEO changes",
+      "Quality standards",
+      "Audience expectations"
+    ],
+    "keywords": [
+      "blog",
+      "writing",
+      "best-practices",
+      "2026"
+    ]
+  },
+  {
+    "slug": "ai-copywriting-advanced-techniques",
+    "title": "Advanced AI Copywriting Techniques",
+    "type": "Tutorial",
+    "focus": "learn advanced AI copywriting techniques for different marketing contexts",
+    "cluster": "writing",
+    "tools": [
+      "Copywriting",
+      "Marketing Writing",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Master advanced AI copywriting for marketing and sales.",
+    "cardSummary": "Advanced copywriting combines AI efficiency with human persuasion skills.",
+    "readerLens": "Practice techniques in low-stakes contexts first.",
+    "watchlist": [
+      "Tool updates",
+      "Technique effectiveness",
+      "Audience response"
+    ],
+    "keywords": [
+      "copywriting",
+      "advanced",
+      "marketing",
+      "sales"
+    ]
+  },
+  {
+    "slug": "ai-seo-content-writing",
+    "title": "AI SEO Content Writing Guide",
+    "type": "Guide",
+    "focus": "build SEO content writing workflows with AI assistance",
+    "cluster": "writing",
+    "tools": [
+      "SEO",
+      "Content Marketing",
+      "AI Writing"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Write SEO-optimized content using AI tools effectively.",
+    "cardSummary": "SEO writing AI helps with optimization, original value creation needs humans.",
+    "readerLens": "Focus on user value rather than just keyword optimization.",
+    "watchlist": [
+      "Algorithm changes",
+      "Quality guidelines",
+      "Competition levels"
+    ],
+    "keywords": [
+      "seo",
+      "content",
+      "writing",
+      "optimization"
+    ]
+  },
+  {
+    "slug": "ai-newsletter-writing-advanced",
+    "title": "Advanced AI Newsletter Writing",
+    "type": "Tutorial",
+    "focus": "master AI newsletter writing for audience engagement and retention",
+    "cluster": "writing",
+    "tools": [
+      "Newsletter",
+      "Email Marketing",
+      "AI Writing"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Create engaging newsletters using advanced AI writing techniques.",
+    "cardSummary": "Newsletter AI helps with drafting and variation, personal voice matters most.",
+    "readerLens": "Maintain authentic voice while leveraging AI efficiency.",
+    "watchlist": [
+      "Audience feedback",
+      "Open rates",
+      "Content quality"
+    ],
+    "keywords": [
+      "newsletter",
+      "advanced",
+      "engagement",
+      "retention"
+    ]
+  },
+  {
+    "slug": "ai-brand-voice-development",
+    "title": "Developing Brand Voice with AI",
+    "type": "Guide",
+    "focus": "use AI to develop and maintain brand voice consistency across content",
+    "cluster": "writing",
+    "tools": [
+      "Brand Voice",
+      "Consistency",
+      "AI Writing"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Develop and maintain consistent brand voice using AI tools.",
+    "cardSummary": "Brand voice AI helps with consistency, original voice development needs humans.",
+    "readerLens": "Establish voice guidelines before implementing AI assistance.",
+    "watchlist": [
+      "Consistency metrics",
+      "Audience perception",
+      "Voice evolution"
+    ],
+    "keywords": [
+      "brand",
+      "voice",
+      "consistency",
+      "development"
+    ]
+  },
+  {
+    "slug": "ai-content-editing-workflow",
+    "title": "AI Content Editing Workflow",
+    "type": "Workflow",
+    "focus": "create editing workflows combining AI efficiency with human quality control",
+    "cluster": "writing",
+    "tools": [
+      "Editing",
+      "Proofreading",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Build efficient content editing workflows using AI assistance.",
+    "cardSummary": "Editing AI helps with consistency and grammar, clarity needs human judgment.",
+    "readerLens": "Establish editing standards before automating processes.",
+    "watchlist": [
+      "Quality metrics",
+      "Editing efficiency",
+      "Consistency standards"
+    ],
+    "keywords": [
+      "content",
+      "editing",
+      "workflow",
+      "proofreading"
+    ]
+  },
+  {
+    "slug": "ai-technical-writing-guide",
+    "title": "AI Technical Writing Guide",
+    "type": "Guide",
+    "focus": "use AI to improve technical writing efficiency and accuracy",
+    "cluster": "writing",
+    "tools": [
+      "Technical Writing",
+      "Documentation",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Write technical documentation effectively using AI assistance.",
+    "cardSummary": "Technical writing AI helps with structure and clarity, accuracy needs verification.",
+    "readerLens": "Verify technical accuracy before publishing AI-assisted content.",
+    "watchlist": [
+      "Accuracy requirements",
+      "Audience needs",
+      "Documentation standards"
+    ],
+    "keywords": [
+      "technical",
+      "writing",
+      "documentation",
+      "accuracy"
+    ]
+  },
+  {
+    "slug": "ai-creative-writing-exercises",
+    "title": "AI Creative Writing Exercises",
+    "type": "Tutorial",
+    "focus": "apply AI tools to creative writing exercises and skill development",
+    "cluster": "writing",
+    "tools": [
+      "Creative Writing",
+      "Storytelling",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Use AI to enhance creative writing practice and exploration.",
+    "cardSummary": "Creative writing AI helps with exploration, original voice needs practice.",
+    "readerLens": "Use AI as writing partner, not replacement for creative thinking.",
+    "watchlist": [
+      "Creativity balance",
+      "Voice development",
+      "Practice effectiveness"
+    ],
+    "keywords": [
+      "creative",
+      "writing",
+      "exercises",
+      "storytelling"
+    ]
+  },
+  {
+    "slug": "ai-writing-tools-comparison-2026",
+    "title": "AI Writing Tools Comparison 2026",
+    "type": "Comparison",
+    "focus": "evaluate AI writing tools for various writing needs and contexts",
+    "cluster": "writing",
+    "tools": [
+      "Writing Tools",
+      "Grammarly",
+      "Jasper"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare AI writing tools for different use cases and budgets.",
+    "cardSummary": "Writing tool choice should match your specific writing requirements.",
+    "readerLens": "Test tools with your actual writing tasks before deciding.",
+    "watchlist": [
+      "Feature updates",
+      "Pricing changes",
+      "Quality improvements"
+    ],
+    "keywords": [
+      "writing",
+      "tools",
+      "comparison",
+      "2026"
+    ]
+  },
+  {
+    "slug": "ai-content-repurposing-writing",
+    "title": "AI Content Repurposing for Writers",
+    "type": "Workflow",
+    "focus": "build content repurposing workflows for multi-format distribution",
+    "cluster": "writing",
+    "tools": [
+      "Content Repurposing",
+      "Multi-format",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Repurpose written content across formats using AI tools.",
+    "cardSummary": "Repurposing works when format-specific requirements are understood.",
+    "readerLens": "Adapt content for each format rather than just converting.",
+    "watchlist": [
+      "Format requirements",
+      "Quality maintenance",
+      "Audience preferences"
+    ],
+    "keywords": [
+      "content",
+      "repurposing",
+      "multi-format",
+      "distribution"
+    ]
+  },
+  {
+    "slug": "github-spec-kit-guide",
+    "title": "GitHub Spec Kit: Product-Guided AI Coding",
+    "type": "Guide",
+    "focus": "apply GitHub Spec Kit for product-guided AI development workflows",
+    "cluster": "coding",
+    "tools": [
+      "GitHub",
+      "Spec Kit",
+      "AI Coding"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Use GitHub Spec Kit to guide AI coding with product specifications.",
+    "cardSummary": "Spec Kit helps when product requirements should guide AI code generation.",
+    "readerLens": "Evaluate spec quality impact on generated code quality.",
+    "watchlist": [
+      "Tool maturity",
+      "Integration depth",
+      "Community adoption"
+    ],
+    "keywords": [
+      "github",
+      "spec",
+      "kit",
+      "product"
+    ]
+  },
+  {
+    "slug": "ai-debugging-advanced-techniques",
+    "title": "Advanced AI Debugging Techniques",
+    "type": "Tutorial",
+    "focus": "learn advanced AI-assisted debugging for complex software issues",
+    "cluster": "coding",
+    "tools": [
+      "Debugging",
+      "Error Analysis",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Master advanced debugging techniques using AI assistance.",
+    "cardSummary": "Debugging AI helps with pattern recognition, root cause analysis needs expertise.",
+    "readerLens": "Verify AI suggestions against system behavior and documentation.",
+    "watchlist": [
+      "Tool updates",
+      "Technique effectiveness",
+      "Learning resources"
+    ],
+    "keywords": [
+      "debugging",
+      "advanced",
+      "techniques",
+      "error"
+    ]
+  },
+  {
+    "slug": "ai-code-review-automation",
+    "title": "AI Code Review Automation",
+    "type": "Workflow",
+    "focus": "build automated code review workflows with AI assistance",
+    "cluster": "coding",
+    "tools": [
+      "Code Review",
+      "Quality Assurance",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Automate code review processes using AI tools and workflows.",
+    "cardSummary": "Code review AI helps with pattern detection, design decisions need humans.",
+    "readerLens": "Customize AI rules to match your team's coding standards.",
+    "watchlist": [
+      "Accuracy",
+      "False positive rates",
+      "Integration options"
+    ],
+    "keywords": [
+      "code",
+      "review",
+      "automation",
+      "quality"
+    ]
+  },
+  {
+    "slug": "ai-api-development-guide",
+    "title": "AI API Development Guide",
+    "type": "Guide",
+    "focus": "use AI to improve API development efficiency and quality",
+    "cluster": "coding",
+    "tools": [
+      "API Development",
+      "REST",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Develop APIs effectively using AI coding assistance.",
+    "cardSummary": "API development AI helps with boilerplate, design decisions need expertise.",
+    "readerLens": "Validate API design against best practices and security requirements.",
+    "watchlist": [
+      "Security standards",
+      "Documentation quality",
+      "Testing coverage"
+    ],
+    "keywords": [
+      "api",
+      "development",
+      "rest",
+      "guide"
+    ]
+  },
+  {
+    "slug": "ai-testing-automation",
+    "title": "AI Testing Automation Guide",
+    "type": "Guide",
+    "focus": "build AI-assisted testing workflows for software quality assurance",
+    "cluster": "coding",
+    "tools": [
+      "Testing",
+      "QA",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Automate software testing using AI tools and techniques.",
+    "cardSummary": "Testing AI helps with test generation, test strategy needs human expertise.",
+    "readerLens": "Balance test automation with manual exploratory testing.",
+    "watchlist": [
+      "Test quality",
+      "Maintenance overhead",
+      "Coverage metrics"
+    ],
+    "keywords": [
+      "testing",
+      "automation",
+      "qa",
+      "quality"
+    ]
+  },
+  {
+    "slug": "ai-database-design-assistance",
+    "title": "AI Database Design Assistance",
+    "type": "Tutorial",
+    "focus": "apply AI tools to database design and query optimization tasks",
+    "cluster": "coding",
+    "tools": [
+      "Database Design",
+      "SQL",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Use AI to assist with database design and optimization.",
+    "cardSummary": "Database AI helps with patterns, performance tuning needs domain expertise.",
+    "readerLens": "Verify AI suggestions against actual performance requirements.",
+    "watchlist": [
+      "Performance impact",
+      "Scalability",
+      "Security implications"
+    ],
+    "keywords": [
+      "database",
+      "design",
+      "sql",
+      "optimization"
+    ]
+  },
+  {
+    "slug": "ai-devops-automation",
+    "title": "AI DevOps Automation Guide",
+    "type": "Guide",
+    "focus": "build AI-assisted DevOps automation for deployment and monitoring",
+    "cluster": "coding",
+    "tools": [
+      "DevOps",
+      "CI/CD",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Automate DevOps processes using AI tools and workflows.",
+    "cardSummary": "DevOps AI helps with routine tasks, architecture decisions need expertise.",
+    "readerLens": "Start with low-risk automations and expand based on reliability.",
+    "watchlist": [
+      "Reliability",
+      "Security implications",
+      "Cost justification"
+    ],
+    "keywords": [
+      "devops",
+      "automation",
+      "cicd",
+      "deployment"
+    ]
+  },
+  {
+    "slug": "ai-mobile-development-tools",
+    "title": "AI Mobile Development Tools 2026",
+    "type": "Comparison",
+    "focus": "evaluate AI tools for mobile development workflows and productivity",
+    "cluster": "coding",
+    "tools": [
+      "Mobile Development",
+      "React Native",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare AI tools for mobile application development.",
+    "cardSummary": "Mobile dev AI helps with code generation, UX design needs human insight.",
+    "readerLens": "Evaluate tools against your specific platform and framework requirements.",
+    "watchlist": [
+      "Tool updates",
+      "Framework support",
+      "Performance impact"
+    ],
+    "keywords": [
+      "mobile",
+      "development",
+      "tools",
+      "2026"
+    ]
+  },
+  {
+    "slug": "ai-security-code-review",
+    "title": "AI Security Code Review Guide",
+    "type": "Guide",
+    "focus": "apply AI tools to security code review and vulnerability identification",
+    "cluster": "coding",
+    "tools": [
+      "Security",
+      "Code Review",
+      "Vulnerability Detection"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Use AI for security-focused code review and vulnerability detection.",
+    "cardSummary": "Security AI helps with pattern detection, threat assessment needs expertise.",
+    "readerLens": "Never rely solely on AI for security decisions.",
+    "watchlist": [
+      "Detection accuracy",
+      "False positive rates",
+      "Coverage limitations"
+    ],
+    "keywords": [
+      "security",
+      "code",
+      "review",
+      "vulnerability"
+    ]
+  },
+  {
+    "slug": "ai-open-source-contribution",
+    "title": "AI-Assisted Open Source Contribution",
+    "type": "Guide",
+    "focus": "use AI to improve open source contribution quality and efficiency",
+    "cluster": "coding",
+    "tools": [
+      "Open Source",
+      "Community",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Contribute to open source projects effectively using AI assistance.",
+    "cardSummary": "Open source AI helps with code quality, community interaction needs humans.",
+    "readerLens": "Understand project norms before using AI for contributions.",
+    "watchlist": [
+      "Community guidelines",
+      "Code quality standards",
+      "Contribution acceptance"
+    ],
+    "keywords": [
+      "open",
+      "source",
+      "contribution",
+      "community"
+    ]
+  },
+  {
+    "slug": "cartesia-sonic35-voice-model",
+    "title": "Cartesia Sonic 3.5: Real-Time Voice AI",
+    "type": "Guide",
+    "focus": "evaluate Cartesia Sonic 3.5 for real-time voice generation use cases",
+    "cluster": "audio",
+    "tools": [
+      "Cartesia",
+      "Sonic",
+      "Voice AI"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Explore Cartesia's Sonic 3.5 real-time voice generation capabilities.",
+    "cardSummary": "Real-time voice AI shows promise but needs latency and quality testing.",
+    "readerLens": "Test latency and quality in your specific use environment.",
+    "watchlist": [
+      "Latency benchmarks",
+      "Quality metrics",
+      "Pricing structure"
+    ],
+    "keywords": [
+      "cartesia",
+      "sonic",
+      "voice",
+      "real-time"
+    ]
+  },
+  {
+    "slug": "ai-podcast-production-2026",
+    "title": "AI Podcast Production: 2026 Guide",
+    "type": "Guide",
+    "focus": "build AI-assisted podcast production workflows for quality audio content",
+    "cluster": "audio",
+    "tools": [
+      "Podcasting",
+      "Audio Production",
+      "AI Tools"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Produce professional podcasts using AI tools and workflows.",
+    "cardSummary": "Podcast AI helps with editing and production, content needs human direction.",
+    "readerLens": "Focus on content quality rather than production perfection.",
+    "watchlist": [
+      "Tool updates",
+      "Quality improvements",
+      "Audience feedback"
+    ],
+    "keywords": [
+      "podcast",
+      "production",
+      "audio",
+      "2026"
+    ]
+  },
+  {
+    "slug": "ai-voice-cloning-ethics",
+    "title": "AI Voice Cloning: Ethics and Best Practices",
+    "type": "Guide",
+    "focus": "understand ethical implications and best practices for AI voice cloning",
+    "cluster": "audio",
+    "tools": [
+      "Voice Cloning",
+      "Ethics",
+      "AI Safety"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Navigate ethical considerations in AI voice cloning technology.",
+    "cardSummary": "Voice cloning requires careful ethical consideration and consent.",
+    "readerLens": "Understand legal and ethical requirements before using voice cloning.",
+    "watchlist": [
+      "Legal developments",
+      "Consent requirements",
+      "Detection methods"
+    ],
+    "keywords": [
+      "voice",
+      "cloning",
+      "ethics",
+      "safety"
+    ]
+  },
+  {
+    "slug": "ai-music-generation-2026",
+    "title": "AI Music Generation: 2026 Landscape",
+    "type": "Comparison",
+    "focus": "evaluate AI music generation tools for different use cases and quality requirements",
+    "cluster": "audio",
+    "tools": [
+      "Music Generation",
+      "Suno",
+      "AI Music"
+    ],
+    "createdAt": "2026-06-22",
+    "summary": "Compare AI music generation tools and their current capabilities.",
+    "cardSummary": "Music generation AI works for sketches and drafts, professional production needs refinement.",
+    "readerLens": "Understand licensing requirements for commercial use.",
+    "watchlist": [
+      "Quality improvements",
+      "Licensing terms",
+      "Tool capabilities"
+    ],
+    "keywords": [
+      "music",
+      "generation",
+      "suno",
+      "landscape"
+    ]
   }
 ]

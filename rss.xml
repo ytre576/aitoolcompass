@@ -5,286 +5,286 @@
   <link>https://aitoolcompass.bbroot.com</link>
   <description>Practical AI tool tutorials, comparisons, workflows, and beginner-friendly guides for choosing useful AI software without hype.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 08 May 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 22 Jun 2026 00:00:00 GMT</lastBuildDate>
   <item>
-    <title>Teaching Claude the Why: A Better Safety Alignment Story</title>
-    <link>https://aitoolcompass.bbroot.com/articles/anthropic-teach-claude-why-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/anthropic-teach-claude-why-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT highlighted Anthropic&apos;s idea of teaching Claude the reasons behind safe behavior rather than only enforcing outcomes. That matters because alignment quality affects not just refusal behavior, but how well a model explains trade-offs and handles ambiguous tasks.</description>
-  </item>
-  <item>
-    <title>Ring-2.6-1T: What This New Reasoning Model Means</title>
-    <link>https://aitoolcompass.bbroot.com/articles/ring-2-6-1t-reasoning-model-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/ring-2-6-1t-reasoning-model-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT highlighted Ring-2.6-1T as a new trillion-parameter reasoning model aimed at stronger hard-task performance and broader context handling. For practical readers, the real question is whether this kind of release changes the trade-off between capability, cost, and deployment risk.</description>
-  </item>
-  <item>
-    <title>OpenRouter Human Review: A Safer Pattern for Agents</title>
-    <link>https://aitoolcompass.bbroot.com/articles/openrouter-human-review-agents-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/openrouter-human-review-agents-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT called out OpenRouter&apos;s agent SDK support for human review. This is a meaningful pattern because more agent systems are now powerful enough to act on tools, files, and external systems where a human checkpoint can prevent expensive mistakes.</description>
-  </item>
-  <item>
-    <title>OpenAI on Accidental Chain-of-Thought Grading</title>
-    <link>https://aitoolcompass.bbroot.com/articles/openai-accidental-cot-grading-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/openai-accidental-cot-grading-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT surfaced OpenAI&apos;s discussion of accidental chain-of-thought grading. This is important because evaluation design strongly affects what model benchmarks appear to prove, especially when reasoning traces leak into the scoring setup.</description>
-  </item>
-  <item>
-    <title>Grok Connectors: Cross-App AI Workflows Are Getting Real</title>
-    <link>https://aitoolcompass.bbroot.com/articles/grok-connectors-cross-app-workflows-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/grok-connectors-cross-app-workflows-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT noted that Grok connectors are expanding across iOS, Android, and web subscriptions. The practical signal is that AI assistants are moving closer to real cross-app context instead of isolated chat windows.</description>
-  </item>
-  <item>
-    <title>Gemini Notebooks for Complex Tasks: A Practical Take</title>
-    <link>https://aitoolcompass.bbroot.com/articles/gemini-notebooks-complex-tasks-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/gemini-notebooks-complex-tasks-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT pointed to Gemini notebooks as a better way to manage complex tasks. That matters because more AI work now depends on keeping context, references, and structured notes together instead of asking for a one-shot answer.</description>
-  </item>
-  <item>
-    <title>EMO MoE Pretraining: Why Modular Training Matters</title>
-    <link>https://aitoolcompass.bbroot.com/articles/emo-moe-pretraining-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/emo-moe-pretraining-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT surfaced EMO as a mixture-of-experts direction focused on modular growth without retraining everything from scratch. That is important because model builders increasingly care about how to scale capability while keeping compute waste under control.</description>
-  </item>
-  <item>
-    <title>China&apos;s AI Device Standard: What L1-L4 Intelligence Means</title>
-    <link>https://aitoolcompass.bbroot.com/articles/china-ai-device-standard-l1-l4-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/china-ai-device-standard-l1-l4-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT reported a new standard around AI device intelligence levels from L1 to L4. This matters because hardware AI claims are becoming crowded, and a clearer language for capability levels can reshape product comparison and marketing discipline.</description>
-  </item>
-  <item>
-    <title>Bugbot Pricing Shift: What Usage-Based Billing Changes</title>
-    <link>https://aitoolcompass.bbroot.com/articles/bugbot-usage-based-pricing-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/bugbot-usage-based-pricing-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT flagged Bugbot&apos;s move toward usage-based pricing. For developers and small teams, that changes how AI review tools are evaluated because cost now depends more directly on actual review volume and workflow intensity.</description>
-  </item>
-  <item>
-    <title>Alibaba Smart Studio: Easier Self-Hosted Model Workflows</title>
-    <link>https://aitoolcompass.bbroot.com/articles/alibaba-smart-studio-self-hosted-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/alibaba-smart-studio-self-hosted-guide.html</guid>
-    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-    <description>AI HOT highlighted Alibaba Cloud Smart Studio as a way to make self-hosted model work more approachable. That is relevant because many teams want local control, internal data boundaries, and less dependence on purely hosted AI tools.</description>
+    <title>Zvec: Open Source Vector Database</title>
+    <link>https://aitoolcompass.bbroot.com/articles/zvec-vector-database-guide.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/zvec-vector-database-guide.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Alibaba&apos;s Zvec open source vector database for AI-powered search and retrieval.</description>
   </item>
   <item>
     <title>Zapier AI Automation Guide for Beginners</title>
     <link>https://aitoolcompass.bbroot.com/articles/zapier-ai-automation-guide.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/zapier-ai-automation-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to connect apps and reduce repetitive work with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>Tabbit: Free Access to GPT-5.5 and Claude Opus</title>
+    <link>https://aitoolcompass.bbroot.com/articles/tabbit-international-free-models.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/tabbit-international-free-models.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Tabbit international version offers free access to multiple flagship AI models.</description>
   </item>
   <item>
     <title>Synthesia Training Video Guide</title>
     <link>https://aitoolcompass.bbroot.com/articles/synthesia-training-video-guide.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/synthesia-training-video-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to turn scripts into presenter-style training videos with practical context, original examples, and clear review points before you rely on the output.</description>
   </item>
   <item>
     <title>Surfer vs Semrush vs Writesonic</title>
     <link>https://aitoolcompass.bbroot.com/articles/surfer-vs-semrush-vs-writesonic.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/surfer-vs-semrush-vs-writesonic.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to compare SEO and content planning workflows with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>Samsung Deploys ChatGPT Enterprise Globally</title>
+    <link>https://aitoolcompass.bbroot.com/articles/chatgpt-enterprise-samsung-deployment.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/chatgpt-enterprise-samsung-deployment.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Samsung&apos;s global ChatGPT Enterprise deployment signals enterprise AI adoption acceleration.</description>
   </item>
   <item>
     <title>Runway vs Pika vs Synthesia</title>
     <link>https://aitoolcompass.bbroot.com/articles/runway-vs-pika-vs-synthesia.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/runway-vs-pika-vs-synthesia.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to compare cinematic clips, quick motion, and avatar videos with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>Runway MCP Server: Developer Integration</title>
+    <link>https://aitoolcompass.bbroot.com/articles/runway-mcp-server-guide.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/runway-mcp-server-guide.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Integrate Runway video generation into developer workflows via MCP server.</description>
   </item>
   <item>
     <title>Runway AI Video Guide for Beginners</title>
     <link>https://aitoolcompass.bbroot.com/articles/runway-ai-video-guide.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/runway-ai-video-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to create short clips with storyboard-first planning with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>Riverflow 2.5: Controllable Image Generation</title>
+    <link>https://aitoolcompass.bbroot.com/articles/riverflow25-image-model.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/riverflow25-image-model.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Riverflow 2.5 introduces controllable scoring for image generation quality.</description>
   </item>
   <item>
     <title>Research Prompt Templates for Better AI Answers</title>
     <link>https://aitoolcompass.bbroot.com/articles/research-prompt-templates.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/research-prompt-templates.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to ask clearer questions and get usable evidence summaries with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>Reducing Video Production Costs with AI</title>
+    <link>https://aitoolcompass.bbroot.com/articles/ai-video-production-cost-reduction.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/ai-video-production-cost-reduction.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Strategies for reducing video production costs using AI automation.</description>
   </item>
   <item>
     <title>Perplexity vs ChatGPT for Research</title>
     <link>https://aitoolcompass.bbroot.com/articles/perplexity-vs-chatgpt-research.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/perplexity-vs-chatgpt-research.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to know when sources matter more than open-ended reasoning with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>Perplexity AI Research: 2026 Updates</title>
+    <link>https://aitoolcompass.bbroot.com/articles/perplexity-ai-research-update-2026.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/perplexity-ai-research-update-2026.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Latest updates to Perplexity AI for research and information retrieval.</description>
   </item>
   <item>
     <title>Perplexity AI Research Workflow: Beginner Guide</title>
     <link>https://aitoolcompass.bbroot.com/articles/perplexity-ai-research-workflow.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/perplexity-ai-research-workflow.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to move from a question to a source-backed brief with practical context, original examples, and clear review points before you rely on the output.</description>
   </item>
   <item>
     <title>Notion AI Workspace Guide</title>
     <link>https://aitoolcompass.bbroot.com/articles/notion-ai-workspace-guide.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/notion-ai-workspace-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to build a practical AI-assisted workspace with practical context, original examples, and clear review points before you rely on the output.</description>
   </item>
   <item>
     <title>Notion AI vs Microsoft Copilot</title>
     <link>https://aitoolcompass.bbroot.com/articles/notion-ai-vs-copilot.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/notion-ai-vs-copilot.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to compare workspace AI and office-suite AI with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>Notion AI 2026: New Features Guide</title>
+    <link>https://aitoolcompass.bbroot.com/articles/notion-ai-2026-features.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/notion-ai-2026-features.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Explore Notion AI&apos;s latest 2026 features for productivity.</description>
+  </item>
+  <item>
+    <title>NotebookLM for Complex Research Tasks</title>
+    <link>https://aitoolcompass.bbroot.com/articles/notebooklm-complex-research-tasks.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/notebooklm-complex-research-tasks.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Use NotebookLM for organizing and analyzing complex research materials.</description>
   </item>
   <item>
     <title>NotebookLM Beginner Guide for Source-Based Notes</title>
     <link>https://aitoolcompass.bbroot.com/articles/notebooklm-beginner-guide.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/notebooklm-beginner-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to turn uploaded sources into summaries, outlines, and study aids with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>MiniMax M3: Video Generation Capabilities</title>
+    <link>https://aitoolcompass.bbroot.com/articles/minimax-m3-video-capabilities.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/minimax-m3-video-capabilities.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Explore MiniMax M3&apos;s video generation and multimodal capabilities.</description>
+  </item>
+  <item>
+    <title>MiniMax M3: Multimodal Chatbot Pioneer</title>
+    <link>https://aitoolcompass.bbroot.com/articles/minimax-m3-chatbot.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/minimax-m3-chatbot.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>MiniMax M3 combines text, image, and voice in a unified chatbot experience.</description>
   </item>
   <item>
     <title>Midjourney vs DALL-E vs Ideogram</title>
     <link>https://aitoolcompass.bbroot.com/articles/midjourney-vs-dalle-vs-ideogram.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/midjourney-vs-dalle-vs-ideogram.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to compare realism, text rendering, style control, and ease of use with practical context, original examples, and clear review points before you rely on the output.</description>
   </item>
   <item>
     <title>Midjourney Prompt Guide for Beginners</title>
     <link>https://aitoolcompass.bbroot.com/articles/midjourney-prompt-guide.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/midjourney-prompt-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to control subject, style, lighting, and composition with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>Measuring AI Productivity Impact 2026</title>
+    <link>https://aitoolcompass.bbroot.com/articles/ai-productivity-metrics-2026.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/ai-productivity-metrics-2026.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Measure and optimize the productivity impact of AI tools.</description>
+  </item>
+  <item>
+    <title>Maintaining AI Image Consistency</title>
+    <link>https://aitoolcompass.bbroot.com/articles/ai-image-consistency-techniques.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/ai-image-consistency-techniques.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Techniques for maintaining consistent AI image style across projects.</description>
+  </item>
+  <item>
+    <title>Luma AI: UGC Ad Generation at Scale</title>
+    <link>https://aitoolcompass.bbroot.com/articles/luma-ugc-ad-generation.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/luma-ugc-ad-generation.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Generate user-generated content style ads using Luma AI.</description>
+  </item>
+  <item>
+    <title>LOGOS: The Unified Science AI Model</title>
+    <link>https://aitoolcompass.bbroot.com/articles/logos-unified-science-model.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/logos-unified-science-model.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>LOGOS represents the first unified scientific AI model for multi-domain research.</description>
+  </item>
+  <item>
+    <title>Kimi 2.6: The Rising Chinese Chatbot</title>
+    <link>https://aitoolcompass.bbroot.com/articles/kimi26-chatbot-guide.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/kimi26-chatbot-guide.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Kimi 2.6 offers strong Chinese language support and competitive performance.</description>
   </item>
   <item>
     <title>Jasper vs Copy.ai vs Writesonic</title>
     <link>https://aitoolcompass.bbroot.com/articles/jasper-vs-copy-ai-vs-writesonic.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/jasper-vs-copy-ai-vs-writesonic.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to compare marketing writing platforms with practical context, original examples, and clear review points before you rely on the output.</description>
   </item>
   <item>
     <title>Human Editing Workflow for AI Content</title>
     <link>https://aitoolcompass.bbroot.com/articles/human-editing-ai-content.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/human-editing-ai-content.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to turn AI drafts into publishable work with practical context, original examples, and clear review points before you rely on the output.</description>
   </item>
   <item>
     <title>How to Use AI Chatbots for File Analysis</title>
     <link>https://aitoolcompass.bbroot.com/articles/ai-chatbot-file-analysis.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/ai-chatbot-file-analysis.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to review spreadsheets, PDFs, contracts, and notes without getting lost with practical context, original examples, and clear review points before you rely on the output.</description>
+  </item>
+  <item>
+    <title>Grok Imagine 1.5: Image Generation Preview</title>
+    <link>https://aitoolcompass.bbroot.com/articles/grok-imagine-15-preview.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/grok-imagine-15-preview.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Grok Imagine 1.5 preview shows improved image generation capabilities.</description>
+  </item>
+  <item>
+    <title>GPT-5.5 Instant: What Beginners Need to Know</title>
+    <link>https://aitoolcompass.bbroot.com/articles/gpt55-instant-beginner-guide.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/gpt55-instant-beginner-guide.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>GPT-5.5 Instant offers faster responses and improved reasoning for everyday tasks.</description>
+  </item>
+  <item>
+    <title>GLM-5.1: Smart AI Platform Review</title>
+    <link>https://aitoolcompass.bbroot.com/articles/glm51-smart-platform.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/glm51-smart-platform.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>GLM-5.1 provides enterprise-grade AI capabilities with Chinese market focus.</description>
+  </item>
+  <item>
+    <title>GitHub Spec Kit: Product-Guided AI Coding</title>
+    <link>https://aitoolcompass.bbroot.com/articles/github-spec-kit-guide.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/github-spec-kit-guide.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Use GitHub Spec Kit to guide AI coding with product specifications.</description>
   </item>
   <item>
     <title>GitHub Copilot Beginner Guide</title>
     <link>https://aitoolcompass.bbroot.com/articles/github-copilot-beginner-guide.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/github-copilot-beginner-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to use autocomplete and chat without blindly accepting code with practical context, original examples, and clear review points before you rely on the output.</description>
   </item>
   <item>
     <title>Gemini for Google Workspace: Practical Beginner Guide</title>
     <link>https://aitoolcompass.bbroot.com/articles/gemini-google-workspace-guide.html</link>
     <guid>https://aitoolcompass.bbroot.com/articles/gemini-google-workspace-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>This beginner-friendly guide shows how to use AI inside Docs, Gmail, Sheets, and Drive-style workflows with practical context, original examples, and clear review points before you rely on the output.</description>
   </item>
   <item>
-    <title>Figma AI Beginner Workflow</title>
-    <link>https://aitoolcompass.bbroot.com/articles/figma-ai-beginner-workflow.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/figma-ai-beginner-workflow.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to move from idea to wireframe faster with practical context, original examples, and clear review points before you rely on the output.</description>
+    <title>Gemini 3.5 Flash: Fast AI for Everyday Use</title>
+    <link>https://aitoolcompass.bbroot.com/articles/gemini-35-flash-review.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/gemini-35-flash-review.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Gemini 3.5 Flash delivers quick responses with Google ecosystem integration.</description>
   </item>
   <item>
-    <title>ElevenLabs vs Descript vs Adobe Podcast</title>
-    <link>https://aitoolcompass.bbroot.com/articles/elevenlabs-vs-descript-vs-adobe.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/elevenlabs-vs-descript-vs-adobe.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to compare voice generation, editing, and cleanup with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>ElevenLabs Voiceover Guide for Beginners</title>
-    <link>https://aitoolcompass.bbroot.com/articles/elevenlabs-voiceover-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/elevenlabs-voiceover-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to create clearer voiceovers for videos and courses with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>Cursor AI Workflow Guide</title>
-    <link>https://aitoolcompass.bbroot.com/articles/cursor-ai-workflow-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/cursor-ai-workflow-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to edit and understand projects with an AI coding editor with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>Copilot vs Cursor vs Replit AI</title>
-    <link>https://aitoolcompass.bbroot.com/articles/copilot-vs-cursor-vs-replit.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/copilot-vs-cursor-vs-replit.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to compare assistant styles for different coding tasks with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>Claude Long Document Guide for Beginners</title>
-    <link>https://aitoolcompass.bbroot.com/articles/claude-long-document-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/claude-long-document-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to summarize and analyze long PDFs, notes, and reports with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>ChatGPT vs Claude vs Gemini: Beginner Comparison</title>
-    <link>https://aitoolcompass.bbroot.com/articles/chatgpt-vs-claude-vs-gemini.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/chatgpt-vs-claude-vs-gemini.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to choose between the three major chatbots for daily work with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>ChatGPT Beginner Workflow: From Prompt to Finished Draft</title>
-    <link>https://aitoolcompass.bbroot.com/articles/chatgpt-beginner-workflow.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/chatgpt-beginner-workflow.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to turn rough ideas into a usable article or email with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>Canva AI vs Adobe Firefly</title>
-    <link>https://aitoolcompass.bbroot.com/articles/canva-vs-adobe-firefly.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/canva-vs-adobe-firefly.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to compare speed, control, brand safety, and asset workflows with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>Canva AI Social Post Guide</title>
-    <link>https://aitoolcompass.bbroot.com/articles/canva-ai-social-post-guide.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/canva-ai-social-post-guide.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to make reusable social graphics without starting from a blank page with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>Canva AI Design Workflow for Beginners</title>
-    <link>https://aitoolcompass.bbroot.com/articles/canva-ai-design-workflow.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/canva-ai-design-workflow.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to turn a short brief into polished practical assets with practical context, original examples, and clear review points before you rely on the output.</description>
-  </item>
-  <item>
-    <title>Best AI Writing Tools: Practical Beginner Guide</title>
-    <link>https://aitoolcompass.bbroot.com/articles/best-ai-writing-tools.html</link>
-    <guid>https://aitoolcompass.bbroot.com/articles/best-ai-writing-tools.html</guid>
-    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-    <description>This beginner-friendly guide shows how to choose writing tools by content type and workflow with practical context, original examples, and clear review points before you rely on the output.</description>
+    <title>Future of AI in Research: 2026-2030</title>
+    <link>https://aitoolcompass.bbroot.com/articles/ai-research-future-trends.html</link>
+    <guid>https://aitoolcompass.bbroot.com/articles/ai-research-future-trends.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description>Predicted trends for AI in academic and commercial research.</description>
   </item>
 </channel>
 </rss>

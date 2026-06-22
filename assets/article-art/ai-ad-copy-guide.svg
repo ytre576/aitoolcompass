@@ -8,8 +8,8 @@
       <stop offset="1" stop-color="#030712"/>
     </linearGradient>
     <linearGradient id="articleAccent" x1="0" x2="1">
-      <stop offset="0" stop-color="#38bdf8"/>
-      <stop offset="1" stop-color="#0ea5e9"/>
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#2563eb"/>
     </linearGradient>
     <filter id="articleShadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#020617" flood-opacity=".42"/>
@@ -22,24 +22,33 @@
     <rect x="54" y="46" width="1092" height="588" rx="28" fill="#061426" stroke="#7dd3fc" stroke-opacity=".34" stroke-width="2"/>
     <rect x="92" y="80" width="278" height="54" rx="999" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".26"/>
     <rect x="92" y="80" width="12" height="54" rx="6" fill="url(#articleAccent)"/>
-    <text x="122" y="116" font-family="Cascadia Mono,Consolas,monospace" font-size="18" font-weight="800" fill="#38bdf8">Marketing / Tutorial</text>
+    <text x="122" y="116" font-family="Cascadia Mono,Consolas,monospace" font-size="18" font-weight="800" fill="#7dd3fc">Marketing / Tutorial</text>
     <text x="846" y="116" font-family="Cascadia Mono,Consolas,monospace" font-size="17" fill="#a7b8cc">AI TOOL GUIDE</text>
-    <g transform="translate(94 156)">
-      <rect width="1012" height="396" rx="24" fill="#081f3a" stroke="#7dd3fc" stroke-opacity=".25" stroke-width="2"/>
-      <path d="M158 456C236 334 318 274 418 318C526 366 560 216 678 246C784 274 808 410 982 250" fill="none" stroke="#38bdf8" stroke-width="9" stroke-linecap="round"/>
-      <path d="M158 456C236 334 318 274 418 318C526 366 560 216 678 246C784 274 808 410 982 250" fill="none" stroke="#e0f2fe" stroke-width="2" stroke-opacity=".55"/>
-      <g font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="22" font-weight="800">
-        <rect x="70" y="70" width="190" height="92" rx="16" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".24"/>
-        <text x="112" y="125" fill="#eef7ff">Draft</text>
-        <rect x="314" y="198" width="190" height="92" rx="16" fill="#0f2745" stroke="#34d399" stroke-opacity=".50"/>
-        <text x="356" y="253" fill="#eef7ff">Review</text>
-        <rect x="552" y="98" width="190" height="92" rx="16" fill="#0f2745" stroke="#7dd3fc" stroke-opacity=".24"/>
-        <text x="594" y="153" fill="#eef7ff">Improve</text>
-        <rect x="790" y="218" width="160" height="92" rx="16" fill="url(#articleAccent)" stroke="#38bdf8" stroke-opacity=".70"/>
-        <text x="832" y="273" fill="#03101f">Ship</text>
-      </g>
+    <g transform="translate(104 168)">
+      <rect width="300" height="350" rx="22" fill="#081f3a" stroke="#7dd3fc" stroke-opacity=".25" stroke-width="2"/>
+      <text x="34" y="62" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="29" font-weight="800" fill="#eef7ff">Free tier</text>
+      <text x="34" y="100" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="18" fill="#a7b8cc">Test with real work</text>
+      <path d="M38 154h220M38 208h170M38 262h244" stroke="#2563eb" stroke-width="10" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(462 132)">
+      <rect width="330" height="422" rx="24" fill="#0b2444" stroke="#7dd3fc" stroke-opacity=".56" stroke-width="2"/>
+      <text x="36" y="68" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="31" font-weight="800" fill="#eef7ff">Paid plan</text>
+      <text x="36" y="108" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="19" fill="#a7b8cc">Buy only after limits</text>
+      <rect x="36" y="154" width="238" height="18" rx="9" fill="#061426"/>
+      <rect x="36" y="154" width="172" height="18" rx="9" fill="url(#articleAccent)"/>
+      <rect x="36" y="214" width="238" height="18" rx="9" fill="#061426"/>
+      <rect x="36" y="214" width="126" height="18" rx="9" fill="#14b8a6"/>
+      <text x="36" y="326" font-family="Cascadia Mono,Consolas,monospace" font-size="20" font-weight="800" fill="#7dd3fc">UPGRADE GATE</text>
+    </g>
+    <g transform="translate(850 168)">
+      <rect width="246" height="350" rx="22" fill="#081f3a" stroke="#7dd3fc" stroke-opacity=".25" stroke-width="2"/>
+      <text x="32" y="62" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="29" font-weight="800" fill="#eef7ff">Keep</text>
+      <text x="32" y="100" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="18" fill="#a7b8cc">Save the pattern</text>
+      <circle cx="82" cy="214" r="36" fill="#2563eb"/>
+      <circle cx="154" cy="266" r="36" fill="#7dd3fc"/>
+      <path d="M110 235l18 12" stroke="#e0f2fe" stroke-width="7" stroke-linecap="round"/>
     </g>
     <text x="92" y="598" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="34" font-weight="800" fill="#eef7ff">AI Ad Copy Guide for Beginners</text>
-    <text x="92" y="636" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="20" fill="#a7b8cc">Signal analysis: write testable ads with clear claims</text>
+    <text x="92" y="636" font-family="Segoe UI,Trebuchet MS,sans-serif" font-size="20" fill="#a7b8cc">Plan selection: write testable ads with clear claims</text>
   </g>
 </svg>

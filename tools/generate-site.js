@@ -197,6 +197,7 @@ const clusters = [
       ["ai-code-explanation-prompts", "AI Code Explanation Prompts", "Prompt Library", "understand unfamiliar code faster"],
       ["ai-coding-mistakes", "AI Coding Mistakes Beginners Make", "Checklist", "avoid insecure snippets, missing tests, and dependency confusion"],
       ["ai-no-code-vs-code-guide", "AI No-Code vs Coding Guide", "Guide", "know when to use builders and when to write code"],
+      ["ai-coding-assistants-2026-comparison", "AI Coding Assistants 2026: GitHub Copilot vs Cursor vs Windsurf", "Comparison", "compare the top AI coding assistants in 2026 by features, pricing, and workflow fit"],
     ],
   },
   {
